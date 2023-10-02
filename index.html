@@ -1,34 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>FUNKOSHOP</title>
 </head>
+
 <body>
     <header>
-        <nav>
-            <div class="logo">
+        <nav class="navbar container">
+            <div class="navbar__logo">
                 <a href="index.html">
                     <img src="img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
                 </a>
             </div>
-            <ul>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#"><img src="img/icons/cart-icon.svg" alt="Icono de carrito"></a></li>
+            <ul class="navbar__menu">
+                <li class="navbar__item with-submenu">
+                    <a class="navbar__link with-icon" href="shop.html">SHOP <iconify-icon
+                            icon="carbon:chevron-down"></iconify-icon></a>
+                    <ul class="submenu">
+                        <li class="submenu__item">
+                            <a href="#" class="submenu__link"> Funkos</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="#" class="submenu__link"> Remeras</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="#" class="submenu__link"> Llaveros</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navbar__item"><a class="navbar__link" href="#">CONTACTO</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="#">LOGIN</a></li>
+                <li class="navbar__item"><a class="navbar__carrito" href="#"><img src="img/icons/cart-icon.svg"
+                            alt="Icono de carrito"></a></li>
             </ul>
         </nav>
     </header>
+    <section class="hero">
+        <article class="hero__container container">
+            <h3 class="hero__titulo">Nuevos ingresos</h3>
+            <p class="hero__parrafo">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <a class="hero__link" href="">ver</a>
+        </article>
+    </section>
     <main>
-        <section>
-            <article>
-                    <h3>Nuevos ingresos</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <a href=""><button>ver</button></a>
-            </article>
-        </section>
         <section>
             <article>
                 <h3>STAR WARS & THE MANDALORIAN</h3>
@@ -39,7 +57,7 @@
                 <img src="img/star-wars/baby-yoda-1.webp" alt="figura coleccionable funko">
             </div>
 
-        </section>    
+        </section>
         <section>
             <article>
                 <h3>POKEMON</h3>
@@ -50,7 +68,7 @@
                 <img src="img/pokemon/charmander-1.webp" alt="figura coleccionable funko">
             </div>
 
-        </section>    
+        </section>
         <section>
             <article>
                 <h3>HARRY POTTER</h3>
@@ -61,7 +79,7 @@
                 <img src="img/harry-potter/harry-1.webp" alt="figura coleccionable funko">
             </div>
 
-        </section>    
+        </section>
 
         <section>
             <h2>ULTIMOS LANZAMIENTOS</h2>
@@ -72,7 +90,7 @@
                             <div>
                                 <img src="img/star-wars/trooper-box.webp" alt="">
                             </div>
-                            <div>   
+                            <div>
                                 <p>STAR WARS</p>
                                 <h4>TROOPER</h4>
                                 <p>$5000</p>
@@ -89,7 +107,7 @@
                             <div>
                                 <img src="img/pokemon/pidgeotto-box.webp">
                             </div>
-                            <div>   
+                            <div>
                                 <p>POKEMON</p>
                                 <h4>PIDGEOTTO</h4>
                                 <p>$5000</p>
@@ -104,9 +122,9 @@
                     <article>
                         <a href="#">
                             <div>
-                                <img src="img/harry-potter/luna-box.webp" >
+                                <img src="img/harry-potter/luna-box.webp">
                             </div>
-                            <div>   
+                            <div>
                                 <p>HARRY POTTER</p>
                                 <h4>LUNA</h4>
                                 <p>$5000</p>
@@ -121,19 +139,21 @@
         </section>
     </main>
     <footer>
-       <section>
-        <nav>
-            <ul>
-                <li><a href="">SHOP</a></li>
-                <li><a href="">CONTACTO</a></li>
-                <li><a href="">LOGIN</a></li>
-            </ul>
-            <div>
-                <img src="img/branding/logo_light_horizontal.svg" alt="">
-            </div>
-        </nav>
-       </section>
-       <p>2023</p>
+        <section>
+            <nav>
+                <ul>
+                    <li><a href="">SHOP</a></li>
+                    <li><a href="">CONTACTO</a></li>
+                    <li><a href="">LOGIN</a></li>
+                </ul>
+                <div>
+                    <img src="img/branding/logo_light_horizontal.svg" alt="">
+                </div>
+            </nav>
+        </section>
+        <p>2023</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
+
 </html>
