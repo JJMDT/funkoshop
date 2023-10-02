@@ -243,14 +243,7 @@ display: block;
 display: none;
 }
 
-@keyframes fade {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
+
 .card-item__licencia{
     font-size: small;
     font-weight: 500;
@@ -268,5 +261,24 @@ display: none;
     color: rgb(12, 84, 192);
     text-transform: uppercase;
 }
-
+/* animacion */
+@keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
 /* footer */
+
+.footer{
+    background-color: #30343F;
+    padding: 50px;
+}
+.footer__parrafo{
+    text-align: center;
+    color: white;
+    
+
+}
