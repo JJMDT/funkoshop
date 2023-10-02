@@ -27,10 +27,7 @@
     max-width: 1200px;
     margin: 0 auto;
 }
-a{
-    color: white;
 
-}
 img{
     width: 100%;
 }
@@ -60,6 +57,9 @@ header{
     position: relative;
 
 }
+.submenu__link  a {
+    color: white!important;
+}
 .navbar__link:hover{
     background-color: red;
     
@@ -81,7 +81,7 @@ header{
     width: 300px;
     position: absolute;
     background-color: #30343F;
-    z-index:1;
+    z-index:2;
 }
 .submenu__link{
     display: block;
@@ -155,6 +155,7 @@ header{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     align-items: center;
+    padding: 16px 0;
 }
 .coleccion:nth-child(2) .coleccion__img{
     order: -1;
@@ -185,7 +186,87 @@ header{
     padding: 8px 16px;
     border-radius: 50px;
     transition: background .3s ease-in-out;
+    text-transform: uppercase;
 }
 .coleccion__link:hover{
     background-color: red;
 }
+
+/*  slider */
+.slaider{
+display: flex;
+flex-direction: column;
+gap: 30px;
+margin: 100px auto;
+}
+.slaider__items{
+    display: flex;
+    gap: 24px;
+}
+.slaider__titulo{
+    font-family: 'Raleway', sans-serif;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+.card-item__container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+
+}
+
+.card-item__span{
+    background-color: red;
+    color: white;
+    padding: 5px 8px;
+    text-transform: uppercase;
+    font-size: smaller;
+    position: absolute;
+    right: 0;
+
+}
+.card-item__img img{
+animation: fade .7s;
+}
+.card-item__img{
+    display: flex;
+    position: relative;
+}
+.card-item__img--back{
+display: none;
+}
+.card-item__img:hover .card-item__img--back{
+display: block;
+}
+.card-item__img:hover .card-item__img--front{
+display: none;
+}
+
+@keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.card-item__licencia{
+    font-size: small;
+    font-weight: 500;
+}
+.card-item__nombre{
+    font-size: medium;
+    font-weight: 700;
+}
+.card-item__precio{
+    font-size: small;
+}
+.card-item__promo{
+    font-size: small;
+    font-weight: 700;
+    color: rgb(12, 84, 192);
+    text-transform: uppercase;
+}
+
+/* footer */
