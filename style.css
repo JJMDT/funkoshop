@@ -148,3 +148,44 @@ header{
     background-color: red;
     color: white;
 }
+
+/* colecciones */
+
+.coleccion{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+}
+.coleccion:nth-child(2) .coleccion__img{
+    order: -1;
+}
+.coleccion__container{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: start;
+}
+.coleccion__titulo{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+}
+.coleccion__parrafo{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    border-bottom: 2px solid red;
+    padding-bottom: 20px;
+}
+.coleccion__link{
+    display: block;
+    font-size: 20px;
+    background-color: #30343F;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: background .3s ease-in-out;
+}
+.coleccion__link:hover{
+    background-color: red;
+}
