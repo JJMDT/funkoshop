@@ -1,61 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="css/index.css">
+
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar container">
             <div class="navbar__logo">
-                <a  class="navbar__link--logo" href="index.html">
+                <a class="navbar__link--logo" href="index.html">
                     <img class="navbar__img" src="img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
                 </a>
             </div>
             <ul class="navbar__menu">
                 <li class="navbar__item ">
-                    <a class="navbar__link" href="shop.html">SHOP</a></li>
+                    <a class="navbar__link" href="shop.html">SHOP</a>
+                </li>
                 <li class="navbar__item ">
-                    <a class="navbar__link" href="item.html">ITEMS</a></li>
+                    <a class="navbar__link" href="item.html">ITEMS</a>
+                </li>
                 <li class="navbar__item ">
-                    <a class="navbar__link" href="#">LOGIN</a></li>
+                    <a class="navbar__link" href="#">LOGIN</a>
+                </li>
                 <li class="navbar__item ">
                     <a class="navbar__link" href="#">
-                        <img src="img/icons/cart-icon.svg" alt="Icono de carrito"></a></li>
+                        <img src="img/icons/cart-icon.svg" alt="Icono de carrito"></a>
+                </li>
             </ul>
         </nav>
     </header>
-    <div class="presentacion container">
-    <aside class="aside__contenedor container">
-        <div class="aside__menu ">
-            <h3 class="aside__titulo">BUSCAR</h3>
-            <input class="aside__input" type="text">
-        </div>
-        <div class="aside__menu ">
-            <h3 class="aside__menu">ORDENAR POR</h3>
-            <select name="" id="">
-                <option value="" hidden>SELECCIONE UNA OPCION</option>
-                <option value="">MAYOR A MENOR</option>
-                <option value="">MAS POPULARES</option>
-            </select>
-        </div>
-        <div class="aside__menu">
-            <h3 class="aside__menu">PRECIO</h3>
-            <p class="aside__rango">MIN</p><input type="number">
-            <p class="aside__rango">MAX</p><input type="number">
-        </div>
-        <div class="">
-            <h3 class="aside__titulo">FILTRAR</h3>
-                <input class="aside__input" type="checkbox"><label for="">NUEVOS</label> <br>
-                <input class="aside__input" type="checkbox"><label for="">OFERTAS</label><br>
-                <input class="aside__input" type="checkbox"><label for="">EDICION ESPECIAL</label><br>
-                <input class="aside__input" type="checkbox"><label for="">FAVORITOS</label>
-        </div>
-    </aside>
-    <main class="container">
 
+
+    <main id="shop" class="presentacion container">
+        <aside class="shop__filters filters">
+            <div class="filters__search">
+                <label class="filters__title" for="search">BUSCAR</label>
+                <input type="text" name="search" id="search" placeholder="item o categoría">
+            </div>
+            <div class="filters__order">
+                <label class="filters__title" for="orderby">ORDERNAR POR</label>
+                <select name="orderby" id="orderby">
+                    <option value="az">A-Z</option>
+                    <option value="za">Z-A</option>
+                    <option value="desc">Mayor precio</option>
+                    <option value="asc">Menor precio</option>
+                </select>
+            </div>
+            <div class="filters__price">
+                <span class="filters__title">PRECIO</span>
+                <div>
+                    <label for="min">MIN</label>
+                    <input type="text" name="min" id="min" placeholder="0">
+                    <label for="max">- MAX</label>
+                    <input type="text" name="max" id="max" placeholder="0">
+                </div>
+            </div>
+            <div class="filters__checks">
+                <span class="filters__title" for="filter">FILTRAR</span>
+                <div>
+                    <input type="checkbox" name="filter" id="news" value="news">
+                    <label for="">NUEVOS</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="filter" id="offers" value="offers">
+                    <label for=" ">OFERTAS</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="filter" id="specials" value="specials">
+                    <label for=" ">EDICIÓN ESPECIAL</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="filter" id="favs" value="favs">
+                    <label for=" ">FAVORITOS</label>
+                </div>
+            </div>
+        </aside>
         <section class="coleccion__shop">
             <ul class="slaider__items">
                 <li class="slaider__item">
@@ -63,9 +88,9 @@
                         <a class="card-item__link" href="#">
                             <div class="card-item__img">
                                 <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front"  src="img/star-wars/trooper-1.webp" alt="">
-                                <img class="card-item__img--back"  src="img/star-wars/trooper-box.webp" alt="">
-                              
+                                <img class="card-item__img--front" src="img/star-wars/trooper-1.webp" alt="">
+                                <img class="card-item__img--back" src="img/star-wars/trooper-box.webp" alt="">
+
                             </div>
                             <div class="card-item__container">
                                 <p class="card-item__licencia">STAR WARS</p>
@@ -85,7 +110,7 @@
                                 <span class="card-item__span"> nuevo</span>
                                 <img class="card-item__img--front" src="img/pokemon/pidgeotto-1.webp">
                                 <img class="card-item__img--back" src="img/pokemon/pidgeotto-box.webp">
-                            
+
                             </div>
                             <div class="card-item__container">
                                 <p class="card-item__licencia">POKEMON</p>
@@ -103,9 +128,9 @@
                         <a class="card-item__link" href="#">
                             <div class="card-item__img">
                                 <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front"  src="img/harry-potter/luna-1.webp">
-                                <img class="card-item__img--back"  src="img/harry-potter/luna-box.webp">
-                                
+                                <img class="card-item__img--front" src="img/harry-potter/luna-1.webp">
+                                <img class="card-item__img--back" src="img/harry-potter/luna-box.webp">
+
                             </div>
                             <div class="card-item__container">
                                 <p class="card-item__licencia">HARRY POTTER</p>
@@ -122,9 +147,9 @@
                         <a class="card-item__link" href="#">
                             <div class="card-item__img">
                                 <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front"  src="img/star-wars/trooper-1.webp" alt="">
-                                <img class="card-item__img--back"  src="img/star-wars/trooper-box.webp" alt="">
-                              
+                                <img class="card-item__img--front" src="img/star-wars/trooper-1.webp" alt="">
+                                <img class="card-item__img--back" src="img/star-wars/trooper-box.webp" alt="">
+
                             </div>
                             <div class="card-item__container">
                                 <p class="card-item__licencia">STAR WARS</p>
@@ -144,7 +169,7 @@
                                 <span class="card-item__span"> nuevo</span>
                                 <img class="card-item__img--front" src="img/pokemon/pidgeotto-1.webp">
                                 <img class="card-item__img--back" src="img/pokemon/pidgeotto-box.webp">
-                            
+
                             </div>
                             <div class="card-item__container">
                                 <p class="card-item__licencia">POKEMON</p>
@@ -162,9 +187,9 @@
                         <a class="card-item__link" href="#">
                             <div class="card-item__img">
                                 <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front"  src="img/harry-potter/luna-1.webp">
-                                <img class="card-item__img--back"  src="img/harry-potter/luna-box.webp">
-                                
+                                <img class="card-item__img--front" src="img/harry-potter/luna-1.webp">
+                                <img class="card-item__img--back" src="img/harry-potter/luna-box.webp">
+
                             </div>
                             <div class="card-item__container">
                                 <p class="card-item__licencia">HARRY POTTER</p>
@@ -182,9 +207,9 @@
                         <a class="card-item__link" href="#">
                             <div class="card-item__img">
                                 <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front"  src="img/star-wars/trooper-1.webp" alt="">
-                                <img class="card-item__img--back"  src="img/star-wars/trooper-box.webp" alt="">
-                              
+                                <img class="card-item__img--front" src="img/star-wars/trooper-1.webp" alt="">
+                                <img class="card-item__img--back" src="img/star-wars/trooper-box.webp" alt="">
+
                             </div>
                             <div class="card-item__container">
                                 <p class="card-item__licencia">STAR WARS</p>
@@ -204,7 +229,7 @@
                                 <span class="card-item__span"> nuevo</span>
                                 <img class="card-item__img--front" src="img/pokemon/pidgeotto-1.webp">
                                 <img class="card-item__img--back" src="img/pokemon/pidgeotto-box.webp">
-                            
+
                             </div>
                             <div class="card-item__container">
                                 <p class="card-item__licencia">POKEMON</p>
@@ -222,9 +247,9 @@
                         <a class="card-item__link" href="#">
                             <div class="card-item__img">
                                 <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front"  src="img/harry-potter/luna-1.webp">
-                                <img class="card-item__img--back"  src="img/harry-potter/luna-box.webp">
-                                
+                                <img class="card-item__img--front" src="img/harry-potter/luna-1.webp">
+                                <img class="card-item__img--back" src="img/harry-potter/luna-box.webp">
+
                             </div>
                             <div class="card-item__container">
                                 <p class="card-item__licencia">HARRY POTTER</p>
@@ -238,27 +263,34 @@
                     </article>
                 </li>
             </ul>
-            
+            <div class="pagination">
+                <a class="pagination__link" href="#" ><</a>
+                <a class="pagination__link pagination__link--selected" href="#" >1</a>
+                <a class="pagination__link" href="#" >2</a>
+                <a class="pagination__link" href="#" >3</a>
+                <a class="pagination__link" href="#" >4</a>
+                <a class="pagination__link" href="#" >5</a>
+                <a class="pagination__link" href="#" >></a>
+            </div>
         </section>
-        <div class="botones">
-            <a href="">1</a><a href="">2</a><a href="">3</a><a href="">4</a><a href="">5</a>
-        </div>
-    </div>
+
+
     </main>
     <footer class="footer">
-        
-         <nav class="navbar container">
-             <ul>
-                 <li class="navbar__item"><a class="navbar__link" href="">SHOP</a></li>
-                 <li class="navbar__item"><a class="navbar__link" href="">CONTACTO</a></li>
-                 <li class="navbar__item"><a class="navbar__link" href="">LOGIN</a></li>
-             </ul>
-             <div>
-                 <img src="img/branding/logo_light_horizontal.svg" alt="">
-             </div>
-         </nav>
-        
+
+        <nav class="navbar container">
+            <ul>
+                <li class="navbar__item"><a class="navbar__link" href="">SHOP</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="">CONTACTO</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="">LOGIN</a></li>
+            </ul>
+            <div>
+                <img src="img/branding/logo_light_horizontal.svg" alt="">
+            </div>
+        </nav>
+
         <p class="footer__parrafo">2023</p>
-     </footer>
+    </footer>
 </body>
+
 </html>

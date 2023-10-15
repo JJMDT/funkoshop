@@ -19,6 +19,8 @@
     padding: 0;
     text-decoration: none;
     list-style: none;
+    box-sizing: border-box;
+
 
 }
 a{
@@ -28,6 +30,53 @@ a{
 .container{
     max-width: 1200px;
     margin: 0 auto;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;900&family=Raleway:wght@100;300;400;500;600;700;900&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; /* ahora 1em son 10px */
+    color: #111111;
+    font-family: 'Inter', sans-serif;
+    /* font-family: 'Raleway', sans-serif; */
+
+
+}
+/* enlaces */
+a {
+    text-decoration: none;
+    font-size: 2em;
+    color: inherit;
+}
+
+/* listas  */
+header,
+footer {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+
+}
+ul, ol {
+    list-style-type: none;
+}
+/* parrafos */
+p {
+    font-size: 1.8em;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+
 }
 
 img{
@@ -314,12 +363,12 @@ display: none;
 }
 .slaider__items {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas de ancho igual */
-    grid-gap: 20px; /* Espacio entre las tarjetas (ajusta según tus necesidades) */
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 20px; 
   }
   
 
-  /* items */
+  /* items */ 
   .presentacion__item{
    display: flex;
   }
