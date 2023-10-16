@@ -575,3 +575,128 @@ display: none;
     font-size: var(--font-xsmall);
 
 }
+
+/* .numerador {
+    font-size: 8px;
+}
+.numerador > button{
+
+    width: auto;
+    margin: 10px;
+
+  }
+   */
+
+   /* pagina carrito*/
+
+   .container__table {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 10px; /* Espacio entre elementos */
+    padding: 50px;
+    width: 100%;
+  }
+  
+  .table__titulo {
+    grid-column: 1 / 4; /* Ocupa todas las columnas disponibles */
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px; /* Espacio alrededor del texto */
+  }
+  
+  .table__group {
+    display: grid;
+    grid-column: 1 / 4;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    border: 1px solid #c7c7c7;
+    border-radius: 20px;
+
+}
+  .table__group {
+    display: grid;
+    grid-column: 1 / 4;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    border: 1px solid #c7c7c7;
+    border-radius: 20px;
+
+}
+
+
+  
+  
+  .table__header {
+    text-align: center;
+
+    padding: 10px;
+  }
+  
+  .table__item {
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+  }
+ .item_card{
+    display: flex;
+ }  /* Resto de los estilos para .table__titulo y .item_card según tus necesidades */
+ .item_card {
+    display: flex;
+    flex-direction: column; /* Organiza el contenido en una columna */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .item_card > img {
+    width: 118px;
+  }
+  
+  .item_card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 410px;
+   
+  }
+  .item_card_info {
+    display: flex;
+    flex-direction: column; /* Organiza el contenido de item_card_info en una columna */
+    align-items: flex-start; /* Alinea el contenido a la izquierda */
+    justify-content: center;
+   
+  }
+
+  .item_card_nombre {
+    font-size: var(--font-small);
+    color: red;
+  }
+  
+  .item_card_licencia {
+    font-size: var(--font-xsmall);
+    color: green;
+  }
+  
+  .item_card_precio {
+    font-size: var(--font-xsmall);
+    color: blue;
+  }
+
+  .item__quantity_tabla {
+    display: flex;
+    width: 14px;
+    height: 14px;
+    background-color: #F24E1E;
+    border: none;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0;
+}
