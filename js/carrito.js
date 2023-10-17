@@ -3,7 +3,7 @@ const subtract = document.querySelector("#subtract");
 const quantity = document.querySelector("#quantity");
 const total = document.querySelector("#total");
 let cont = 0;
-let precio= 1799;
+let precio= 1799.99;
 
 add.addEventListener("click", () => {
     quantity.value = Number(quantity.value) + 1;

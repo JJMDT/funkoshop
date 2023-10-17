@@ -598,6 +598,14 @@ display: none;
     width: 100%;
   }
   
+  .table__titulo-- {
+    font-size: var(--font-display);
+    font-family: var(--alternative-font);
+    border-bottom: 5px solid #FF3333;
+    margin-bottom: 10px;
+
+  }
+
   .table__titulo {
     grid-column: 1 / 4; /* Ocupa todas las columnas disponibles */
     display: flex;
@@ -615,21 +623,13 @@ display: none;
     border-radius: 20px;
 
 }
-  .table__group {
-    display: grid;
-    grid-column: 1 / 4;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    border: 1px solid #c7c7c7;
-    border-radius: 20px;
 
-}
-
-
-  
-  
   .table__header {
     text-align: center;
+    font-family: var(--alternative-font);
+    font-size: var(--font-small);
+    font-weight: 700;
+
 
     padding: 10px;
   }
@@ -699,4 +699,75 @@ display: none;
     justify-content: center;
     align-items: center;
     margin: 5px 0;
+}
+.resumen {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 50px;
+
+}
+.resumen__titulo {
+    font-size: var(--font-display);
+    font-family: var(--alternative-font);
+    border-bottom: 5px solid #FF3333;
+    margin-bottom: 10px;
+}
+
+
+
+.resumen__container {
+   
+    display: flex;
+    flex-direction: column;
+    
+    box-shadow: 0px 0px 10px 0px #00000040;
+    width: 572px;
+    height: 197px;
+    top: 1053.15px;
+    left: 758px;
+    padding: 24px;
+    border-radius: 10px;
+    gap: 20px
+    
+
+}
+.resumen__cantidad, .resumen__subtotal,.resumen__envio {
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: var(--base-font);
+    font-size: 8px;
+
+}
+ .resumen__total {
+    border-top: 2px solid var(--primary-solid);
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    padding: 10px 0;
+    
+} 
+.resumen__total__titulo {
+    font-weight: 700;
+    font-size: var(--font-medium);
+    font-family: var(--base-font);
+}
+.pagar > button {
+    width: 572px;
+    height: 68.66px;
+    top: 1294.44px;
+    left: 758px;
+    background-color:#FF3333;
+    color: var(--light-font-solid);
+    font-family: var(--base-font);
+    font-size: var(--font-xlarge);
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 39px;
+
 }
