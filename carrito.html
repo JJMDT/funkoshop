@@ -27,7 +27,8 @@
                 <li class="navbar__item">
                     <a href="#" class="navbar__link">Login</a>
                 </li>
-                <li class="navbar__item">
+                <li class="navbar__item" id="carrito">
+                    <span id="cantidadCarrito">0</span>
                     <a href="carrito.html" class="navbar__carrito"><img src="img/icons/cart-icon.svg" alt="Icono de carrito"></a>
                 </li>
             </ul>
@@ -111,16 +112,16 @@
         <h2 class="resumen__titulo">RESUMEN</h2>
         <article class="resumen__container">
             <div class="resumen__cantidad">
-                <p>cantidad de elementos </p> <p> 3 </p>
+                <p>cantidad de elementos </p> <p id="cantProd">  </p>
             </div>
             <div class="resumen__subtotal">
-                <p>subtotal</p> <p>$5000</p>
+                <p>subtotal</p> <p id="subTotal"></p>
             </div>
             <div class="resumen__envio">
                 <p>envio</p> <p>$0</p>
             </div>
             <div class="resumen__total">
-                <p class="resumen__total__titulo">total</p> <p>$5300</p>
+                <p class="resumen__total__titulo">total</p> <p id="totalAPagar"></p>
             </div>
         </article>
         <div class="pagar">
@@ -133,9 +134,9 @@
     <footer class="footer">
         <nav class="navbar container">
             <ul class="navbar__item">
-                <li class="navbar__item"><a class="navbar__link" href="">SHOP</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="shop.html">SHOP</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="">INGRESAR</a></li>
                 <li class="navbar__item"><a class="navbar__link" href="">CONTACTO</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="">LOGIN</a></li>
             </ul>
             <div>
                 <img src="img/branding/isotype.svg" alt="">

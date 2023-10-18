@@ -2,8 +2,14 @@ const add = document.querySelector("#add");
 const subtract = document.querySelector("#subtract");
 const quantity = document.querySelector("#quantity");
 const total = document.querySelector("#total");
+const totalAPagar = document.querySelector("#totalAPagar");
+const subTotal = document.querySelector("#subTotal");
+const cantidad = document.querySelector("#cantProd");
+const nCantidad = document.querySelector("#cantidadCarrito");
 let cont = 0;
 let precio= 1799.99;
+
+
 
 add.addEventListener("click", () => {
     quantity.value = Number(quantity.value) + 1;
@@ -11,8 +17,14 @@ add.addEventListener("click", () => {
         cont++;
         const totalPrecio = precio * cont;
         total.textContent = `$ ${totalPrecio.toFixed(2)}`;
+        totalAPagar.textContent= `$ ${totalPrecio.toFixed(2)}`;
+        subTotal.textContent= `$ ${totalPrecio.toFixed(2)}`;
+        cantidad.textContent= cont;
+        nCantidad.textContent= cont;
+
     }
     console.log("Total actualizado: " + total.textContent);
+    console.log("Total : " + totalAPagar.textContent);
 })
 
 subtract.addEventListener("click", () => {
@@ -21,6 +33,12 @@ subtract.addEventListener("click", () => {
         cont--;
         const totalPrecio = precio * cont;
         total.textContent = `$ ${totalPrecio.toFixed(2)}`;
+        totalAPagar.textContent= `$ ${totalPrecio.toFixed(2)}`;
+        subTotal.textContent= `$ ${totalPrecio.toFixed(2)}`;
+        cantidad.textContent= cont;
+        nCantidad.textContent= cont;
+
+
 
     } else if (quantity.value == 1) {
         

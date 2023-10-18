@@ -771,3 +771,19 @@ display: none;
     line-height: 39px;
 
 }
+
+#cantidadCarrito{
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    background-color: red;
+    font-size: 15px;
+    width: 25px; 
+    height: 25px; 
+    line-height: 25px;
+    z-index: 2;
+    top: 15px;
+    right: 55px;    
+}
