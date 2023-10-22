@@ -787,3 +787,256 @@ display: none;
     top: 15px;
     right: 55px;    
 }
+
+
+/* paginas del lado admin
+
+***login *** */
+#login {
+    margin: var(--space-68) auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--space-36);
+}
+
+.login__title {
+    text-align: center;
+    font-size: var(--font-jumbo);
+}
+
+.login__form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-36);
+
+}
+.form__input {
+    width: 208.6px;
+    height: 25.18px;
+    top: 261.07px;
+    left: 702.83px;
+    border: none;
+    border-bottom: 2px solid #FF3333;
+    
+
+}
+.form__label {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0.04em;
+    text-align: right;
+    padding-right: 20px;
+
+}
+.form__submission {
+display: flex;
+justify-content: space-evenly;
+border-radius: 3px;
+
+
+}
+
+.form__box--grid {
+    display: flex;
+    justify-content: space-between;
+} 
+
+#login .form__link {
+    font-size: var(--font-small);
+    text-align: center;
+    color: var(--secondary-solid);
+}
+
+
+/* 
+***  pagina registro***   */
+
+#register {
+    margin: var(--space-68) auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--space-36);
+}
+
+.register__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    align-items: center;
+    justify-content: center;
+}
+
+.register__title {
+    font-size: var(--font-jumbo);
+}
+
+.register__subtitle {
+    font-size: var(--font-large);
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 600px;
+    margin: auto auto;
+    gap: var(--space-36);
+}
+
+.form__terms > .label {
+    font-size: var(--font-xsmall);
+}
+#register .form__terms {
+    color: var(--secondary-solid);
+}
+
+.form__box--grid {
+    
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* admin.html */
+
+#admin {
+    margin: var(--space-68) auto;
+}
+.admin__search {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    margin-bottom: var(--space-36);
+}
+
+.admin__icon {
+    font-size: var(--font-xlarge);
+}
+
+.admin__search-bar {
+    font-size: var(--font-medium);
+    padding: var(--space-8) var(--space-8);
+    border: 2px solid var(--dark-solid);
+    border-radius: 6px;
+    outline: none;
+    flex: 0 0 35%;
+}
+
+.admin__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+}
+
+.admin__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-24);
+}
+
+.admin__header h2 {
+    font-size: var(--font-jumbo) ;
+}
+
+.admin__header span {
+    display: flex;
+    align-items: center;
+    gap: var(--space-16);
+    font-size: var(--font-large);
+    font-weight: 700;
+}
+
+.admin__header span a {
+    display: flex;
+    font-size: var(--font-medium);
+}
+
+.admin-table {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+}
+
+.admin-table__header,
+.admin-table__row {
+    display: grid;
+    grid-template-columns: 40px 1fr 3fr 3fr 40px 40px;
+    align-items: center;
+    gap: var(--space-16);
+    font-size: var(--font-xsmall);
+    font-weight: 500;
+}
+
+.admin-table__header {
+    margin-bottom: var(--space-24);
+}
+
+
+/* create.html */
+#create {
+    margin: var(--space-68) auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: var(--space-36);
+}
+
+.create__title {
+    font-size: var(--font-jumbo);
+}
+
+.create__form {
+    max-width: 990px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--space-48);
+}
+
+/* edit.html */
+#edit {
+    margin: var(--space-68) auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--space-36);
+}
+
+.edit__title {
+    font-size: var(--font-jumbo);
+}
+
+.edit__form {
+    max-width: 990px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--space-36);
+}
+
+.edit__img {
+    max-width: 150px;
+    padding-bottom: var(--space-8);
+}
+
+.edit__img-side {
+    font-size: var(--font-small);
+    text-align: center;
+    padding-top: var(--space-8);
+    border-top: 2px solid var(--primary-solid);
+    font-weight: 600;
+}
