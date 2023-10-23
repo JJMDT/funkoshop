@@ -773,7 +773,7 @@ display: none;
 }
 
 #cantidadCarrito{
-    position: absolute;
+    /* position: absolute;
     color: white;
     font-weight: bold;
     text-align: center;
@@ -784,10 +784,22 @@ display: none;
     height: 25px; 
     line-height: 25px;
     z-index: 2;
-    top: 15px;
-    right: 55px;    
+    top: auto; */
+    background-color: red;
+    color: white;
+    padding: 3px 6px;
+    text-transform: uppercase;
+    font-size: var(--font-small);
+    border-radius: 50px;
+    position: absolute;
+    right: -15px;
+    top: -15px;
 }
+#carrito {
+    position: relative;
+    display: flex;
 
+}
 
 /* paginas del lado admin
 
