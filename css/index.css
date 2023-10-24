@@ -127,6 +127,7 @@ header{
     display: inline-block;
     transition: background .3s ease-in-out;
     position: relative;
+    text-transform: uppercase;
 
 }
 .submenu__link{
@@ -561,7 +562,19 @@ display: none;
 }
 
 .item__cart .item__submit {
-    font-size: var(--font-medium);
+  
+    width: auto;
+    padding: 15px;
+    color: white;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    background-color: #FF3333;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .item__promo {
@@ -827,10 +840,6 @@ display: none;
 
 }
 .form__input {
-    width: 208.6px;
-    height: 25.18px;
-    top: 261.07px;
-    left: 702.83px;
     border: none;
     border-bottom: 2px solid #FF3333;
     
@@ -839,7 +848,7 @@ display: none;
 .form__label {
     font-family: Inter;
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 29px;
     letter-spacing: 0.04em;
     text-align: right;
@@ -904,12 +913,26 @@ border-radius: 3px;
     gap: var(--space-36);
 }
 
-.form__terms > .label {
+.form__terms  {
     font-size: var(--font-xsmall);
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    padding: 10px;
 }
 #register .form__terms {
-    color: var(--secondary-solid);
+    
 }
+.form__terms input[type="checkbox"] {
+    vertical-align: middle; /* Alinea verticalmente el cuadro de verificación */
+    margin-right: 5px;
+}
+.form__terms label {
+    vertical-align: middle; /* Alinea verticalmente el texto "acepto" */
+    margin-left: 5px; /* Agrega margen a la izquierda del texto "acepto" */
+    font-size: 18px; /* Aumenta el tamaño de fuente del texto "acepto" */
+}
+
 
 .form__box--grid {
     
@@ -1009,12 +1032,40 @@ border-radius: 3px;
 }
 
 .create__form {
-    max-width: 990px;
+    width: 1000px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
     gap: var(--space-48);
+
+}
+
+.form__flex { 
+    display: flex;
+}
+
+.form__box--flex {
+    padding: 10px;
+}
+
+.form__select { 
+    width: 243.03px;
+    height: 44.28px;
+    border-radius: 6px;
+    border: 2px solid #30343F;
+}
+span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#form__link_ {
+    font-size: 20px;
+    padding: 10px;
+    color: var(--secondary-solid);
+    font-weight: 700;
+    
 }
 
 /* edit.html */
@@ -1051,4 +1102,53 @@ border-radius: 3px;
     padding-top: var(--space-8);
     border-top: 2px solid var(--primary-solid);
     font-weight: 600;
+}
+
+.form__btn { 
+ width: auto;
+ padding: 15px;
+ margin: 10px;
+ color: white;
+ font-family: Inter;
+ font-size: 14px;
+ font-weight: 600;
+ line-height: 17px;
+ letter-spacing: 0em;
+ text-align: left;
+ background-color: #FF3333;
+ font-size: 20px;
+ cursor: pointer;
+}
+
+.form__btn:hover {
+    background-color: var(--primary-500);
+}
+/* .form__input, .form__label, .textArea, .form__select, .form__box--flex */
+.form__input { 
+    color: red;
+    font-size: 18px;
+    width: 300px;
+}
+.form__select{
+    font-size: 18px;
+    text-align: center;
+
+}
+#price, #sku {
+    width: 150px;
+    text-align: left;
+
+}
+#discount, #stock {
+    width: 50px;
+    text-align: center;
+
+}
+#description{
+    font-size: 18px;
+}
+
+.form__inline {
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos en el contenedor */
 }

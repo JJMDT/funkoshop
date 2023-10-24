@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- <link rel="stylesheet" href="style.css"> -->
-        <link rel="stylesheet" href="../../css/index.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
-        <title>FUNKOSHOP</title>
-    </head>
-    <body class="grid-fixed">
-        <header class="page-header"> <!-- Inicio Header -->
-            <nav class="navbar container">
-                <picture class="nabvar__logo">
-                    <a href="../../index.html">
-                        <img src="../../img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
-                    </a>
-                </picture>
-                <ul class="navbar__menu">
-                    <li class="navbar__item"><a class="navbar__link" href="../../index.html">SHOP</a></li>
-                    <li class="navbar__item"><a class="navbar__link" href="">LOGIN</a></li>
-                    <li class="navbar__item"><a class="navbar__link" href="">SALIR</a></li>
-                </ul>
-            </nav>
-        </header> <!--   Fin Header -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <title>FUNKOSHOP</title>
+</head>
+
+<body class="grid-fixed">
+    <header class="page-header"> <!-- Inicio Header -->
+        <nav class="navbar container">
+            <picture class="nabvar__logo">
+                <a href="../../index.html">
+                    <img src="../../img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
+                </a>
+            </picture>
+            <ul class="navbar__menu">
+                <li class="navbar__item"><a class="navbar__link" href="../../index.html">SHOP</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="">LOGIN</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="">SALIR</a></li>
+            </ul>
+        </nav>
+    </header> <!--   Fin Header -->
     <main id="create" class="container">
         <h2 class="create__title">CREAR NUEVO ITEM</h2>
         <form class="create__form" action="/admin/create" method="POST" enctype="application/x-www-form-urlencoded">
@@ -49,10 +52,12 @@
             </div>
             <div class="form__box--flex">
                 <label class="form__label" for="name">Nombre del producto:</label>
-                <input class="form__input" type="text" name="name" id="name" placeholder="Kakashi Hatake Shippuden Saga" required>
+                <input class="form__input" type="text" name="name" id="name" placeholder="Kakashi Hatake Shippuden Saga"
+                    required>
             </div>
             <div>
-                <textarea name="description" id="description" cols="30" rows="10" placeholder="Descripción del producto" required></textarea>
+                <textarea class="textArea" name="description" id="description" cols="100" rows="10"
+                    placeholder="Descripción del producto" required></textarea>
             </div>
             <div class="form__flex">
                 <div class="form__box--flex">
@@ -60,18 +65,26 @@
                     <input class="form__input" type="text" name="sku" id="sku" placeholder="SSK111AB001" required>
                 </div>
                 <div class="form__box--flex">
-                    <label class="form__label" for="price">Precio:</label>
-                    <div class="form__input--wrapper"><span>$</span><input class="form__input" type="text" name="price" id="price" data-type="currency" placeholder="0.000,00"></div>
+                    <div class="form__inline">
+                        <label class="form__label" for="price">Precio:</label>
+                        <div class="form__input--wrapper"><span>$</span><input class="form__input" type="text" name="price" id="price" data-type="currency" placeholder="0.000,00"></div>
+                    </div>
                 </div>
                 <div class="form__box--flex">
-                    <label class="form__label" for="stock">Stock:</label>
-                    <div class="form__input--wrapper"><input class="form__input" type="text" name="stock" id="stock" placeholder="0" required><span>unidades</span></div>
+                    <div class="form__inline">
+                        <label class="form__label" for="stock">Stock:</label>
+                        <div class="form__input--wrapper"><input class="form__input" type="text" name="stock" id="stock" placeholder="0" required><span>unidades</span></div>
+                    </div>
                 </div>
             </div>
+            
             <div class="form__flex">
                 <div class="form__box--flex">
-                    <label class="form__label" for="discount">Descuento:</label>
-                    <div class="form__input--wrapper"><input class="form__input" type="text" name="discount" id="discount" placeholder="0" required><span>%</span></div>
+                    <div class="form__inline">
+                     <label class="form__label" for="discount">Descuento:</label>
+                        <div class="form__input--wrapper"><input class="form__input" type="text" name="discount"
+                            id="discount" placeholder="0" required><span>%</span></div>
+                        </div>
                 </div>
                 <div class="form__box--flex">
                     <label class="form__label" for="dues">Cuotas:</label>
@@ -91,8 +104,8 @@
                 <input type="file" name="images" id="img" multiple>
             </div>
             <div class="form__flex">
-                <input class="form__btn btn btn--primary btn--large" type="submit" value="Agregar Producto">
-                <input class="form__btn btn btn--primary btn--large" type="reset" value="Limpiar">
+                <input class="form__btn " type="submit" value="Agregar Producto">
+                <input class=" form__btn" type="reset" value="Limpiar">
             </div>
         </form>
     </main>
@@ -120,4 +133,5 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
 </body>
+
 </html>
