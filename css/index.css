@@ -920,9 +920,7 @@ border-radius: 3px;
     margin: 5px;
     padding: 10px;
 }
-#register .form__terms {
-    
-}
+
 .form__terms input[type="checkbox"] {
     vertical-align: middle; /* Alinea verticalmente el cuadro de verificación */
     margin-right: 5px;
