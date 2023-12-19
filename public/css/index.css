@@ -172,7 +172,7 @@ header{
 /* hero */
 
 .hero{
-    background-image: url(/img/funkos-banner.webp);
+    background-image: url(/public/img/funkos-banner.webp);
     padding: 150px;
     background-size: cover;
     background-attachment: fixed;
@@ -879,6 +879,7 @@ border-radius: 3px;
 ***  pagina registro***   */
 
 #register {
+    color: black;
     margin: var(--space-68) auto;
     display: flex;
     flex-direction: column;
@@ -1123,7 +1124,7 @@ span {
 }
 /* .form__input, .form__label, .textArea, .form__select, .form__box--flex */
 .form__input { 
-    color: red;
+    color: black;
     font-size: 18px;
     width: 300px;
 }
