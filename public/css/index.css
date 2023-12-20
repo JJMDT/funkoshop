@@ -230,9 +230,16 @@ header{
     grid-template-columns: repeat(2,1fr);
     align-items: center;
     padding: 16px 0;
+        /* Establece el alto del contenedor al 50% de la altura de la ventana */
 }
+.coleccion__img > img{
+    width: 600px;
+}
+
+
 .coleccion:nth-child(2) .coleccion__img{
     order: -1;
+
 }
 .coleccion__container{
     display: flex;
@@ -312,6 +319,12 @@ iconify-icon{
 }
 .card-item__img img{
 animation: fade 1s;
+width: 340px;
+height: 330px;
+}
+#img_item > img{
+    width: 550px;
+    height: 550px;
 }
 .card-item__img{
     display: flex;
@@ -842,6 +855,7 @@ display: none;
 .form__input {
     border: none;
     border-bottom: 2px solid #FF3333;
+    padding-left: 10px;
     
 
 }
