@@ -16,20 +16,20 @@
     <header class="page-header"> <!-- Inicio Header -->
         <nav class="navbar container">
             <picture class="nabvar__logo">
-                <a href="../../index.html">
-                    <img src="../../img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
+                <a href="/home">
+                    <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
                 </a>
             </picture>
             <ul class="navbar__menu">
-                <li class="navbar__item"><a class="navbar__link" href="../../index.html">SHOP</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="">LOGIN</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="">SALIR</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="/shop">SHOP</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
             </ul>
         </nav>
     </header> <!--   Fin Header -->
     <main id="create" class="container">
         <h2 class="create__title">CREAR NUEVO ITEM</h2>
-        <form class="create__form" action="/admin/create" method="POST" enctype="application/x-www-form-urlencoded">
+        <form class="create__form" action="admin/create" method="POST" enctype="application/x-www-form-urlencoded">
             <div class="form__flex">
                 <div class="form__box--flex">
                     <label class="form__label" for="collection">Categoría:</label>
@@ -113,20 +113,20 @@
         <nav class="navbar container">
             <ul class="navbar__item">
                 <li class="navbar__item">
-                    <a class="navbar__link" href="../../index.html">SHOP</a>
+                    <a class="navbar__link" href="/shop">SHOP</a>
                 </li>
                 <li class="navbar__item">
-                    <a class="navbar__link" href="register.html">REGISTRARSE</a>
+                    <a class="navbar__link" href="/auth/register">REGISTRARSE</a>
                 </li>
                 <li class="navbar__item">
-                    <a class="navbar__link" href="admin.html">LOGIN</a>
+                    <a class="navbar__link" href="/auth/login">LOGIN</a>
                 </li>
                 <li class="navbar__item">
-                    <a class="navbar__link" href="./pages/contact.html">CONTACTO</a>
+                    <a class="navbar__link" href="/contact">CONTACTO</a>
                 </li>
             </ul>
             <picture>
-                <img src="../../img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop">
+                <img src="../../../public/img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop">
             </picture>
         </nav>
         <p class="footer__parrafo">All rights reserved 2023 - Funkoshop &copy;</p>
