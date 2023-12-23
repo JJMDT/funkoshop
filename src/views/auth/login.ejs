@@ -1,30 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <link rel="stylesheet" href="/public/css/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
-    <title>FUNKOSHOP</title>
-</head>
-<body class="grid-fixed">
-    <header class="page-header"> <!-- Inicio Header -->
-        <nav class="navbar container">
-            <picture class="nabvar__logo">
-                <a href="/home">
-                    <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
-                </a>
-            </picture>
-            <ul class="navbar__menu">
-                <li class="navbar__item"><a class="navbar__link" href="/shop">SHOP</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
-            </ul>
-        </nav>
-    </header> <!--   Fin Header -->
+<%- include('../partials/header') %>
     <main id="login" class="container">
             <h2 class="login__title">INGRESAR A MI CUENTA</h2>
             <form class="login__form form" action="" method="post">

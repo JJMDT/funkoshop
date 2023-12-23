@@ -1,42 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('../partials/header') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    
-    <link rel="stylesheet" href="/public/css/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
-
-    <title>Document</title>
-</head>
-
-<body>
-    <header>
-        <nav class="navbar container">
-            <div class="navbar__logo">
-                <a href="/home">
-                    <img class="navbar__img" src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
-                </a>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a class="navbar__link" href="/shop">Shop</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="/contact">Contacto</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="/auth/login">Login</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__carrito" href="/shop/cart"> <img src="../../../public/img/icons/cart-icon.svg" alt="Icono de carrito"></a>
-                </li>
-            </ul>
-        </nav>
-    </header>
     <main class="container">
         <section class="item">
             <div class="item__img card-item__img" id="img_item">
@@ -134,26 +97,4 @@
         </section>
 
     </main>
-    <footer class="footer">
-
-        <nav class="navbar container">
-            <ul>
-                <li class="navbar__item"><a class="navbar__link" href="/shop">SHOP</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="/contact">CONTACTO</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li>
-            </ul>
-            <div>
-                <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="">
-            </div>
-        </nav>
-
-        <p class="footer__parrafo">2>All rights reserved 2023 - Funkoshop &copy;023</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-    <script src="../../../public/js/glide.js"></script>
-    <script src="../../../public/js/item.js"></script>
-
-</body>
-
-</html>
+    <%- include('../partials/footer') %>

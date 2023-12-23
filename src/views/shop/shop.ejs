@@ -1,40 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+    <%- include('../partials/header') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <link rel="stylesheet" href="/public/css/index.css">
-
-    <title>Document</title>
-</head>
-
-<body>
-    <header>
-        <nav class="navbar container">
-            <div class="navbar__logo">
-                <a class="navbar__link--logo" href="/home">
-                    <img class="navbar__img" src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
-                </a>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item ">
-                    <a class="navbar__link" href="/shop">SHOP</a>
-                </li>
-                <li class="navbar__item ">
-                    <a class="navbar__link" href="shop/item/1">ITEMS</a>
-                </li>
-                <li class="navbar__item ">
-                    <a class="navbar__link" href="/auth/login">LOGIN</a>
-                </li>
-                <li class="navbar__item ">
-                    <a class="navbar__carrito" href="/shop/cart">
-                        <img src="../../../public/img/icons/cart-icon.svg" alt="Icono de carrito"></a>
-                </li>
-            </ul>
-        </nav>
-    </header>
 
 
     <main id="shop" class="presentacion container">
@@ -83,185 +48,30 @@
         </aside>
         <section class="coleccion__shop">
             <ul class="slaider__items">
-                <li class="slaider__item">
-                    <article class="card-item">
-                        <a class="card-item__link" href="#">
-                            <div class="card-item__img">
-                                <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front" src="../../../public/img/star-wars/trooper-1.webp" alt="">
-                                <img class="card-item__img--back" src="../../../public/img/star-wars/trooper-box.webp" alt="">
-
-                            </div>
-                            <div class="card-item__container">
-                                <p class="card-item__licencia">STAR WARS</p>
-                                <h4 class="card-item__nombre">TROOPER</h4>
-                                <p class="card-item__precio">$5000</p>
-                                <p class="card-item__promo">3 cuotas sin interes</p>
-                            </div>
-
-
-                        </a>
-                    </article>
-                </li>
-                <li class="slaider__item">
-                    <article class="card-item">
-                        <a class="card-item__link" href="#">
-                            <div class="card-item__img">
-                                <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front" src="../../../public/img/pokemon/pidgeotto-1.webp">
-                                <img class="card-item__img--back" src="../../../public/img/pokemon/pidgeotto-box.webp">
-
-                            </div>
-                            <div class="card-item__container">
-                                <p class="card-item__licencia">POKEMON</p>
-                                <h4 class="card-item__nombre">PIDGEOTTO</h4>
-                                <p class="card-item__precio">$5000</p>
-                                <p class="card-item__promo">3 cuotas sin interes</p>
-                            </div>
-
-
-                        </a>
-                    </article>
-                </li>
-                <li class="slaider__item">
-                    <article class="card-item">
-                        <a class="card-item__link" href="#">
-                            <div class="card-item__img">
-                                <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front" src="../../../public/img/harry-potter/luna-1.webp">
-                                <img class="card-item__img--back" src="../../../public/img/harry-potter/luna-box.webp">
-
-                            </div>
-                            <div class="card-item__container">
-                                <p class="card-item__licencia">HARRY POTTER</p>
-                                <h4 class="card-item__nombre">LUNA</h4>
-                                <p class="card-item__precio">$5000</p>
-                                <p class="card-item__promo">3 cuotas sin interes</p>
-                            </div>
-
-
-                        </a>
-                    </article>
-                <li>
-                    <article class="card-item">
-                        <a class="card-item__link" href="#">
-                            <div class="card-item__img">
-                                <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front" src="../../../public/img/star-wars/trooper-1.webp" alt="">
-                                <img class="card-item__img--back" src="../../../public/img/star-wars/trooper-box.webp" alt="">
-
-                            </div>
-                            <div class="card-item__container">
-                                <p class="card-item__licencia">STAR WARS</p>
-                                <h4 class="card-item__nombre">TROOPER</h4>
-                                <p class="card-item__precio">$5000</p>
-                                <p class="card-item__promo">3 cuotas sin interes</p>
-                            </div>
-
-
-                        </a>
-                    </article>
-                </li>
-                <li class="slaider__item">
-                    <article class="card-item">
-                        <a class="card-item__link" href="#">
-                            <div class="card-item__img">
-                                <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front" src="../../../public/img/pokemon/pidgeotto-1.webp">
-                                <img class="card-item__img--back" src="../../../public/img/pokemon/pidgeotto-box.webp">
-
-                            </div>
-                            <div class="card-item__container">
-                                <p class="card-item__licencia">POKEMON</p>
-                                <h4 class="card-item__nombre">PIDGEOTTO</h4>
-                                <p class="card-item__precio">$5000</p>
-                                <p class="card-item__promo">3 cuotas sin interes</p>
-                            </div>
-
-
-                        </a>
-                    </article>
-                </li>
-                <li class="slaider__item">
-                    <article class="card-item">
-                        <a class="card-item__link" href="#">
-                            <div class="card-item__img">
-                                <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front" src="../../../public/img/harry-potter/luna-1.webp">
-                                <img class="card-item__img--back" src="../../../public/img/harry-potter/luna-box.webp">
-
-                            </div>
-                            <div class="card-item__container">
-                                <p class="card-item__licencia">HARRY POTTER</p>
-                                <h4 class="card-item__nombre">LUNA</h4>
-                                <p class="card-item__precio">$5000</p>
-                                <p class="card-item__promo">3 cuotas sin interes</p>
-                            </div>
-
-
-                        </a>
-                    </article>
-                </li>
-                <li>
-                    <article class="card-item">
-                        <a class="card-item__link" href="#">
-                            <div class="card-item__img">
-                                <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front" src="../../../public/img/star-wars/trooper-1.webp" alt="">
-                                <img class="card-item__img--back" src="../../../public/img/star-wars/trooper-box.webp" alt="">
-
-                            </div>
-                            <div class="card-item__container">
-                                <p class="card-item__licencia">STAR WARS</p>
-                                <h4 class="card-item__nombre">TROOPER</h4>
-                                <p class="card-item__precio">$5000</p>
-                                <p class="card-item__promo">3 cuotas sin interes</p>
-                            </div>
-
-
-                        </a>
-                    </article>
-                </li>
-                <li class="slaider__item">
-                    <article class="card-item">
-                        <a class="card-item__link" href="#">
-                            <div class="card-item__img">
-                                <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front" src="../../../public/img/pokemon/pidgeotto-1.webp">
-                                <img class="card-item__img--back" src="../../../public/img/pokemon/pidgeotto-box.webp">
-
-                            </div>
-                            <div class="card-item__container">
-                                <p class="card-item__licencia">POKEMON</p>
-                                <h4 class="card-item__nombre">PIDGEOTTO</h4>
-                                <p class="card-item__precio">$5000</p>
-                                <p class="card-item__promo">3 cuotas sin interes</p>
-                            </div>
-
-
-                        </a>
-                    </article>
-                </li>
-                <li class="slaider__item">
-                    <article class="card-item">
-                        <a class="card-item__link" href="#">
-                            <div class="card-item__img">
-                                <span class="card-item__span"> nuevo</span>
-                                <img class="card-item__img--front" src="../../../public/img/harry-potter/luna-1.webp">
-                                <img class="card-item__img--back" src="../../../public/img/harry-potter/luna-box.webp">
-
-                            </div>
-                            <div class="card-item__container">
-                                <p class="card-item__licencia">HARRY POTTER</p>
-                                <h4 class="card-item__nombre">LUNA</h4>
-                                <p class="card-item__precio">$5000</p>
-                                <p class="card-item__promo">3 cuotas sin interes</p>
-                            </div>
-
-
-                        </a>
-                    </article>
-                </li>
+                <% data.forEach( item => { %>
+                    <li class="slaider__item">
+                        <article class="card-item">
+                            <a class="card-item__link" href="#">
+                                <div class="card-item__img">
+                                    <span class="card-item__span"> nuevo</span>
+                                    <img class="card-item__img--front" src="<%= item.img_front %>" alt="">
+                                    <img class="card-item__img--back" src="<%= item.img_back %>" alt="">
+    
+                                </div>
+                                <div class="card-item__container">
+                                    <p class="card-item__licencia"><%= item.category_name %></p>
+                                    <h4 class="card-item__nombre"><%= item.product_name %></h4>
+                                    <p class="card-item__precio">$<%= item.product_price %></p>
+                                    <p class="card-item__promo"><%= item.dues %> CUOTAS SIN INTERES</p>
+                                </div>
+    
+    
+                            </a>
+                        </article>
+                    </li>  
+                <% }) %>
+                
+                
             </ul>
             <div class="pagination">
                 <a class="pagination__link" href="#" ><</a>
@@ -276,21 +86,4 @@
 
 
     </main>
-    <footer class="footer">
-
-        <nav class="navbar container">
-            <ul>
-                <li class="navbar__item"><a class="navbar__link" href="/shop">SHOP</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="/contact">CONTACTO</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li>
-            </ul>
-            <div>
-                <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="">
-            </div>
-        </nav>
-
-        <p class="footer__parrafo"> All rights reserved 2023 - Funkoshop &copy;</p>
-    </footer>
-</body>
-
-</html>
+    <%- include('../partials/footer') %>

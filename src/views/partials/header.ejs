@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="/public/css/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
-    <title>FUNKOSHOP</title>
+    <title>FUNKO-SHOP</title>
 </head>
 
 <body>
+    <% if (false) {%>
+        
     <header>
         <nav class="navbar container">
             <div class="navbar__logo">
@@ -22,23 +24,61 @@
             <ul class="navbar__menu">
                 <li class="navbar__item with-submenu">
                     <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                        icon="carbon:chevron-down"></iconify-icon></a>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Funkos</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Remeras</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Llaveros</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
+                    <li class="navbar__item"><a class="navbar__link" href="/auth/login">SALIR</a></li>
+                    <li class="navbar__item" id="carrito">
+                        <span id="cantidadCarrito">0</span>
+                        <a href="/shop/cart" class="navbar__carrito"><img src="../../../public/img/icons/cart-icon.svg" alt="Icono de carrito"></a>
+                    </li>
+        </ul>
+    </nav>
+</header>
+        <%} else {%>
+        <header>
+            <nav class="navbar container">
+                <div class="navbar__logo">
+                    <a href="/home">
+                        <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
+                    </a>
+                </div>
+                <ul class="navbar__menu">
+                    <li class="navbar__item with-submenu">
+                        <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
                             icon="carbon:chevron-down"></iconify-icon></a>
-                    <ul class="submenu">
-                        <li class="submenu__item">
-                            <a href="#" class="submenu__link"> Funkos</a>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__link"> Funkos</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__link"> Remeras</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__link"> Llaveros</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="submenu__item">
-                            <a href="#" class="submenu__link"> Remeras</a>
-                        </li>
-                        <li class="submenu__item">
-                            <a href="#" class="submenu__link"> Llaveros</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="navbar__item"><a class="navbar__link" href="/contact">CONTACTO</a></li>
+                        <li class="navbar__item"><a class="navbar__link" href="/contact">CONTACTO</a></li>
                 <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li>
-                <li class="navbar__item"><a class="navbar__carrito" href="/shop/cart"><img src="../../../public/img/icons/cart-icon.svg"
-                            alt="Icono de carrito"></a></li>
+                <li class="navbar__item" id="carrito">
+                    <span id="cantidadCarrito">0</span>
+                    <a href="/shop/cart" class="navbar__carrito"><img src="../../../public/img/icons/cart-icon.svg" alt="Icono de carrito"></a>
+                </li>
             </ul>
         </nav>
     </header>
+
+
+<% } %>

@@ -3,7 +3,6 @@ const app = express();
 const PORT = 3003
 const methodOverride = require('method-override');
 const path = require('path')
-const ejs= require('ejs')
 // importamos las rutas
 const mainRoutes = require('./src/routes/main-routes')
 const shopRoutes = require('./src/routes/shopRoutes')
