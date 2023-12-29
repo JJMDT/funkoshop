@@ -1,5 +1,6 @@
 const path = require("path");
-const data = [
+const {getAll,getOne} = require('../src/models/product.models')
+const json = [
     {
       product_id: 1,
       licence_name: "Pokemon",
@@ -70,17 +71,32 @@ const data = [
       product_sku: "PKM001005",
       img_front: "../../../public/img/harry-potter/harry-1.webp",
       img_back: "../../../public/img/harry-potter/harry-box.webp"
+    },
+    {
+      product_id: 7,
+      licence_name: "Harry Potter",
+      category_name: "Figuras coleccionables",
+      product_name: "Snape Patronus ",
+      product_description: "Figura coleccionable Snape patronus",
+      product_price: 4999.99,
+      dues: 12,
+      product_sku: "PKM001005",
+      img_front: "../../../public/img/harry-potter/snape-patronus-1.webp",
+      img_back: "../../../public/img/harry-potter/snape-patronus-box.webp"
     }
   ];
 
+ 
 const shopControllers = {
-  shop: (req, res) => {
+  shop: async (req, res) => {
     
+    const data = await getAll()
+ 
     res.render("shop/shop", { data });
   },
-  item: (req, res) => {
+  item: async (req, res) => {
     const itemId = req.params.id;
-    const item = data.find( item => item.product_id == itemId)
+   const [item] = await getOne(itemId);
 
     res.render("shop/item", { item });
 

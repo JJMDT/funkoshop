@@ -1,8 +1,15 @@
+const {getAll} = require('../src/models/product.models')
+
 const adminControllers = {
-    admin: (req, res) => {
-        res.render('admin/admin');  // Esta es la ruta relativa a tu directorio de vistas
-    }
-    ,
+  
+    admin: async (req, res) => {
+    
+        const pepe = await getAll()
+        console.log(pepe)
+    
+        res.render('admin/admin', { pepe });
+      },
+    
     create:(req,res) =>{
         res.render('admin/create')
     },

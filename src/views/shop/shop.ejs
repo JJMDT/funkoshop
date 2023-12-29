@@ -54,14 +54,14 @@
                             <a class="card-item__link" href="/shop/item/<%= item.product_id %>">
                                 <div class="card-item__img">
                                     <span class="card-item__span"> nuevo</span>
-                                    <img class="card-item__img--front" src="<%= item.img_front %>" alt="">
-                                    <img class="card-item__img--back" src="<%= item.img_back %>" alt="">
+                                    <img class="card-item__img--front" src="/public/img/<%=item.image_front%>" alt="asd">
+                                    <img class="card-item__img--back" src="/public/img/<%=item.image_back%>" alt="">
     
                                 </div>
                                 <div class="card-item__container">
-                                    <p class="card-item__licencia"><%= item.category_name %></p>
+                                    <p class="card-item__licencia"><%= item.licence_name %></p>
                                     <h4 class="card-item__nombre"><%= item.product_name %></h4>
-                                    <p class="card-item__precio">$<%= item.product_price %></p>
+                                    <p class="card-item__precio">$<%= item.price %></p>
                                     <p class="card-item__promo"><%= item.dues %> CUOTAS SIN INTERES</p>
                                 </div>
     
