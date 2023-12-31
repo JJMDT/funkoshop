@@ -26,7 +26,7 @@
         </header> <!--   Fin Header -->
     <main id="edit" class="container">
         <h2 class="edit__title">EDITAR ITEM</h2>
-        <form class="edit__form" action="/admin/edit" method="POST" enctype="application/x-www-form-urlencoded">
+        <form class="edit__form" action="/admin/edit/<%= product.product_id %>?_method=PUT" method="POST" enctype="multipart/form-data">
             <div class="form__flex">
                 <div class="form__box--flex">
                     <label class="form__label" for="collection">Categoría:</label>
@@ -46,6 +46,7 @@
                         <option <%= (product.licence_id === 1) ? 'selected' : '' %> value="Funko">Pokemon</option>
                         <option <%= (product.licence_id === 2) ? 'selected' : '' %> value="Funko">Star Wars</option>
                         <option <%= (product.licence_id === 3) ? 'selected' : '' %> value="Funko">Harry Potter</option>
+                        <option <%= (product.licence_id === 4) ? 'selected' : '' %> value="Funko">Naruto Shippuden</option>
                      
                     </select>
                 </div>

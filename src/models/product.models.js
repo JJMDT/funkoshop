@@ -45,8 +45,22 @@ const create = async (params) => {
   }
 };
 
+const deleteProduct = async (params) => {
+  try {
+    const [product] = await conn.query ('delete from product where  ?', params)
+    return product
+  } catch (error) {
+    console.log(" error ! " + error);
+
+  }  finally {
+    conn.releaseConnection();
+ }
+}
+
+
 module.exports = {
   getAll,
   getOne,
   create,
+  deleteProduct
 };

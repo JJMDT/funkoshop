@@ -1024,6 +1024,12 @@ border-radius: 3px;
     font-size: var(--font-xsmall);
     font-weight: 500;
 }
+.admin-table__row button{
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
 
 .admin-table__header {
     margin-bottom: var(--space-24);
