@@ -29,24 +29,24 @@
     </header> <!--   Fin Header -->
     <main id="create" class="container">
         <h2 class="create__title">CREAR NUEVO ITEM</h2>
-        <form class="create__form" action="admin/create" method="POST" enctype="application/x-www-form-urlencoded">
+        <form class="create__form" action="/admin/create" method="POST" enctype="multipart/form-data">
             <div class="form__flex">
                 <div class="form__box--flex">
                     <label class="form__label" for="collection">Categoría:</label>
-                    <select class="form__select" name="collection" id="collection" required>
+                    <select class="form__select" name="category" id="category" required>
                         <option value="" disabled selected hidden>Seleccionar</option>
-                        <option value="Figuras Coleccionables">Figuras Coleccionables</option>
-                        <option value="Llaveros">Llaveros</option>
-                        <option value="Remeras">Remeras</option>
+                        <option value="1">Figuras Coleccionables</option>
+                        <option value="2">Remeras</option>
+                        <option value="3">Llaveros</option>
                     </select>
                 </div>
                 <div class="form__box--flex">
                     <label class="form__label" for="collection">Licencia:</label>
-                    <select class="form__select" name="collection" id="collection" required>
+                    <select class="form__select" name="licence" id="licence" required>
                         <option value="" disabled selected hidden>Seleccionar</option>
-                        <option value="starwars">Star Wars</option>
-                        <option value="pokemon">Pokemon</option>
-                        <option value="harrypotter">Harry Potter</option>
+                        <option value="1">Pokemon</option>
+                        <option value="2">Star Wars</option>
+                        <option value="3">Harry Potter</option>
                     </select>
                 </div>
             </div>

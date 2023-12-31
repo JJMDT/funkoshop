@@ -1,10 +1,12 @@
 const mysql = require('mysql2');
+require('dotenv').config();  // habilita a usar las variables que estan en el archivo .env
+
 
 const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'funko_shop',
+    host: process.env.DBHOST,
+    user: process.env.DBUSER,
+    password: process.env.DBPASS,
+    database: process.env.DBSCHEMA,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
@@ -16,7 +18,7 @@ pool.getConnection((err,conn)=>{
     if(err){
         console.log("error al coenctar con la base de datos, algo salio mal" + err);
     }else{
-        console.log("coneccion a la base de datos exitosa");
+        console.log("conexion a la base de datos exitosa");
         conn.release()
     }
 });

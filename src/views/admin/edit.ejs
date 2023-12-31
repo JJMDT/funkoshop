@@ -32,45 +32,48 @@
                     <label class="form__label" for="collection">Categoría:</label>
                     <select class="form__select" name="collection" id="collection" required>
                         <option value="" disabled selected hidden>Seleccionar</option>
-                        <option value="Figuras Coleccionables">Figuras Coleccionables</option>
-                        <option value="Llaveros">Llaveros</option>
-                        <option value="Remeras">Remeras</option>
+                        <option <%= (product.category_id === 1) ? 'selected' : '' %> value="Funko">Funko</option>
+                        <option <%= (product.category_id === 2) ? 'selected' : '' %> value="Funko">Llaveros</option>
+                        <option <%= (product.category_id === 3) ? 'selected' : '' %> value="Funko">Remeras</option>
+                     
                     </select>
+                    
                 </div>
                 <div class="form__box--flex">
                     <label class="form__label" for="collection">Licencia:</label>
                     <select class="form__select" name="collection" id="collection" required>
                         <option value="" disabled selected hidden>Seleccionar</option>
-                        <option value="starwars">Star Wars</option>
-                        <option value="pokemon">Pokemon</option>
-                        <option value="harrypotter">Harry Potter</option>
+                        <option <%= (product.licence_id === 1) ? 'selected' : '' %> value="Funko">Pokemon</option>
+                        <option <%= (product.licence_id === 2) ? 'selected' : '' %> value="Funko">Star Wars</option>
+                        <option <%= (product.licence_id === 3) ? 'selected' : '' %> value="Funko">Harry Potter</option>
+                     
                     </select>
                 </div>
             </div>
             <div class="form__box--flex">
                 <label class="form__label" for="name">Nombre del producto:</label>
-                <input class="form__input" type="text" name="name" id="name" placeholder="Kakashi Hatake Shippuden Saga"
+                <input class="form__input" type="text" name="name" id="name" value="<%= product.product_name %>"
                     required>
             </div>
             <div>
                 <textarea class="textArea" name="description" id="description" cols="100" rows="10"
-                    placeholder="Descripción del producto" required></textarea>
+                 required> <%= product.product_description %></textarea>
             </div>
             <div class="form__flex">
                 <div class="form__box--flex">
                     <label class="form__label" for="sku">SKU:</label>
-                    <input class="form__input" type="text" name="sku" id="sku" placeholder="SSK111AB001" required>
+                    <input class="form__input" type="text" name="sku" id="sku"  value="<%= product.sku %>" required>
                 </div>
                 <div class="form__box--flex">
                     <div class="form__inline">
                         <label class="form__label" for="price">Precio:</label>
-                        <div class="form__input--wrapper"><span>$</span><input class="form__input" type="text" name="price" id="price" data-type="currency" placeholder="0.000,00"></div>
+                        <div class="form__input--wrapper"><span>$</span><input class="form__input" type="text" name="price" id="price" data-type="currency"  value="<%= product.price %>"></div>
                     </div>
                 </div>
                 <div class="form__box--flex">
                     <div class="form__inline">
                         <label class="form__label" for="stock">Stock:</label>
-                        <div class="form__input--wrapper"><input class="form__input" type="text" name="stock" id="stock" placeholder="0" required><span>unidades</span></div>
+                        <div class="form__input--wrapper"><input class="form__input" type="text" name="stock" id="stock"  value="<%= product.stock %>" required><span>unidades</span></div>
                     </div>
                 </div>
             </div>
@@ -80,19 +83,19 @@
                     <div class="form__inline">
                      <label class="form__label" for="discount">Descuento:</label>
                         <div class="form__input--wrapper"><input class="form__input" type="text" name="discount"
-                            id="discount" placeholder="0" required><span>%</span></div>
+                            id="discount"  value="<%= product.discount %>" required><span>%</span></div>
                         </div>
                 </div>
                 <div class="form__box--flex">
                     <label class="form__label" for="dues">Cuotas:</label>
                     <select class="form__select" name="dues" id="dues">
-                        <option value="0">Sin cuotas</option>
-                        <option value="3">3 cuotas s/ interés</option>
-                        <option value="6">6 cuotas s/ interés</option>
-                        <option value="9">9 cuotas s/ interés</option>
-                        <option value="12">12 cuotas s/ interés</option>
-                        <option value="18">18 cuotas s/ interés</option>
-                        <option value="24">24 cuotas s/ interés</option>
+                        <option <% if (product.dues === 0) { %>selected<% } %> value="0">Sin cuotas</option>
+                        <option <% if (product.dues === 3) { %>selected<% } %> value="3">3 cuotas s/ interés</option>
+                        <option <% if (product.dues === 6) { %>selected<% } %> value="6">6 cuotas s/ interés</option>
+                        <option <% if (product.dues === 9) { %>selected<% } %> value="9">9 cuotas s/ interés</option>
+                        <option <% if (product.dues === 12) { %>selected<% } %> value="12">12 cuotas s/ interés</option>
+                        <option <% if (product.dues === 18) { %>selected<% } %> value="18">18 cuotas s/ interés</option>
+                        <option <% if (product.dues === 24) { %>selected<% } %> value="24">24 cuotas s/ interés</option>
                     </select>
                 </div>
             </div>
@@ -102,11 +105,11 @@
             </div>
             <div class="form__box--flex">
                 <div class="edit__img">
-                    <img src="../../../public/img/harry-potter/hermione-1.webp" alt="Figura Funko coleccionable de Hermione">
+                    <img src="/public/img/<%= product.image_front %>" alt="Figura Funko coleccionable de Hermione">
                     <p class="edit__img-side">Frente</p>
                 </div>
                 <div class="edit__img">
-                    <img src="../../../public/img/harry-potter/hermione-box.webp" alt="Figura Funko coleccionable de Hermione en caja">
+                    <img src="/public/img/<%= product.image_back %>" alt="Figura Funko coleccionable de Hermione en caja">
                     <p class="edit__img-side">Dorso</p>
                 </div>
             </div>
