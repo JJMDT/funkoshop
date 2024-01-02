@@ -30,23 +30,23 @@
             <div class="form__flex">
                 <div class="form__box--flex">
                     <label class="form__label" for="collection">Categoría:</label>
-                    <select class="form__select" name="collection" id="collection" required>
+                    <select class="form__select" name="category" id="category" required>
                         <option value="" disabled selected hidden>Seleccionar</option>
-                        <option <%= (product.category_id === 1) ? 'selected' : '' %> value="Funko">Funko</option>
-                        <option <%= (product.category_id === 2) ? 'selected' : '' %> value="Funko">Llaveros</option>
-                        <option <%= (product.category_id === 3) ? 'selected' : '' %> value="Funko">Remeras</option>
+                        <option <%= (product.category_id === 1) ? 'selected' : '' %> value="1">Funko</option>
+                        <option <%= (product.category_id === 2) ? 'selected' : '' %> value="2">Remeras</option>
+                        <option <%= (product.category_id === 3) ? 'selected' : '' %> value="3">Llaveros</option>
                      
                     </select>
                     
                 </div>
                 <div class="form__box--flex">
                     <label class="form__label" for="collection">Licencia:</label>
-                    <select class="form__select" name="collection" id="collection" required>
+                    <select class="form__select" name="licence" id="licence" required>
                         <option value="" disabled selected hidden>Seleccionar</option>
-                        <option <%= (product.licence_id === 1) ? 'selected' : '' %> value="Funko">Pokemon</option>
-                        <option <%= (product.licence_id === 2) ? 'selected' : '' %> value="Funko">Star Wars</option>
-                        <option <%= (product.licence_id === 3) ? 'selected' : '' %> value="Funko">Harry Potter</option>
-                        <option <%= (product.licence_id === 4) ? 'selected' : '' %> value="Funko">Naruto Shippuden</option>
+                        <option <%= (product.licence_id === 1) ? 'selected' : '' %> value="1">Pokemon</option>
+                        <option <%= (product.licence_id === 2) ? 'selected' : '' %> value="2">Star Wars</option>
+                        <option <%= (product.licence_id === 3) ? 'selected' : '' %> value="3">Harry Potter</option>
+                        <option <%= (product.licence_id === 4) ? 'selected' : '' %> value="4">Naruto Shippuden</option>
                      
                     </select>
                 </div>
@@ -57,7 +57,7 @@
                     required>
             </div>
             <div>
-                <textarea class="textArea" name="description" id="description" cols="100" rows="10"
+                <textarea class="textArea" name="product_description" id="product_description" cols="100" rows="10"
                  required> <%= product.product_description %></textarea>
             </div>
             <div class="form__flex">

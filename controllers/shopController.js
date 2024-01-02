@@ -95,12 +95,24 @@ const shopControllers = {
     res.render("shop/shop", { data });
   },
   item: async (req, res) => {
-    const itemId = req.params.id;
-   const [item] = await getOne(itemId);
+    try {
+        const itemId = req.params.id;
+        
+        // Obtiene el producto específico por su ID
+        const [item] = await getOne(itemId);
 
-    res.render("shop/item", { item });
+        // Obtén todos los productos si es necesario, o puedes comentar esto si no lo necesitas.
+        const data = await getAll();
 
-  }, //res.send(`Route for find and retrieve a product for an ID ${req.params.id}`),
+        // Renderiza la vista "shop/item" pasando el producto específico y todos los datos si los necesitas.
+        res.render("shop/item", { item, data });
+
+    } catch (error) {
+        console.error("Error en la función item:", error);
+        res.status(500).send("Error al obtener el producto.");
+    }
+}
+,
   itemAdd: (req, res) =>
     res.send(`Route for add the current item to the shop cart`),
   cart: (req, res) => {

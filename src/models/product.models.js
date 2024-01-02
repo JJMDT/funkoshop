@@ -44,6 +44,23 @@ const create = async (params) => {
     conn.releaseConnection();
   }
 };
+const editProduct = async (params,id) => {
+  try {
+    console.log('ID del producto a editar:', id);
+
+    console.log("exitoso")
+
+    const [product] = await conn.query(
+      "update product set ? where ? ",[params, { product_id: id }]
+    );
+
+    return product;
+  } catch (error) {
+    console.log(" error ! " + error);
+  } finally {
+    conn.releaseConnection();
+  }
+};
 
 const deleteProduct = async (params) => {
   try {
@@ -62,5 +79,6 @@ module.exports = {
   getAll,
   getOne,
   create,
-  deleteProduct
+  deleteProduct,
+  editProduct
 };

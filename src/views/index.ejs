@@ -48,66 +48,32 @@
             <h2 class="slaider__titulo">ULTIMOS LANZAMIENTOS</h2>
             <div class="glide__track" data-glide-el="track">
                 <ul class="slaider__items glide__slides">
-                    <li class="slaider__item glide__slide">
-                        <article class="card-item">
-                            <a class="card-item__link" href="#">
-                                <div class="card-item__img">
-                                    <span class="card-item__span"> nuevo</span>
-                                    <img class="card-item__img--front" src="../../../public/img/star-wars/trooper-1.webp" alt="">
-                                    <img class="card-item__img--back" src="../../../public/img/star-wars/trooper-box.webp" alt="">
-
-                                </div>
-                                <div class="card-item__container">
-                                    <p class="card-item__licencia">STAR WARS</p>
-                                    <h4 class="card-item__nombre">TROOPER</h4>
-                                    <p class="card-item__precio">$5000</p>
-                                    <p class="card-item__promo">3 cuotas sin interes</p>
-                                </div>
-
-
-                            </a>
-                        </article>
-                    </li>
-                    <li class="slaider__item glide__slide">
-                        <article class="card-item">
-                            <a class="card-item__link" href="#">
-                                <div class="card-item__img">
-                                    <span class="card-item__span"> nuevo</span>
-                                    <img class="card-item__img--front" src="../../../public/img/pokemon/pidgeotto-1.webp">
-                                    <img class="card-item__img--back" src="../../../public/img/pokemon/pidgeotto-box.webp">
-
-                                </div>
-                                <div class="card-item__container">
-                                    <p class="card-item__licencia">POKEMON</p>
-                                    <h4 class="card-item__nombre">PIDGEOTTO</h4>
-                                    <p class="card-item__precio">$5000</p>
-                                    <p class="card-item__promo">3 cuotas sin interes</p>
-                                </div>
-
-
-                            </a>
-                        </article>
-                    </li>
-                    <li class="slaider__item glide__slide">
-                        <article class="card-item">
-                            <a class="card-item__link" href="#">
-                                <div class="card-item__img">
-                                    <span class="card-item__span"> nuevo</span>
-                                    <img class="card-item__img--front" src="../../../public/img/harry-potter/luna-1.webp">
-                                    <img class="card-item__img--back" src="../../../public/img/harry-potter/luna-box.webp">
-
-                                </div>
-                                <div class="card-item__container">
-                                    <p class="card-item__licencia">HARRY POTTER</p>
-                                    <h4 class="card-item__nombre">LUNA</h4>
-                                    <p class="card-item__precio">$5000</p>
-                                    <p class="card-item__promo">3 cuotas sin interes</p>
-                                </div>
-
-
-                            </a>
-                        </article>
-                    </li>
+                    <% data.forEach( item => { %>
+                        <li class="slaider__item glide__slide">
+                            <article class="card-item">
+                                <a class="card-item__link" href="#">
+                                    <div class="card-item__img">
+                                        <span class="card-item__span"> nuevo</span>
+                                        <img class="card-item__img--front" src="/public/img/<%= item.image_front %>" alt="<%= item.product_name %>">
+                                        <img class="card-item__img--back" src="/public/img/<%= item.image_back %>" alt="<%= item.product_name %>">
+                                        
+                                        
+                                    </div>
+                                    <div class="card-item__container">
+                                        <p class="card-item__licencia"><%= item.licence_name %></p>
+                                        <h4 class="card-item__nombre"><%= item.product_name %></h4>
+                                        <p class="card-item__precio">$<%= item.price %></p>
+                                        <p class="card-item__promo"><%= item.dues %> cuotas sin interés</p>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                </a>
+                            </article>
+                        </li>
+                    
+                    <% }) %>
                 </ul>
             </div>
             <div class="glide__arrows" data-glide-el="controls">
