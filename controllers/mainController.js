@@ -10,9 +10,12 @@ const mainControllers = {
             res.status(500).send('No se pudo cargar.');
         }
     },
-    contact: (req,res)=> res.send('Route for contact view from controllers'),
+    contact: (req, res) => {
+        res.render("contact"); 
+      },
     about: (req,res)=> res.send('Route for about view from controllers'),
     faqs: (req,res)=> res.send('Route for faqs view from controllers')
 }
 
 module.exports =  mainControllers
+

@@ -7,6 +7,7 @@ const adminControllers = {
     admin: async (req, res) => {
     
         const pepe = await getAll()
+       
     
         res.render('admin/admin', { pepe });
       },
