@@ -12,20 +12,23 @@
 </head>
 <body class="grid-fixed">
     <header class="page-header"> <!-- Inicio Header -->
+        <% if (username) { %>
         <nav class="navbar container">
             <picture class="nabvar__logo">
                 <a href="/home">
                     <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
                 </a>
             </picture>
+            
             <ul class="navbar__menu">
                 <li class="navbar__item"><a class="navbar__link" href="/shop">SHOP</a></li>
                 <!-- <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li> -->
                 <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
-                <li> <p></p></li>
+                <li> <p><%= username %></p></li>
                 <li class="navbar__item"><a class="navbar__link"> 
                 </a></li>
             </ul>
+            <% } %>
         </nav>
     </header> <!--   Fin Header -->
     <main id="admin" class="container">

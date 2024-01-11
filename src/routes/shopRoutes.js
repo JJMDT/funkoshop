@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router();
 const shopControllers = require('../../controllers/shopController')
+const isLogged = require('../routes/adminRoutes')
+
 
 router.get('/', shopControllers.shop)
 router.get('/item/:id',shopControllers.item) //router.get('/item:id',shopControllers.item)

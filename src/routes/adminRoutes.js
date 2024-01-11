@@ -5,26 +5,29 @@ const upload = require("../middlewares/uploadFiles");
 
 
 const isLogged = (req, res, next) => {
+  username= req.session.name;
+  
   console.log("Middleware isLogged activado");
   console.log("req.session:", req.session);
   
-  if (req.session && req.session.isLogged) {
+  if (req.session && req.session.loggedin) {
     console.log("El usuario está logueado");
+   console.log(username)
     next();
   } else {
     console.log("El usuario NO está logueado");
-    res.send('Tienes que loguearte');
+    res.send(`debes logearte <a href="/auth/login">  haz click </a>`);
   }
 };
 
 
 // esta pagina es /admin
-router.get("/", adminControllers.admin);
+router.get("/",isLogged, adminControllers.admin);
 router.get("/create", isLogged, adminControllers.createViews);
-router.get("/edit/:id",  adminControllers.editView);
-router.post("/create", upload.array("images"), adminControllers.createItem);
-router.put("/edit/:id",upload.array("images"), adminControllers.editProduct);
-router.delete("/delete/:id", adminControllers.delete);
+router.get("/edit/:id",isLogged,  adminControllers.editView);
+router.post("/create",isLogged, upload.array("images"), adminControllers.createItem);
+router.put("/edit/:id",isLogged, upload.array("images"), adminControllers.editProduct);
+router.delete("/delete/:id",isLogged, adminControllers.delete);
 router.get("/success", (req, res) => {
   res.render("admin/success"); // Aquí renderizas tu página de éxito.
 });

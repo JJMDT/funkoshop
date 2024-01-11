@@ -9,7 +9,7 @@ const adminControllers = {
         const pepe = await getAll()
        
     
-        res.render('admin/admin', { pepe });
+        res.render('admin/admin', { pepe , username:username});
       },
     
     createViews:(req,res) =>{

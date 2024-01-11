@@ -72,6 +72,7 @@ const authControllers = {
     if (req.session.loggedin === true) {
       // Aquí es req, no res
       req.session.destroy((err) => {
+        console.log("la session fue cerrada")
         if (err) {
           console.error("Error al cerrar sesión:", err);
 
