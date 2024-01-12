@@ -3,6 +3,8 @@ const router = express.Router();
 const mainControllers = require('../../controllers/mainController')
 const isLogged = require('../routes/adminRoutes')
 
+// productos aleatoreos
+
 // Main Routes
 router.get('/',isLogged, mainControllers.home)
 router.get('/home',isLogged, mainControllers.home)

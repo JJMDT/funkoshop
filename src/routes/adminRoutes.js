@@ -5,7 +5,8 @@ const upload = require("../middlewares/uploadFiles");
 
 
 const isLogged = (req, res, next) => {
-  username= req.session.name;
+  const username= req.session.name;
+  req.session.loggedin
   
   console.log("Middleware isLogged activado");
   console.log("req.session:", req.session);
@@ -13,9 +14,12 @@ const isLogged = (req, res, next) => {
   if (req.session && req.session.loggedin) {
     console.log("El usuario está logueado");
    console.log(username)
+   console.log(req.session.loggedin)
     next();
   } else {
     console.log("El usuario NO está logueado");
+    console.log(req.session.loggedin)
+
     res.send(`debes logearte <a href="/auth/login">  haz click </a>`);
   }
 };

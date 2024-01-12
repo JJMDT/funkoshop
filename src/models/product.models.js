@@ -3,7 +3,7 @@ const { conn } = require("../config/conn");
 const getAll = async () => {
   try {
     const [rows] =
-      await conn.query(`select p.*,c.category_name,l.licence_name from (product as p
+      await conn.query(`select p.*,c.category_name,l.* from (product as p
   left join category as c  on p.category_id = c.category_id)
   left join licence as l on p.licence_id = l.licence_id  ;`);
     return rows;

@@ -5,13 +5,12 @@ const ItemsService = require('../src/service/ItemsService');
 const adminControllers = {
   
     admin: async (req, res) => {
-    
-        const pepe = await getAll()
+        const username = req.session.name;
+        const products = await getAll()
        
     
-        res.render('admin/admin', { pepe , username:username});
+        res.render('admin/admin', { products , username:username});
       },
-    
     createViews:(req,res) =>{
         res.render('admin/create')
     },

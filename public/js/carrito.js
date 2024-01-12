@@ -53,3 +53,5 @@ const btnPagar = document.querySelector('#btnPagar')
 btnPagar.addEventListener('click',()=>{
    alert(`gracias por la compra de ${cont} productos su pago fue de ${totalAPagar.textContent}`)
 })
+
+

@@ -9,19 +9,22 @@
         </article>
     </section>
     <main class="container">
+    <% shuffledData.slice(0, 3).forEach(item => { %>
 
         <section class="coleccion">
             <article class="coleccion__container container">
-                <h3 class="coleccion__titulo">STAR WARS & <br> THE MANDALORIAN</h3>
-                <p class="coleccion__parrafo">Disfruta de una saga que sigue <br>
-                    agregando personajes a su colección.</p>
-                <a class="coleccion__link" href="">VER COLECCIÓN</a>
+                <h3 class="coleccion__titulo"><%= item.product_name %></h3>
+                <p class="coleccion__parrafo"><%= item.licence_description %> </p>
+                <a class="coleccion__link" href="/shop/item/<%= item.product_id %>">VER COLECCIÓN</a>
+               
             </article>
             <div class="coleccion__img">
-                <img src="../../../public/img/star-wars/baby-yoda-1.webp" alt="figura coleccionable funko">
+             <img class="card-item__img--front" src="/public/img/<%= item.image_front %>" alt="<%= item.product_name %>">
             </div>
 
         </section>
+        <% }); %>
+<!-- 
         <section class="coleccion">
             <article class="coleccion__container container">
                 <h3 class="coleccion__titulo">POKEMON INDIGO</h3>
@@ -44,7 +47,7 @@
                 <img src="../../../public/img/harry-potter/snape-patronus-1.webp" alt="figura coleccionable funko">
             </div>
 
-        </section>
+        </section> -->
 
         <section class="slaider container glide">
             <h2 class="slaider__titulo">ULTIMOS LANZAMIENTOS</h2>
@@ -53,7 +56,7 @@
                     <% data.forEach( item => { %>
                         <li class="slaider__item glide__slide">
                             <article class="card-item">
-                                <a class="card-item__link" href="#">
+                                <a class="card-item__link" href="/shop/item/<%= item.product_id %>">
                                     <div class="card-item__img">
                                         <span class="card-item__span"> nuevo</span>
                                         <img class="card-item__img--front" src="/public/img/<%= item.image_front %>" alt="<%= item.product_name %>">
