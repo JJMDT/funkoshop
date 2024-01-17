@@ -1,5 +1,5 @@
-const {getAll,getOne,create,deleteProduct,editProduct} = require('../src/models/product.models')
-const ItemsService = require('../src/service/ItemsService');
+const {getAll,getOne,create,deleteProduct,editProduct} = require('../models/product.models')
+const ItemsService = require('../service/ItemsService');
 
 
 const adminControllers = {

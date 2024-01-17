@@ -1,4 +1,4 @@
-const {getAll} = require('../src/models/product.models')
+const {getAll} = require('../models/product.models')
 const mainControllers = {
     
     home: async (req, res) => {

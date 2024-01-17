@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const mainControllers = require('../../controllers/mainController')
+const mainControllers = require('../controllers/mainController')
 const isLogged = require('../routes/adminRoutes')
 
 // productos aleatoreos

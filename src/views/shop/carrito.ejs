@@ -30,7 +30,8 @@
                 </li>
                 <li class="navbar__item" id="carrito">
                     <span id="cantidadCarrito">0</span>
-                    <a href="/shop/cart" class="navbar__carrito"><img src="../../../public/img/icons/cart-icon.svg" alt="Icono de carrito"></a>
+                    <a href="/shop/cart" class="navbar__carrito"><img src="../../../public/img/icons/cart-icon.svg"
+                            alt="Icono de carrito"></a>
                 </li>
             </ul>
         </nav>
@@ -45,14 +46,15 @@
                 <div class="table__header">CANTIDAD</div>
                 <div class="table__header">TOTAL</div>
                 <div class="table__header"></div>
+                <% carrito.forEach(item => { %>
                 <div class="table__item">
                     <div class="item_card">
                         <img src="../../../public/img/pokemon/pidgeotto-1.webp" alt="">
                         <div class="item_card_info">
-                            <h4 class="item_card_nombre">PIDGEOTTO</h4>
-                            <p class="item_card_licencia">POKEMON</p>
+                            <h4 class="item_card_nombre"><%= item.product_name %></h4>
+                            <p class="item_card_licencia"><%= item.id %></p>
                             <br>
-                            <p class="item_card_precio">Precio unitario: $ 1799,99</p>
+                            <p class="item_card_precio"><%= item.description %></p>
                         </div>
                     </div>
                 </div>
@@ -64,8 +66,9 @@
                             <button id="add" class="item__quantity_tabla" type="button">+</button>
                             <button id="subtract" class="item__quantity_tabla" type="button">-</button>
                         </div>
-                        
+
                     </form>
+                    
                 </div>
                 <div class="table__item">
                     <p id="total" class="item_precio">$ 0,00</p>
@@ -75,54 +78,33 @@
                             icon="material-symbols:cancel-outline-rounded"></iconify-icon></a>
                 </div>
 
-
-                <div class="table__item">
-                    <div class="item_card">
-                        <img src="../../../public/img/star-wars/baby-yoda-1.webp" alt="">
-                        <div class="item_card_info">
-                            <h4 class="item_card_nombre">BABY YODA BLUEBALL </h4>
-                            <p class="item_card_licencia">STAR WARS</p>
-                            <br>
-                            <p class="item_card_precio">Precio unitario: $ 1799,99</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="table__item">
-                    <form class="item__cart" action="#" method="POST" enctype="application/x-www-form-urlencoded">
-                        <input id="quantity" class="item__input" type="text" name="quantity" placeholder="0" disabled>
-                        <div>
-
-                            <button id="add" class="item__quantity_tabla" type="button">+</button>
-                            <button id="subtract" class="item__quantity_tabla" type="button">-</button>
-                        </div>
-                        
-                    </form>
-                </div>
-                <div class="table__item">
-                    <p id="total" class="item_precio">$ 0,00</p>
-                </div>
-                <div class="table__item">
-                    <a href="" class="item_compra"><iconify-icon
-                            icon="material-symbols:cancel-outline-rounded"></iconify-icon></a>
-                </div>
-
+                <% }) %>
+                </form>
             </div>
+
         </div>
+        <h1>Carrito de Compras</h1>
+
+        
     </section>
     <section class="container resumen">
         <h2 class="resumen__titulo">RESUMEN</h2>
         <article class="resumen__container">
             <div class="resumen__cantidad">
-                <p>cantidad de elementos </p> <p id="cantProd">  </p>
+                <p>cantidad de elementos </p>
+                <p id="cantProd"> </p>
             </div>
             <div class="resumen__subtotal">
-                <p>subtotal</p> <p id="subTotal"></p>
+                <p>subtotal</p>
+                <p id="subTotal"></p>
             </div>
             <div class="resumen__envio">
-                <p>envio</p> <p>$0</p>
+                <p>envio</p>
+                <p>$0</p>
             </div>
             <div class="resumen__total">
-                <p class="resumen__total__titulo">total</p> <p id="totalAPagar"></p>
+                <p class="resumen__total__titulo">total</p>
+                <p id="totalAPagar"></p>
             </div>
         </article>
         <div class="pagar">

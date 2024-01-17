@@ -3,7 +3,7 @@ const app = express();
 const {engine} = require('express-handlebars')
 
 const bodyParser = require('body-parser')
-const loginRoutes = require('./controllers/authController')
+const loginRoutes = require('./src/controllers/authController')
 const session = require('express-session');
 
 app.use(session({
@@ -39,5 +39,6 @@ app.use(bodyParser.urlencoded({
     extended:true
 }))
 app.use(bodyParser.json())
+
 
 app.listen(PORT, () => console.log(`servidor corriendo en el puerto http://localhost:${PORT}`));

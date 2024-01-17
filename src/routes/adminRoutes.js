@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const adminControllers = require("../../controllers/adminController");
+const adminControllers = require("../controllers/adminController");
 const upload = require("../middlewares/uploadFiles");
 
 

@@ -1172,3 +1172,7 @@ span {
     display: flex;
     align-items: center; /* Alinea verticalmente los elementos en el contenedor */
 }
+.form__box--grid textarea:last-of-type {
+    width: 300px;
+    height: 250px;
+}
