@@ -9,56 +9,35 @@
         </article>
     </section>
     <main class="container">
-    <% shuffledData.slice(0, 3).forEach(item => { %>
-
+       
+        
+        <% itemsRandom.slice(0, 4).forEach(item => { %>
         <section class="coleccion">
             <article class="coleccion__container container">
                 <h3 class="coleccion__titulo"><%= item.product_name %></h3>
                 <p class="coleccion__parrafo"><%= item.licence_description %> </p>
+                <div class="collection__line"></div>
                 <a class="coleccion__link" href="/shop/item/<%= item.product_id %>">VER COLECCIÓN</a>
                
             </article>
             <div class="coleccion__img">
              <img class="card-item__img--front" src="/public/img/<%= item.image_front %>" alt="<%= item.product_name %>">
             </div>
-
         </section>
         <% }); %>
-<!-- 
-        <section class="coleccion">
-            <article class="coleccion__container container">
-                <h3 class="coleccion__titulo">POKEMON INDIGO</h3>
-                <p class="coleccion__parrafo">Atrapa todos los que puedas y disfruta <br> de una colección llena de
-                    amigos.</p>
-                <a class="coleccion__link" href="">VER COLECCIÓN</a>
-            </article>
-            <div class="coleccion__img">
-                <img src="../../../public/img/pokemon/vulpix-1.webp" alt="figura coleccionable funko">
-            </div>
-
-        </section>
-        <section class="coleccion">
-            <article class="coleccion__container container">
-                <h3 class="coleccion__titulo">HARRY POTTER</h3>
-                <p class="coleccion__parrafo">Revive los recuerdos de una saga llena <br> de magia y encanto.</p>
-                <a class="coleccion__link" href="">VER COLECCIÓN</a>
-            </article>
-            <div class="coleccion__img">
-                <img src="../../../public/img/harry-potter/snape-patronus-1.webp" alt="figura coleccionable funko">
-            </div>
-
-        </section> -->
-
+        
+        
         <section class="slaider container glide">
             <h2 class="slaider__titulo">ULTIMOS LANZAMIENTOS</h2>
             <div class="glide__track" data-glide-el="track">
                 <ul class="slaider__items glide__slides">
-                    <% data.forEach( item => { %>
+                   <% mostRecent.forEach(item=>{ %>
+                    
                         <li class="slaider__item glide__slide">
                             <article class="card-item">
                                 <a class="card-item__link" href="/shop/item/<%= item.product_id %>">
                                     <div class="card-item__img">
-                                        <span class="card-item__span"> nuevo</span>
+                                        <span class="card-item__span"> new</span>
                                         <img class="card-item__img--front" src="/public/img/<%= item.image_front %>" alt="<%= item.product_name %>">
                                         <img class="card-item__img--back" src="/public/img/<%= item.image_back %>" alt="<%= item.product_name %>">
                                         
@@ -77,16 +56,17 @@
                                 </a>
                             </article>
                         </li>
-                    
-                    <% }) %>
-                </ul>
-            </div>
-            <div class="glide__arrows" data-glide-el="controls">
-                <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><iconify-icon icon="mdi:chevron-left"></iconify-icon>
-                </button>
-                <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><iconify-icon icon="mdi:chevron-right"></iconify-icon>
-                </button>
-            </div>
-        </section>
+                        
+                   <% }) %>
+                    </ul>
+                </div>
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><iconify-icon icon="mdi:chevron-left"></iconify-icon>
+                    </button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><iconify-icon icon="mdi:chevron-right"></iconify-icon>
+                    </button>
+                </div>
+            </section>
+            
     </main>
     <%- include('./partials/footer') %>

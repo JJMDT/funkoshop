@@ -1,6 +1,9 @@
 const { conn } = require("../config/conn");
 
-const getAll = async () => {
+module.exports = {
+
+  //muestra todos los productos
+ getAll: async () => {
   try {
     const [rows] =
       await conn.query(`select p.*,c.category_name,l.* from (product as p
@@ -8,27 +11,32 @@ const getAll = async () => {
   left join licence as l on p.licence_id = l.licence_id  ;`);
     return rows;
   } catch (error) {
-    console.log("se produjo un error " + error);
+    console.log("Error al consultar los datos " + error);
   } finally {
     conn.releaseConnection();
   }
-};
+ },
 
-const getOne = async (id) => {
+ //muestra solo 1 producto
+ getOne: async (params) => {
   try {
     const [rows] = await conn.query(
-      `select * from product as p
-    inner join licence as l  on p.licence_id = l.licence_id where product_id = ? ;`,
-      id
+      `select p.*,c.category_name,l.* from (product as p
+        left join category as c  on p.category_id = c.category_id)
+        left join licence as l on p.licence_id = l.licence_id where p.product_id= ?` ,
+      params
     );
     return rows;
   } catch (error) {
-    console.log("se produjo un error " + error);
+    console.log("Error al consultar los datos " + error);
   } finally {
     conn.releaseConnection();
   }
-};
-const create = async (params) => {
+},
+
+
+//crear un nuevo producto
+ create : async (params) => {
   try {
     console.log("Descripción del producto:", params[0].product_description);
 
@@ -43,8 +51,10 @@ const create = async (params) => {
   } finally {
     conn.releaseConnection();
   }
-};
-const editProduct = async (params,id) => {
+},
+
+//editar un producto
+ editProduct: async (params,id) => {
   try {
     console.log('ID del producto a editar:', id);
 
@@ -60,9 +70,10 @@ const editProduct = async (params,id) => {
   } finally {
     conn.releaseConnection();
   }
-};
+},
 
-const deleteProduct = async (params) => {
+//borrar un producto
+ deleteProduct : async (params) => {
   try {
     const [product] = await conn.query ('delete from product where  ?', params)
     return product
@@ -73,12 +84,12 @@ const deleteProduct = async (params) => {
     conn.releaseConnection();
  }
 }
+}
 
-
-module.exports = {
-  getAll,
-  getOne,
-  create,
-  deleteProduct,
-  editProduct
-};
+// module.exports = {
+//   getAll,
+//   getOne,
+//   create,
+//   deleteProduct,
+//   editProduct
+// };

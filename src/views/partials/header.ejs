@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <% if (false) {%>
+    <% if(locals.isLogged) { %>
+        <!-- Si el usuario está logueado muestra este header -->
         
     <header>
         <nav class="navbar container">
@@ -44,7 +45,9 @@
         </ul>
     </nav>
 </header>
-        <%} else {%>
+<% } else { %>
+    <!-- Si no está logueado, muestra este otro header -->
+
         <header>
             <nav class="navbar container">
                 <div class="navbar__logo">

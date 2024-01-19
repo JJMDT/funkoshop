@@ -3,65 +3,65 @@
     <main class="container">
         <section class="item">
             <div class="item__img card-item__img" id="img_item">
-                <img class="card-item__img--front" src="/public/img/<%= item.image_front %>"
+                <img class="card-item__img--front" src="/public/img/<%= product.image_front %>"
                     alt="Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga">
-                <img class="card-item__img--back" src="/public/img/<%= item.image_back %>"
+                <img class="card-item__img--back" src="/public/img/<%= product.image_back %>"
                     alt="Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga">
             </div>
             <article class="item__info">
                 <p class="item__licence">
-                    <%= item.licence_name %>
+                    <%= product.licence_name %>
                 </p>
                 <h3 class="item__name">
-                    <%= item.product_name %>
+                    <%= product.product_name %>
                 </h3>
                 <p class="item__description">
-                    <%= item.product_description %>
+                    <%= product.product_description %>
                 </p>
-                <p class="item__price" id="price">$<%= item.price %>
+                <p class="item__price" id="price">$<%= product.price %>
                 </p>
-                <p class="item__stock" id="product_stock"> Stock: <%= item.stock %></p>
+                <p class="item__stock" id="product_stock"> Stock: <%= product.stock %></p>
 
                 <form class="item__cart" action="#" method="post" enctype="application/x-www-form-urlencoded">
                     <button id="subtract" class="item__quantity" type="button">-</button>
                     <input id="quantity" class="item__input" type="text" name="quantity" placeholder="0">
                     <button id="add" class="item__quantity" type="button">+</button>
-                    <button class="item__submit btn btn--primary btn--medium" id="addToCart" type="button"  data-id="<%= item.product_id %>">Agregar al carrito</button>
+                    <button class="item__submit btn btn--primary btn--medium" id="addToCart" type="button"  data-id="<%= product.product_id %>">Agregar al carrito</button>
                 </form>
-                <p class="item__promo"><a href="">Ver métodos de pago</a> - <%= item.dues %> CUOTAS SIN INTERÉS</p>
+                <p class="item__promo"><a href="">Ver métodos de pago</a> - <%= product.dues %> CUOTAS SIN INTERÉS</p>
             </article>
         </section>
+        <!-- slider -->
         <section class="slaider container glide">
-            <h2 class="slaider__titulo">ULTIMOS LANZAMIENTOS</h2>
+            <h2 class="slaider__titulo">PRODUCTOS RELACIONADOS</h2>
             <div class="glide__track" data-glide-el="track">
                 <ul class="slaider__items glide__slides">
-                    <% data.forEach( item => { %>
+                    <!-- aca iteramos con el array que tiene todos los productos con un .foreach -->
+                 
+                    <% const relatedProducts = allProducts.filter(allP => allP.licence_id === product.licence_id); %>
+                     <% relatedProducts.forEach(prod => { %>
                     <li class="slaider__item glide__slide">
                         <article class="card-item">
-                            <a class="card-item__link" href="/shop/item/<%= item.product_id %>">
+                            <a class="card-item__link" href="/shop/item/<%= prod.product_id %>">
                                 <div class="card-item__img">
-                                    <span class="card-item__span"> nuevo</span>
-                                    <img class="card-item__img--front" src="/public/img/<%= item.image_front %>" alt="<%= item.product_name %>">
-                                    <img class="card-item__img--back" src="/public/img/<%= item.image_back %>" alt="<%= item.product_name %>">
-                                    
+                                    <span class="card-item__span"> new</span>
+                                    <img class="card-item__img--front" src="/public/img/<%= prod.image_front %>" alt="<%= prod.product_name %>">
+                                    <img class="card-item__img--back" src="/public/img/<%= prod.image_back %>" alt="<%= prod.product_name %>">
                                     
                                 </div>
                                 <div class="card-item__container">
-                                    <p class="card-item__licencia"><%= item.licence_name %></p>
-                                    <h4 class="card-item__nombre"><%= item.product_name %></h4>
-                                    <p class="card-item__precio">$<%= item.price %></p>
-                                    <p class="card-item__promo"><%= item.dues %> cuotas sin interés</p>
+                                    <p class="card-item__licencia"><%= prod.licence_name %></p>
+                                    <h4 class="card-item__nombre"><%= prod.product_name %></h4>
+                                    <p class="card-item__precio">$<%= prod.price %></p>
+                                    <p class="card-item__promo"><%= prod.dues %> cuotas sin interés</p>
                                 </div>
-                                
-                                
-                                
                                 
                             </a>
                         </article>
                     </li>
                     
-                    
-                    <% }) %>
+                    <!-- aca lo cerramos  -->
+                   <% }); %>
                 </ul>
                 </div>
                 <div class="glide__arrows" data-glide-el="controls">
@@ -72,11 +72,7 @@
                         icon="mdi:chevron-right"></iconify-icon>
                     </button>
                 </div>
-                <div class="carito" id="carrito-lista">
-                    <h1>lista del carrito</h1>
-                 
-                     
-                    </div>
+                
             </section>
 
     </main>

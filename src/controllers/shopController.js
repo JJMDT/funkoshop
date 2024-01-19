@@ -1,49 +1,32 @@
 const path = require("path");
-const { getAll, getOne } = require("../models/product.models");
+const { getAllItems } = require("../service/productsServices");
+const { getAll, getOne } = require("../models/productModels");
 
 const shopControllers = {
   shop: async (req, res) => {
-    const data = await getAll();
-    const carrito = res.locals.carrito;
+    const data = await getAllItems();
 
-    res.render("shop/shop", { data, carrito });
+    res.render("shop/shop", { data });
   },
-  
+
   item: async (req, res) => {
-    const productId = req.params.id; // Corregir: req.param.id -> req.params.id
-    const cantidadSeleccionada = req.body.cantidadSeleccionada;
-    const name = req.body.product_name;
-
-    // Lógica para agregar el producto al carrito
-    const productoActual = {
-      id: productId,
-      cantidad: cantidadSeleccionada,
-      name: name,
-    };
-
-    // Obtener el carrito de la sesión actual o crear uno si no existe
-    req.session.carrito = req.session.carrito || [];
-    req.session.carrito.push(productoActual);
-
-    // Respuesta al cliente
-
     try {
       const itemId = req.params.id;
 
       // Obtiene el producto específico por su ID
-      const [item] = await getOne(itemId);
-
-      // Obtén todos los productos si es necesario, o puedes comentar esto si no lo necesitas.
-      const data = await getAll();
-
-      // Renderiza la vista "shop/item" pasando el producto específico y todos los datos si los necesitas.
-      res.render("shop/item", { item, data });
+      const [product] = await getOne(itemId);
+      const allProducts = await getAll();
+      res.render("shop/item", { product,allProducts });
     } catch (error) {
       console.error("Error en la función item:", error);
       res.status(500).send("Error al obtener el producto.");
     }
-  },
-  itemAdd: async (req, res) => {
+   
+    
+},
+
+
+  itemAddToCart: async (req, res) => {
     const productId = req.param.id;
     const cantidadSeleccionada = req.body.cantidadSeleccionada;
 
