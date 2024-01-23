@@ -13,20 +13,41 @@
 </head>
 
 <body class="grid-fixed">
-    <header class="page-header"> <!-- Inicio Header -->
+    <% if(loggedin) { %>
+        
+        <!-- Si el usuario está logueado muestra este header -->
+        
+    <header>
         <nav class="navbar container">
-            <picture class="nabvar__logo">
+            <div class="navbar__logo">
                 <a href="/home">
-                    <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
+                    <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
                 </a>
-            </picture>
+            </div>
             <ul class="navbar__menu">
-                <li class="navbar__item"><a class="navbar__link" href="/shop">SHOP</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
-            </ul>
-        </nav>
-    </header> <!--   Fin Header -->
+                <li class="navbar__item with-submenu">
+                    <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                        icon="carbon:chevron-down"></iconify-icon></a>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Funkos</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Remeras</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Llaveros</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
+                    <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
+                    
+                  
+        </ul>
+    </nav>
+</header>
+<% } %>
     <main id="create" class="container">
         <h2 class="create__title">CREAR NUEVO ITEM</h2>
         <form class="create__form" action="/admin/create" method="POST" enctype="multipart/form-data">
@@ -47,7 +68,7 @@
                         <option value="1">Pokemon</option>
                         <option value="2">Star Wars</option>
                         <option value="3">Harry Potter</option>
-                        <option value="4">Naruto Shippuden</option>
+                        <option value="4">Campeones del mundo</option>
                     </select>
                 </div>
             </div>

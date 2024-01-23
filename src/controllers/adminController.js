@@ -2,22 +2,37 @@
 
 // const { getAllLicences } = require("../service/licencesServices");
 // const {getAll} = require('../models/productModels')
-// const ItemsService = require('../service/ItemsService');
+ const ItemsService = require('../service/ItemsService');
 
-const { getAllItems } = require("../service/productsServices");
+const {
+  getAll,
+  getOne,
+  create,
+  editProduct,
+  deleteProduct,
+} = require("../models/productModels");
 
 module.exports = {
   admin: async (req, res) => {
-    const items = await getAllItems();
-    return res.render("admin/admin", {
-      items,
+    try {
+      const items = await getAll();
+      return res.render("admin/admin", {
+        products: items,
+        loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
+        name: req.session.name || "usser",
+      });
+    } catch (error) {
+      console.error("Error al obtener productos:", error);
+      res.status(500).send("Error en el servidor");
+    }
+  },
+  createViews: async (req, res) => {
+    const products = await getAll();
+    res.render("admin/create", {
+      products,
       loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
       name: req.session.name || "usser",
     });
-  },
-  createViews: async (req, res) => {
-    const licences = await getAllLicences();
-    res.render("admin/create", { licences });
   },
   // post
   createItem: async (req, res) => {

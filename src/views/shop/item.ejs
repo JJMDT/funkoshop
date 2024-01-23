@@ -12,22 +12,22 @@
 </head>
 
 <body>
-    
+
     <% if(loggedin) { %>
-        
+
         <!-- Si el usuario está logueado muestra este header -->
-        
-    <header>
-        <nav class="navbar container">
-            <div class="navbar__logo">
-                <a href="/home">
-                    <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
-                </a>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item with-submenu">
-                    <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
-                        icon="carbon:chevron-down"></iconify-icon></a>
+
+        <header>
+            <nav class="navbar container">
+                <div class="navbar__logo">
+                    <a href="/home">
+                        <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
+                    </a>
+                </div>
+                <ul class="navbar__menu">
+                    <li class="navbar__item with-submenu">
+                        <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                                icon="carbon:chevron-down"></iconify-icon></a>
                         <ul class="submenu">
                             <li class="submenu__item">
                                 <a href="#" class="submenu__link"> Funkos</a>
@@ -42,26 +42,31 @@
                     </li>
                     <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
                     <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
-                    <li class="navbar__item"><p> <%= name %></p></li>
-                    
-                  
-        </ul>
-    </nav>
-</header>
-<% } else { %>
-    <!-- Si no está logueado, muestra este otro header -->
+                    <li class="navbar__item">
+                        <p>
+                            <%= name %>
+                        </p>
+                    </li>
 
-        <header>
-            <nav class="navbar container">
-                <div class="navbar__logo">
-                    <a href="/home">
-                        <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
-                    </a>
-                </div>
-                <ul class="navbar__menu">
-                    <li class="navbar__item with-submenu">
-                        <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
-                            icon="carbon:chevron-down"></iconify-icon></a>
+
+                </ul>
+            </nav>
+        </header>
+        <% } else { %>
+            <!-- Si no está logueado, muestra este otro header -->
+
+            <header>
+                <nav class="navbar container">
+                    <div class="navbar__logo">
+                        <a href="/home">
+                            <img src="../../../public/img/branding/logo_light_horizontal.svg"
+                                alt="Logotipo de la marca">
+                        </a>
+                    </div>
+                    <ul class="navbar__menu">
+                        <li class="navbar__item with-submenu">
+                            <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                                    icon="carbon:chevron-down"></iconify-icon></a>
                             <ul class="submenu">
                                 <li class="submenu__item">
                                     <a href="#" class="submenu__link"> Funkos</a>
@@ -75,94 +80,123 @@
                             </ul>
                         </li>
                         <li class="navbar__item"><a class="navbar__link" href="/contact">CONTACTO</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li>
-                <li class="navbar__item" id="carrito">
-                    <span id="cantidadCarrito">0</span>
-                    <a href="/shop/cart" class="navbar__carrito"><img src="../../../public/img/icons/cart-icon.svg" alt="Icono de carrito"></a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <% } %>
+                        <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li>
+                        <li class="navbar__item" id="carrito">
+                            <span id="cantidadCarrito">0</span>
+                            <a href="/shop/cart" class="navbar__carrito"><img
+                                    src="../../../public/img/icons/cart-icon.svg" alt="Icono de carrito"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <% } %>
 
-    <main class="container">
-        <section class="item">
-            <div class="item__img card-item__img" id="img_item">
-                <img class="card-item__img--front" src="/public/img/<%= product.image_front %>"
-                    alt="Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga">
-                <img class="card-item__img--back" src="/public/img/<%= product.image_back %>"
-                    alt="Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga">
-            </div>
-            <article class="item__info">
-                <p class="item__licence">
-                    <%= product.licence_name %>
-                </p>
-                <h3 class="item__name">
-                    <%= product.product_name %>
-                </h3>
-                <p class="item__description">
-                    <%= product.product_description %>
-                </p>
-                <p class="item__price" id="price">$<%= product.price %>
-                </p>
-                <p class="item__stock" id="product_stock"> Stock: <%= product.stock %></p>
+                <main class="container">
+                    <section class="item">
+                        <div class="item__img card-item__img" id="img_item">
+                            <img class="card-item__img--front" src="/public/img/<%= product.image_front %>"
+                                alt="Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga">
+                            <img class="card-item__img--back" src="/public/img/<%= product.image_back %>"
+                                alt="Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga">
+                        </div>
+                        <article class="item__info">
+                            <p class="item__licence">
+                                <%= product.licence_name %>
+                            </p>
+                            <h3 class="item__name">
+                                <%= product.product_name %>
+                            </h3>
+                            <p class="item__description">
+                                <%= product.product_description %>
+                            </p>
+                            <p class="item__price" id="price">$<%= product.price %>
+                            </p>
+                            <p class="item__stock" id="product_stock"> Stock: <%= product.stock %>
+                            </p>
 
-                <form class="item__cart" action="/shop/item/<%= product.product_id %>/add" method="post" enctype="application/x-www-form-urlencoded">
-                    <input type="hidden" name="_method" value="post"> <!-- Este campo indica que es una solicitud POST -->
-                    <button id="subtract" class="item__quantity" type="button">-</button>
-                    <input id="quantity" class="item__input" type="text" name="quantity" placeholder="0">
-                    <button id="add" class="item__quantity" type="button">+</button>
-                    <button class="item__submit btn btn--primary btn--medium" id="addToCart" type="button"  data-id="<%= product.product_id %>">Agregar al carrito</button>
-                    
+                            <form class="item__cart" action="/shop/item/<%= product.product_id %>/add" method="post"
+                                enctype="application/x-www-form-urlencoded">
+                                <input type="hidden" name="_method" value="post">
+                                <!-- Este campo indica que es una solicitud POST -->
+                                <button id="subtract" class="item__quantity" type="button">-</button>
+                                <input id="quantity" class="item__input" type="text" name="quantity" placeholder="0">
+                                <button id="add" class="item__quantity" type="button">+</button>
 
-                </form>
-                <p class="item__promo"><a href="">Ver métodos de pago</a> - <%= product.dues %> CUOTAS SIN INTERÉS</p>
-            </article>
-        </section>
-        <!-- slider -->
-        <section class="slaider container glide">
-            <h2 class="slaider__titulo">PRODUCTOS RELACIONADOS</h2>
-            <div class="glide__track" data-glide-el="track">
-                <ul class="slaider__items glide__slides">
-                    <!-- aca iteramos con el array que tiene todos los productos con un .foreach -->
-                    
-                       <% const relatedProducts = allProducts.filter(allP => allP.licence_id === product.licence_id); %>
-                        <% relatedProducts.forEach(prod => { %>
-                    <li class="slaider__item glide__slide">
-                        <article class="card-item">
-                            <a class="card-item__link" href="/shop/item/<%= prod.product_id %>">
-                                <div class="card-item__img">
-                                    <span class="card-item__span"> new</span>
-                                    <img class="card-item__img--front" src="/public/img/<%= prod.image_front %>" alt="<%= prod.product_name %>">
-                                    <img class="card-item__img--back" src="/public/img/<%= prod.image_back %>" alt="<%= prod.product_name %>">
-                                    
-                                </div>
-                                <div class="card-item__container">
-                                    <p class="card-item__licencia"><%= prod.licence_name %></p>
-                                    <h4 class="card-item__nombre"><%= prod.product_name %></h4>
-                                    <p class="card-item__precio">$<%= prod.price %></p>
-                                    <p class="card-item__promo"><%= prod.dues %> cuotas sin interés</p>
-                                </div>
-                                
-                            </a>
+
+                                <% if (loggedin) { %>
+
+                                    <a href="/admin/edit/<%= product.product_id %>"><button
+                                            class="item__submit btn btn--primary btn--medium" id="addToCart"
+                                            type="button" data-id="<%= product.product_id %>"> Editar </button></a>
+                                    <% } else { %>
+                                        <button class="item__submit btn btn--primary btn--medium" id="addToCart"
+                                            type="button" data-id="<%= product.product_id %>">Agregar al
+                                            carrito</button>
+                                        <% } %>
+
+
+                            </form>
+
+                            <p class="item__promo"><a href="">Ver métodos de pago</a> - <%= product.dues %> CUOTAS SIN
+                                    INTERÉS</p>
                         </article>
-                    </li>
-                    
-                    <!-- aca lo cerramos  -->
-                   <% }); %>
-                </ul>
-                </div>
-                <div class="glide__arrows" data-glide-el="controls">
-                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><iconify-icon
-                        icon="mdi:chevron-left"></iconify-icon>
-                    </button>
-                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><iconify-icon
-                        icon="mdi:chevron-right"></iconify-icon>
-                    </button>
-                </div>
-                
-            </section>
+                    </section>
+                    <!-- slider -->
+                    <section class="slaider container glide">
+                        <h2 class="slaider__titulo">PRODUCTOS RELACIONADOS</h2>
+                        <div class="glide__track" data-glide-el="track">
+                            <ul class="slaider__items glide__slides">
+                                <!-- aca iteramos con el array que tiene todos los productos con un .foreach -->
 
-    </main>
-    
-    <%- include('../partials/footer') %>
+                                <% const relatedProducts=allProducts.filter(allP=> allP.licence_id ===
+                                    product.licence_id); %>
+                                    <% relatedProducts.forEach(prod=> { %>
+                                        <li class="slaider__item glide__slide">
+                                            <article class="card-item">
+                                                <a class="card-item__link" href="/shop/item/<%= prod.product_id %>">
+                                                    <div class="card-item__img">
+                                                        <span class="card-item__span"> new</span>
+                                                        <img class="card-item__img--front"
+                                                            src="/public/img/<%= prod.image_front %>"
+                                                            alt="<%= prod.product_name %>">
+                                                        <img class="card-item__img--back"
+                                                            src="/public/img/<%= prod.image_back %>"
+                                                            alt="<%= prod.product_name %>">
+
+                                                    </div>
+                                                    <div class="card-item__container">
+                                                        <p class="card-item__licencia">
+                                                            <%= prod.licence_name %>
+                                                        </p>
+                                                        <h4 class="card-item__nombre">
+                                                            <%= prod.product_name %>
+                                                        </h4>
+                                                        <p class="card-item__precio">$<%= prod.price %>
+                                                        </p>
+                                                        <p class="card-item__promo">
+                                                            <%= prod.dues %> cuotas sin interés
+                                                        </p>
+                                                    </div>
+
+                                                </a>
+                                            </article>
+                                        </li>
+
+                                        <!-- aca lo cerramos  -->
+                                        <% }); %>
+                            </ul>
+                        </div>
+                        <div class="glide__arrows" data-glide-el="controls">
+                            <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><iconify-icon
+                                    icon="mdi:chevron-left"></iconify-icon>
+                            </button>
+                            <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><iconify-icon
+                                    icon="mdi:chevron-right"></iconify-icon>
+                            </button>
+                        </div>
+
+                    </section>
+
+                </main>
+
+                <%- include('../partials/footer') %>

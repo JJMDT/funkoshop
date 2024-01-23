@@ -37,7 +37,7 @@ module.exports = {
             store: sessionStore,
             rolling: true,
             cookie: {
-                maxAge: 5 * 60 * 1000,
+                maxAge: 60000 
             },
         });
     },
