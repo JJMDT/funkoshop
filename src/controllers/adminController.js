@@ -1,18 +1,25 @@
-const { getAllItems, getOne } = require("../service/productsServices");
-const { getAllLicences } = require("../service/licencesServices");
+//const { getAllItems, getOne } = require("../service/productsServices");
+
+// const { getAllLicences } = require("../service/licencesServices");
+// const {getAll} = require('../models/productModels')
+// const ItemsService = require('../service/ItemsService');
+
+const { getAllItems } = require("../service/productsServices");
 
 module.exports = {
   admin: async (req, res) => {
     const items = await getAllItems();
-
-    res.render("admin/admin", { items });
+    return res.render("admin/admin", {
+      items,
+      loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
+      name: req.session.name || "usser",
+    });
   },
-//get
-  createViews: async(req, res) => {
-    const licences= await getAllLicences();
-    res.render("admin/create",{licences});
+  createViews: async (req, res) => {
+    const licences = await getAllLicences();
+    res.render("admin/create", { licences });
   },
-// post
+  // post
   createItem: async (req, res) => {
     try {
       const item = req.body;

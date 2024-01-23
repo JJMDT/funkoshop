@@ -8,29 +8,47 @@
     <link rel="stylesheet" href="/public/css/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
-    <title>FUNKOSHOP</title>
+    <title>FUNKO-SHOP</title>
 </head>
-<body class="grid-fixed">
-    <header class="page-header"> <!-- Inicio Header -->
-        <% if (username) { %>
-            <nav class="navbar container">
-                <picture class="nabvar__logo">
-                    <a href="/home">
-                        <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Isologotipo de la Marca Funkoshop">
-                    </a>
-                </picture>
-                
-                <ul class="navbar__menu">
-                    <li class="navbar__item"><a class="navbar__link" href="/shop">SHOP</a></li>
-                    <!-- <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li> -->
+
+<body>
+    
+    <% if(loggedin) { %>
+        
+        <!-- Si el usuario está logueado muestra este header -->
+        
+    <header>
+        <nav class="navbar container">
+            <div class="navbar__logo">
+                <a href="/home">
+                    <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
+                </a>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item with-submenu">
+                    <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                        icon="carbon:chevron-down"></iconify-icon></a>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Funkos</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Remeras</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Llaveros</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
                     <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
-                    <li> <p><%= username %></p></li>
-                    <li class="navbar__item"><a class="navbar__link"> 
-                    </a></li>
-                </ul>
-                <% } %>
-        </nav>
-    </header> <!--   Fin Header -->
+                    <li class="navbar__item"><p> <%= name %></p></li>
+                    
+                  
+        </ul>
+    </nav>
+</header>
+<% } %>
     <main id="admin" class="container">
         <section class="admin__search">
             <iconify-icon class="admin__icon" icon="charm:search"></iconify-icon>
@@ -39,6 +57,7 @@
         <section class="admin__list">
             <div class="admin__header">
                 <h2>LISTADO DE PRODUCTOS</h2>
+        
                 <span>AGREGAR<a href="/admin/create"><iconify-icon icon="bxs:plus-square" style="color: #f33;"></iconify-icon></a></span>
             </div>
             <div class="admin-table">
@@ -49,23 +68,7 @@
                     <h3>Categoría</h3>
                     <h3>Licencia</h3>
                 </header>
-            
-                <% products.forEach( item => { %>
-                <article class="admin-table__row">
-                    <p><%= item.product_id %></p>
-                    <p><%= item.sku %></p>
-                    <p><%= item.product_name %></p>
-                    <p><%= item.category_name %></p>
-                    <p><%= item.licence_name %></p>
-                    <a href="/admin/edit/<%= item.product_id %>"><iconify-icon icon="mdi:pencil" style="color: #1d84b5;"></iconify-icon></a>
-                    <form action="/admin/delete/<%= item.product_id %>?_method=DELETE" method="POST">
-                        <button type="submit">
-                            <iconify-icon icon="heroicons-solid:trash" style="color: #f33;"></iconify-icon>
-                        </button>
-                    </form>
-                </article>
-                <% }) %>
-             
+               
            
             </div>
         </section>

@@ -41,49 +41,53 @@
             <div class="table__titulo">
                 <h2 class="table__titulo--">CARRITO DE COMPRAS</h2>
             </div>
+            
             <div class="table__group">
                 <div class="table__header">DETALLE DE PRODUCTO</div>
                 <div class="table__header">CANTIDAD</div>
                 <div class="table__header">TOTAL</div>
                 <div class="table__header"></div>
                 <% carrito.forEach(item => { %>
-                <div class="table__item">
-                    <div class="item_card">
-                        <img src="../../../public/img/pokemon/pidgeotto-1.webp" alt="">
+                    <div class="table__item">
+                      <!-- Detalle de producto -->
+                      <div class="item_card">
+                        <img src="/public/img/<%=item.image_front%>" alt="<%= item.name %>">
                         <div class="item_card_info">
-                            <h4 class="item_card_nombre"><%= item.product_name %></h4>
-                            <p class="item_card_licencia"><%= item.id %></p>
-                            <br>
-                            <p class="item_card_precio"><%= item.description %></p>
+                          <!-- Acceder a las propiedades del producto -->
+                          <h4 class="item_card_nombre"><%= item.name %></h4>
+                          <p class="item_card_precio"><%= item.description %></p>
+                          <br>
+                          <p class="item_card_licencia"><%= item.price %></p>
                         </div>
+                      </div>
                     </div>
-                </div>
-                <div class="table__item">
-                    <form class="item__cart" action="#" method="POST" enctype="application/x-www-form-urlencoded">
-                        <input id="quantity" class="item__input" type="text" name="quantity" placeholder="0" disabled>
-                        <div>
-
-                            <button id="add" class="item__quantity_tabla" type="button">+</button>
-                            <button id="subtract" class="item__quantity_tabla" type="button">-</button>
-                        </div>
-
-                    </form>
-                    
-                </div>
-                <div class="table__item">
-                    <p id="total" class="item_precio">$ 0,00</p>
-                </div>
-                <div class="table__item">
-                    <a href="" class="item_compra"><iconify-icon
+                    <div class="table__item">
+                        <form class="item__cart" action="#" method="POST" enctype="application/x-www-form-urlencoded">
+                            <input id="quantity" class="item__input" type="text" name="quantity" placeholder="<%= item.cantidad %>" disabled>
+                            <div>
+                                
+                                <button id="add" class="item__quantity_tabla" type="button">+</button>
+                                <button id="subtract" class="item__quantity_tabla" type="button">-</button>
+                            </div>
+                            
+                        </form>
+                        
+                    </div>
+                    <div class="table__item">
+                        <p id="total" class="item_precio">$ 0,00</p>
+                    </div>
+                    <div class="table__item">
+                        <a href="" class="item_compra"><iconify-icon
                             icon="material-symbols:cancel-outline-rounded"></iconify-icon></a>
+                        </div>
+                        
+                        <% }) %>
+                    </form>
                 </div>
-
-                <% }) %>
-                </form>
+                
             </div>
-
-        </div>
-        <h1>Carrito de Compras</h1>
+            <button id="vaciarCarrito">Vaciar Carrito</button>
+           
 
         
     </section>
@@ -111,4 +115,5 @@
             <button id="btnPagar">ir a pagar</button>
         </div>
     </section>
+   
     <%- include('../partials/footer') %>

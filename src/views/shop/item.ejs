@@ -1,4 +1,89 @@
-<%- include('../partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+    <title>FUNKO-SHOP</title>
+</head>
+
+<body>
+    
+    <% if(loggedin) { %>
+        
+        <!-- Si el usuario está logueado muestra este header -->
+        
+    <header>
+        <nav class="navbar container">
+            <div class="navbar__logo">
+                <a href="/home">
+                    <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
+                </a>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item with-submenu">
+                    <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                        icon="carbon:chevron-down"></iconify-icon></a>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Funkos</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Remeras</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Llaveros</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
+                    <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
+                    <li class="navbar__item"><p> <%= name %></p></li>
+                    
+                  
+        </ul>
+    </nav>
+</header>
+<% } else { %>
+    <!-- Si no está logueado, muestra este otro header -->
+
+        <header>
+            <nav class="navbar container">
+                <div class="navbar__logo">
+                    <a href="/home">
+                        <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
+                    </a>
+                </div>
+                <ul class="navbar__menu">
+                    <li class="navbar__item with-submenu">
+                        <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                            icon="carbon:chevron-down"></iconify-icon></a>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__link"> Funkos</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__link"> Remeras</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__link"> Llaveros</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="navbar__item"><a class="navbar__link" href="/contact">CONTACTO</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li>
+                <li class="navbar__item" id="carrito">
+                    <span id="cantidadCarrito">0</span>
+                    <a href="/shop/cart" class="navbar__carrito"><img src="../../../public/img/icons/cart-icon.svg" alt="Icono de carrito"></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <% } %>
 
     <main class="container">
         <section class="item">
@@ -22,11 +107,14 @@
                 </p>
                 <p class="item__stock" id="product_stock"> Stock: <%= product.stock %></p>
 
-                <form class="item__cart" action="#" method="post" enctype="application/x-www-form-urlencoded">
+                <form class="item__cart" action="/shop/item/<%= product.product_id %>/add" method="post" enctype="application/x-www-form-urlencoded">
+                    <input type="hidden" name="_method" value="post"> <!-- Este campo indica que es una solicitud POST -->
                     <button id="subtract" class="item__quantity" type="button">-</button>
                     <input id="quantity" class="item__input" type="text" name="quantity" placeholder="0">
                     <button id="add" class="item__quantity" type="button">+</button>
                     <button class="item__submit btn btn--primary btn--medium" id="addToCart" type="button"  data-id="<%= product.product_id %>">Agregar al carrito</button>
+                    
+
                 </form>
                 <p class="item__promo"><a href="">Ver métodos de pago</a> - <%= product.dues %> CUOTAS SIN INTERÉS</p>
             </article>
@@ -37,9 +125,9 @@
             <div class="glide__track" data-glide-el="track">
                 <ul class="slaider__items glide__slides">
                     <!-- aca iteramos con el array que tiene todos los productos con un .foreach -->
-                 
-                    <% const relatedProducts = allProducts.filter(allP => allP.licence_id === product.licence_id); %>
-                     <% relatedProducts.forEach(prod => { %>
+                    
+                       <% const relatedProducts = allProducts.filter(allP => allP.licence_id === product.licence_id); %>
+                        <% relatedProducts.forEach(prod => { %>
                     <li class="slaider__item glide__slide">
                         <article class="card-item">
                             <a class="card-item__link" href="/shop/item/<%= prod.product_id %>">

@@ -12,11 +12,16 @@ const {initSession} = require('./src/utils/session');
 const app = express();
 const PORT = 3003
 
-
-//const bodyParser = require('body-parser')
-//const loginRoutes = require('./src/controllers/authController')
+const bodyParser = require('body-parser')
 
 
+//
+app.use(initSession())
+app.use((req,res,next) =>{
+  res.locals.isLogged = req.session.isLogged;
+  res.locals.carrito = req.session.carrito || [];
+  next();
+})
 
 // template engine
 app.set('view engine','ejs')
@@ -29,24 +34,19 @@ app.use(methodOverride('_method'))
 app.use('/public', express.static('public'));
 app.use(cors());
 
+
+
 //rutas
 app.use('/', mainRoutes)
 app.use('/shop', shopRoutes)
 app.use('/admin', adminRoutes)
 app.use('/auth', authRoutes)
 
-// app.use(bodyParser.urlencoded({
-//     extended:true
-// }))
-// app.use(bodyParser.json())
+
+ app.use(bodyParser.json())
 
 //correr el servidor
 
 // user session
-app.use(initSession())
-app.use((req,res,next) =>{
-  res.locals.isLogged = req.session.isLogged;
-  res.locals.shopCart = req.session.shopCart;
-  next();
-})
+
 app.listen(PORT, () => console.log(`servidor corriendo  http://localhost:${PORT}`));

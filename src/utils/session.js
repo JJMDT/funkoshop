@@ -5,24 +5,40 @@ const mysqlStore = require('express-mysql-session')(session);
 const sessionStore = new mysqlStore({
 
 }, conn);
+
+
+// module.exports = {
+//     initSession:()=>{
+//         return session({
+//             // la session se guarda solo si hay cambios
+            
+//             secret:"mySecretKey",
+//             resave:false,
+//             saveUninitialized:false,
+
+//             //usamos como store la bbdd
+//             store:sessionStore,
+//             //para reiniciar el tiempo de expiracion en cada solicitud
+//             rolling:true,
+
+//             cookie:{
+//                 maxAge:5*60*1000, // 5 minutos en milisegundos
+//             },
+            
+//         })
+//     },
+// }
 module.exports = {
-    initSession:()=>{
+    initSession: () => {
         return session({
-            // la session se guarda solo si hay cambios
-            
-            secret:"mySecretKey",
-            resave:false,
-            saveUninitialized:false,
-
-            //usamos como store la bbdd
-            store:sessionStore,
-            //para reiniciar el tiempo de expiracion en cada solicitud
-            rolling:true,
-
-            cookie:{
-                maxAge:5*60*1000, // 5 minutos en milisegundos
+            secret: "mySecretKey",
+            resave: false,
+            saveUninitialized: false,
+            store: sessionStore,
+            rolling: true,
+            cookie: {
+                maxAge: 5 * 60 * 1000,
             },
-            
-        })
+        });
     },
-}
+};

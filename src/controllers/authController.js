@@ -8,6 +8,7 @@ const authControllers = {
   login: async (req, res) => {
       res.render("auth/login");
   },
+
   doLogin: async (req, res) => {
  
     const data = req.body;
@@ -26,7 +27,10 @@ const authControllers = {
         console.log(`bienvenido ${data.email}`);
         req.session.loggedin = true;
         req.session.name = data.email;
-        res.redirect("/admin");
+        res.render('admin/admin', {
+          loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
+          name: req.session.name || 'usser' // Asegúrate de que name esté definida, incluso si es una cadena vacía
+        })
       }
     } else {
       console.log("usuario no registrado ");

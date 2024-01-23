@@ -2,10 +2,8 @@ const express = require("express");
 const router = express.Router();
 const adminControllers = require("../controllers/adminController");
 const upload = require("../middlewares/uploadFiles");
-const {isLogged} = require('../middlewares/auth')
 
 // todas las rutas de admin verifican previamente si el usuario esta logeado
-router.use(isLogged);
 
 
 // esta pagina es /admin

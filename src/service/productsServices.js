@@ -1,14 +1,17 @@
 const { getAll, getOne } = require('../models/productModels');
 
 const getAllItems = async (params) => {
-
-    // if params tal cosa
-    //  else params tal otra
-
-    const data = getAll(params);
-
-    return data;
+    try {
+        const data = await getAll(params);
+        console.log("Data from getAllItems:", data);
+        return data;
+    } catch (error) {
+        console.error("Error in getAllItems:", error);
+        throw error;
+    }
 }
+
+
 
 module.exports = {
     getAllItems,
