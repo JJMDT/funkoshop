@@ -2,14 +2,16 @@
 
 // const { getAllLicences } = require("../service/licencesServices");
 // const {getAll} = require('../models/productModels')
- const ItemsService = require('../service/ItemsService');
+const ItemsService = require("../service/ItemsService");
 
 const {
+  getLicences,
   getAll,
   getOne,
   create,
   editProduct,
   deleteProduct,
+  createLicence
 } = require("../models/productModels");
 
 module.exports = {
@@ -26,10 +28,17 @@ module.exports = {
       res.status(500).send("Error en el servidor");
     }
   },
+  profile: async (req, res) => {
+    res.render("admin/profile", {
+      loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
+      name: req.session.name || "usser",
+    });
+  },
   createViews: async (req, res) => {
     const products = await getAll();
+    const licences= await getLicences();
     res.render("admin/create", {
-      products,
+      products,licences,
       loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
       name: req.session.name || "usser",
     });
@@ -56,6 +65,7 @@ module.exports = {
       await ItemsService.createItem(item, files);
 
       const result = await create([Object.values(product_schema)]);
+
       console.log("Resultado de la creación:", result);
 
       res.redirect("/admin");
@@ -70,8 +80,13 @@ module.exports = {
     const { id } = req.params;
 
     const [product] = await getOne(id);
+    
 
-    res.render("admin/edit", { product });
+    res.render("admin/edit", {
+      product,
+      loggedin: req.session.loggedin, // Asegúrate de que loggedin esté definida, incluso si es falsa
+      name: req.session.name,
+    });
   }, //res.send(`Route for edit id ${req.params.id} from controllers `),
   editProduct: async (req, res) => {
     try {
@@ -123,5 +138,42 @@ module.exports = {
     const { id } = req.params;
     await deleteProduct({ product_id: id });
     res.redirect("/admin");
+  },
+
+  createLicenceGet: async (req, res) => {
+    try {
+      res.render("admin/createLicence", {
+        loggedin: req.session.loggedin ,
+        name: req.session.name 
+      });
+    } catch (error) {
+      console.log("se produjo un error :" + error);
+    }
+  },
+  createLicencePost: async (req, res) => {
+    try {
+      const newLicence = {
+        licence_name: req.body.licence_name,
+        licence_description: req.body.licence_description
+      };
+      
+       const result = await createLicence([Object.values(newLicence)]);
+       console.log("Resultado de la creación de la licencia:", result);
+      res.redirect('/admin');
+    } catch (error) {
+      console.log('Se produjo un error:', error);
+      res.status(500).send("Se produjo un error al crear la licencia.");
+    }
+  }
+,  
+  createCategoryGet: async (req, res) => {
+    try {
+      res.render("admin/createCategory", {
+        loggedin: req.session.loggedin,
+        name: req.session.name,
+      });
+    } catch (error) {
+      console.log("se produjo un error" + error);
+    }
   },
 };

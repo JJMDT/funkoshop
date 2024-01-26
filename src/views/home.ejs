@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+    <title>FUNKO-SHOP</title>
+</head>
+
+<body>
+
+    <% if(loggedin) { %>
+
+        <!-- Si el usuario está logueado muestra este header -->
+
+        <header>
+            <nav class="navbar container">
+                <div class="navbar__logo">
+                    <a href="/home">
+                        <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
+                    </a>
+                </div>
+                <ul class="navbar__menu">
+                    <li class="navbar__item with-submenu">
+                        <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                                icon="carbon:chevron-down"></iconify-icon></a>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Funkos</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Remeras</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Llaveros</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="navbar__item"> </li>
+
+                    <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
+
+                    <li class="navbar__item with-submenu">
+                        <iconify-icon icon="mdi:user-outline" style="color: #f33" width="40" height="40" ;">
+                        </iconify-icon>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link">
+                                </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="/admin/profile" class="submenu__link"> PERFIL</a>
+                            </li>
+                            <li class="submenu__item">
+                            <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
+                    </li>
+                </ul>
+                </ul>
+                </ul>
+            </nav>
+        </header>
+        <% } else { %>
+            <!-- Si no está logueado, muestra este otro header -->
+
+            <header>
+                <nav class="navbar container">
+                    <div class="navbar__logo">
+                        <a href="/home">
+                            <img src="../../../public/img/branding/logo_light_horizontal.svg"
+                                alt="Logotipo de la marca">
+                        </a>
+                    </div>
+                    <ul class="navbar__menu">
+                        <li class="navbar__item with-submenu">
+                            <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                                    icon="carbon:chevron-down"></iconify-icon></a>
+                            <ul class="submenu">
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__link"> Funkos</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__link"> Remeras</a>
+                                </li>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__link"> Llaveros</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="navbar__item"><a class="navbar__link" href="/contact">CONTACTO</a></li>
+                        <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li>
+                        <li class="navbar__item" id="carrito">
+                            <span id="cantidadCarrito">0</span>
+                            <a href="/shop/cart" class="navbar__carrito"><img
+                                    src="../../../public/img/icons/cart-icon.svg" alt="Icono de carrito"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <% } %>
+
+                <section class="hero">
+                    <article class="hero__container container">
+                        <h3 class="hero__titulo">Nuevos ingresos</h3>
+                        <p class="hero__parrafo"> Descubrí el próximo Funko Pop de tu colección</p>
+                        <a class="hero__link" href="/shop">SHOP</a>
+
+                    </article>
+                </section>
+                <main class="container">
+
+
+                    <% itemsRandom.slice(0, 4).forEach(item=> { %>
+                        <section class="coleccion">
+                            <article class="coleccion__container container">
+                                <h3 class="coleccion__titulo">
+                                    <%= item.product_name %>
+                                </h3>
+                                <p class="coleccion__parrafo">
+                                    <%= item.licence_description %>
+                                </p>
+                                <div class="collection__line"></div>
+                                <a class="coleccion__link" href="/shop/item/<%= item.product_id %>">VER COLECCIÓN</a>
+
+                            </article>
+                            <div class="coleccion__img">
+                                <img class="card-item__img--front" src="/public/img/<%= item.image_front %>"
+                                    alt="<%= item.product_name %>">
+                            </div>
+                        </section>
+                        <% }); %>
+
+
+                            <section class="slaider container glide">
+                                <h2 class="slaider__titulo">ULTIMOS LANZAMIENTOS</h2>
+                                <div class="glide__track" data-glide-el="track">
+                                    <ul class="slaider__items glide__slides">
+                                        <% mostRecent.forEach(item=>{ %>
+
+                                            <li class="slaider__item glide__slide">
+                                                <article class="card-item">
+                                                    <a class="card-item__link" href="/shop/item/<%= item.product_id %>">
+                                                        <div class="card-item__img">
+                                                            <span class="card-item__span"> new</span>
+                                                            <img class="card-item__img--front"
+                                                                src="/public/img/<%= item.image_front %>"
+                                                                alt="<%= item.product_name %>">
+                                                            <img class="card-item__img--back"
+                                                                src="/public/img/<%= item.image_back %>"
+                                                                alt="<%= item.product_name %>">
+
+
+                                                        </div>
+                                                        <div class="card-item__container">
+                                                            <p class="card-item__licencia">
+                                                                <%= item.licence_name %>
+                                                            </p>
+                                                            <h4 class="card-item__nombre">
+                                                                <%= item.product_name %>
+                                                            </h4>
+                                                            <p class="card-item__precio">$<%= item.price %>
+                                                            </p>
+                                                            <p class="card-item__promo">
+                                                                <%= item.dues %> cuotas sin interés
+                                                            </p>
+                                                        </div>
+
+
+
+
+                                                    </a>
+                                                </article>
+                                            </li>
+
+                                            <% }) %>
+                                    </ul>
+                                </div>
+                                <div class="glide__arrows" data-glide-el="controls">
+                                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><iconify-icon
+                                            icon="mdi:chevron-left"></iconify-icon>
+                                    </button>
+                                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><iconify-icon
+                                            icon="mdi:chevron-right"></iconify-icon>
+                                    </button>
+                                </div>
+                            </section>
+
+                </main>
+                <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+                <script src="../../../public/js/glide.js"></script>
+                <%- include('./partials/footer') %>

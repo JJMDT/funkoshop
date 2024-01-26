@@ -106,6 +106,7 @@ img{
 header{
     background-color: var(--dark--bg-solid);
     padding: var(--space-24);
+ 
 }
 .navbar{
     display: flex;
@@ -152,20 +153,22 @@ header{
 }
 .submenu{
     display: none;
-    width: 300px;
+    width: auto;
+    padding: 0 5px;
     position: absolute;
     background-color: var(--dark--bg-solid);
     z-index:2;
 }
 .submenu__link{
     display: block;
-    padding: 8px 16px;
+    padding: 8px 16px; 
     font-size: 18px;
     transition: background .3s ease-in-out;
 }
 
 .submenu__link:hover{
     background-color: red;
+    width: 100%
 
 }
 
@@ -1190,4 +1193,42 @@ span {
 .form__box--grid textarea:last-of-type {
     width: 300px;
     height: 250px;
+}
+
+/* pages profile */
+
+.container_profile{
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 100px 0;
+}
+.card__profile{
+    border: 1px solid black;
+    padding: 50px;
+    width: 300px;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+}
+.card__profile:hover{
+    background-color: rgba(202, 4, 4, 0.87);
+    color: white;
+}
+.link__profile{
+    color: rgb(255, 255, 255);
+}
+.container__profile__title{
+    display: flex;
+    justify-content: center;
+    padding-top:  50px;
+
+}
+.title__profile{
+    color: var(--primary-solid);
+    font-size: var(--font-display);
+    
 }

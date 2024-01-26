@@ -1,43 +1,24 @@
 const session= require('express-session');
 const {conn} = require('../config/conn');
 const mysqlStore = require('express-mysql-session')(session);
-//declaramos nuestra BBDD como store
+
+//declaramos nuestra BBDD como store para almacernar las sesiones
 const sessionStore = new mysqlStore({
 
 }, conn);
 
 
-// module.exports = {
-//     initSession:()=>{
-//         return session({
-//             // la session se guarda solo si hay cambios
-            
-//             secret:"mySecretKey",
-//             resave:false,
-//             saveUninitialized:false,
-
-//             //usamos como store la bbdd
-//             store:sessionStore,
-//             //para reiniciar el tiempo de expiracion en cada solicitud
-//             rolling:true,
-
-//             cookie:{
-//                 maxAge:5*60*1000, // 5 minutos en milisegundos
-//             },
-            
-//         })
-//     },
-// }
 module.exports = {
+    // inicializa y configura la session
     initSession: () => {
         return session({
-            secret: "mySecretKey",
+            secret: "mySecretKey", // clave secreta compartida entre el servidor y el cliente para proteger la integridad de las cookies de sesión
             resave: false,
             saveUninitialized: false,
-            store: sessionStore,
+            store: sessionStore, // Almacenamos las sesiones en la base de datos
             rolling: true,
             cookie: {
-                maxAge: 60000 
+                maxAge: 600000 // tiempo que dura la sesion en milisegundos
             },
         });
     },

@@ -15,8 +15,8 @@ module.exports = {
       const mostRecent = [...items].sort((a,b)=> b.product_id - a.product_id ); // ordena por id, de mayor a menor 
 
 
-      res.render("index", { items,itemsRandom,mostRecent,licences,loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
-      name: req.session.name || 'usser' }); // Pasando los datos a la vista 'index'
+      res.render("home", { items,itemsRandom,mostRecent,licences,loggedin: req.session.loggedin , // Asegúrate de que loggedin esté definida, incluso si es falsa
+      name: req.session.name }); // Pasando los datos a la vista 'index'
       
     } catch (error) {
         if(items.isError  ){

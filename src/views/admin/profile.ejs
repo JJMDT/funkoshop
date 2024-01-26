@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="/public/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+    <title>FUNKO-SHOP</title>
+</head>
+
+<body>
+
+    <% if(loggedin) { %>
+
+        <!-- Si el usuario está logueado muestra este header -->
+
+        <header>
+            <nav class="navbar container">
+                <div class="navbar__logo">
+                    <a href="/home">
+                        <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
+                    </a>
+                </div>
+                <ul class="navbar__menu">
+                    <li class="navbar__item with-submenu">
+                        <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                                icon="carbon:chevron-down"></iconify-icon></a>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Funkos</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Remeras</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Llaveros</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="navbar__item"> </li>
+
+                    <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
+
+                    <li class="navbar__item with-submenu">
+                        <iconify-icon icon="mdi:user-outline" style="color: #f33" width="40" height="40" ;">
+                        </iconify-icon>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link">
+                                </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="/admin/profile" class="submenu__link"> PERFIL</a>
+                            </li>
+                            <li class="submenu__item">
+                            <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
+                    </li>
+                </ul>
+                </ul>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <article class="hero__container container">
+                <h3 class="hero__titulo">Bienvenido <%= name %>
+                </h3>
+                <p class="hero__parrafo"> Aqui podras gestionar todos tus productos</p>
+                <a class="hero__link" href="/shop">SHOP</a>
+            </article>
+        </section>
+        <div class="container__profile__title container">
+            <h2 class="title__profile"> Gestion de productos </h2>
+        </div>
+        <section class="container_profile container">
+            <a class="link__profile" href="/admin/createLicence">
+                <div class="card__profile">
+                    <iconify-icon icon="material-symbols:add" style="color: rgba(255, 255, 255);" width="50" > </iconify-icon>
+                    Agregar licencia
+                </div>
+            </a>
+            <a class="link__profile" href="/admin/createCategory">
+                <div class="card__profile">
+                    <iconify-icon icon="material-symbols:add" style="color: rgba(255, 255, 255);" width="50" > </iconify-icon>
+                    Agregar categoria
+                </div>
+            </a>
+            <a class="link__profile" href="/admin/create">
+                <div class="card__profile">
+                    <iconify-icon icon="material-symbols:add" style="color: rgba(255, 255, 255);" width="50" > </iconify-icon>
+                    Agregar producto
+                </div>
+            </a>
+            <a class="link__profile" href="/admin/create">
+                <div class="card__profile">
+                    <iconify-icon icon="ep:edit" style="color: rgb(255, 255, 255);" width="50"></iconify-icon>
+                    Editar un producto
+                </div>
+            </a>
+            <a class="link__profile" href="/admin/create">
+                <div class="card__profile">
+                    <iconify-icon class="icon__profile" icon="material-symbols:delete-outline" style="color: rgba(255, 255, 255)"  width="50" ></iconify-icon>
+                    Eliminar un producto
+                </div>
+            </a>
+
+        </section>
+        <footer class="footer">
+            <nav class="navbar container">
+                <ul class="navbar__item">
+                    <li class="navbar__item">
+                        <a class="navbar__link" href="/shop">SHOP</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a class="navbar__link" href="/auth/register">REGISTRARSE</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a class="navbar__link" href="/auth/login">LOGIN</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a class="navbar__link" href="contact">CONTACTO</a>
+                    </li>
+                </ul>
+                <picture>
+                    <img src="../../../public/img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop">
+                </picture>
+            </nav>
+            <p class="footer__parrafo">All rights reserved 2023 - Funkoshop &copy;</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+        <% } %>
+
+</body>
+
+</html>

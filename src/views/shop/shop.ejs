@@ -17,37 +17,53 @@
         
         <!-- Si el usuario está logueado muestra este header -->
         
-    <header>
-        <nav class="navbar container">
-            <div class="navbar__logo">
-                <a href="/home">
-                    <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
-                </a>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item with-submenu">
-                    <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
-                        icon="carbon:chevron-down"></iconify-icon></a>
+        <header>
+            <nav class="navbar container">
+                <div class="navbar__logo">
+                    <a href="/home">
+                        <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
+                    </a>
+                </div>
+                <ul class="navbar__menu">
+                    <li class="navbar__item with-submenu">
+                        <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                                icon="carbon:chevron-down"></iconify-icon></a>
                         <ul class="submenu">
                             <li class="submenu__item">
                                 <a href="#" class="submenu__link"> Funkos</a>
                             </li>
                             <li class="submenu__item">
-                                <a href="#" class="submenu__link"> Remeras</a>
+                                <a href="#"  class="submenu__link"> Remeras</a>
                             </li>
                             <li class="submenu__item">
                                 <a href="#" class="submenu__link"> Llaveros</a>
                             </li>
                         </ul>
                     </li>
+
+                    <li class="navbar__item"> </li>
+
                     <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
-                    <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
-                    <li class="navbar__item"><p> <%= name %></p></li>
-                    
-                  
-        </ul>
-    </nav>
-</header>
+
+                    <li class="navbar__item with-submenu">
+                        <iconify-icon icon="mdi:user-outline" style="color: #f33" width="40" height="40" ;">
+                        </iconify-icon>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link">
+                                </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="/admin/profile" class="submenu__link"> PERFIL</a>
+                            </li>
+                            <li class="submenu__item">
+                                <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
+                            </li>
+                        </ul>
+                    </ul>
+                </ul>
+        </nav>
+    </header>
 <% } else { %>
     <!-- Si no está logueado, muestra este otro header -->
 
@@ -138,7 +154,7 @@
             <ul class="slaider__items">
                 <% data.forEach( item => { %>
                     <li class="slaider__item">
-                        <article class="card-item">
+                        <article class="card-item" id="card-products">
                             <a class="card-item__link" href="/shop/item/<%= item.product_id %>">
                                 <div class="card-item__img">
                                     <span class="card-item__span"> new</span>

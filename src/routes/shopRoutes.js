@@ -1,12 +1,10 @@
 const express = require('express')
 const router = express.Router();
 const shopControllers = require('../controllers/shopController')
-const {isLogged} = require('../middlewares/auth')
 
-
-
+// shopRoutes
 router.get('/', shopControllers.shop)
-router.get('/item/:id',shopControllers.item) //router.get('/item:id',shopControllers.item)
+router.get('/item/:id',shopControllers.item) 
 
 router.post('/item/:id/add', shopControllers.addItemToCart);
 router.get('/cart',shopControllers.cart)

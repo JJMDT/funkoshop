@@ -24,13 +24,13 @@ const authControllers = {
         res.redirect("/auth/login");
         console.log("clave incorrecta ");
       } else {
-        console.log(`bienvenido ${data.email}`);
         req.session.loggedin = true;
         req.session.user_id = userData[0].user_id;
         req.session.name = userData[0].name;
         req.session.lastname = userData[0].lastname;
         req.session.email = userData[0].email;
-        res.render('admin/admin', {
+        console.log(`bienvenido ${data.email}`);
+        res.render('admin/profile', {
           loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
           name: req.session.name // Asegúrate de que name esté definida, incluso si es una cadena vacía
         })

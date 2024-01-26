@@ -27,26 +27,41 @@
             <ul class="navbar__menu">
                 <li class="navbar__item with-submenu">
                     <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
-                        icon="carbon:chevron-down"></iconify-icon></a>
-                        <ul class="submenu">
-                            <li class="submenu__item">
-                                <a href="#" class="submenu__link"> Funkos</a>
-                            </li>
-                            <li class="submenu__item">
-                                <a href="#" class="submenu__link"> Remeras</a>
-                            </li>
-                            <li class="submenu__item">
-                                <a href="#" class="submenu__link"> Llaveros</a>
-                            </li>
-                        </ul>
-                    </li>
-                    
-                    <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
-                    <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
-                    <li class="navbar__item"><p> <%= name %></p></li>
-                    
-                  
-        </ul>
+                            icon="carbon:chevron-down"></iconify-icon></a>
+                    <ul class="submenu">
+                        <li class="submenu__item">
+                            <a href="#" class="submenu__link"> Funkos</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="#" class="submenu__link"> Remeras</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="#" class="submenu__link"> Llaveros</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="navbar__item"> </li>
+
+                <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
+
+                <li class="navbar__item with-submenu">
+                    <iconify-icon icon="mdi:user-outline" style="color: #f33" width="40" height="40" ;">
+                    </iconify-icon>
+                    <ul class="submenu">
+                        <li class="submenu__item">
+                            <a href="#" class="submenu__link">
+                            </a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="/admin/profile" class="submenu__link"> PERFIL</a>
+                        </li>
+                        <li class="submenu__item">
+                            <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
+                        </li>
+                    </ul>
+                </ul>
+            </ul>
     </nav>
 </header>
 
@@ -87,13 +102,10 @@
                         </form>
                     </article>
                     <% }) %>
-                   
-                
-           
+
             </div>
         </section>
     </main>
-    <% } %>
     <footer class="footer">
         <nav class="navbar container">
             <ul class="navbar__item">
@@ -117,5 +129,7 @@
         <p class="footer__parrafo">All rights reserved 2023 - Funkoshop &copy;</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+    <% } %>
+    <a href="/auth/login"> debes iniciar sesion</a>
 </body>
 </html>

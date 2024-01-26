@@ -1,6 +1,15 @@
 const { conn } = require("../config/conn");
 
 module.exports = {
+  //licencias
+  getLicences:async() =>{
+    try {
+      const [rows] = await conn.query(' select licence_name from licence');
+      return rows
+    } catch (error) {
+      console.log('se produjo un error al obtener las licencias', error)
+    }
+  },
   //muestra todos los productos
   getAll: async () => {
     try {
@@ -84,6 +93,17 @@ module.exports = {
       conn.releaseConnection();
     }
   },
+  createLicence: async (params) => {
+    try {
+    
+      console.log('nombre de la licencia', params[0].licence_name)
+      const [licence] = await conn.query('INSERT INTO licence (licence_name, licence_description) VALUES ?;', [params]);
+      console.log(licence)
+      return licence
+    } catch (error) {
+      console.log('se produjo un error: ' + error)
+    }
+  }
 };
 
 // module.exports = {

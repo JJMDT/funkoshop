@@ -40,15 +40,27 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li class="navbar__item"> </li>
+
                     <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
-                    <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
-                    <li class="navbar__item">
-                        <p>
-                            <%= name %>
-                        </p>
+
+                    <li class="navbar__item with-submenu">
+                        <iconify-icon icon="mdi:user-outline" style="color: #f33" width="40" height="40" ;">
+                        </iconify-icon>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link">
+                                </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="/admin/profile" class="submenu__link"> PERFIL</a>
+                            </li>
+                            <li class="submenu__item">
+                            <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
                     </li>
-
-
+                </ul>
+                </ul>
                 </ul>
             </nav>
         </header>
@@ -198,5 +210,7 @@
                     </section>
 
                 </main>
-
+                <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+                <script src="../../../public/js/glide.js"></script>
                 <%- include('../partials/footer') %>

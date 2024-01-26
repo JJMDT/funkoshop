@@ -27,24 +27,41 @@
             <ul class="navbar__menu">
                 <li class="navbar__item with-submenu">
                     <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
-                        icon="carbon:chevron-down"></iconify-icon></a>
-                        <ul class="submenu">
-                            <li class="submenu__item">
-                                <a href="#" class="submenu__link"> Funkos</a>
-                            </li>
-                            <li class="submenu__item">
-                                <a href="#" class="submenu__link"> Remeras</a>
-                            </li>
-                            <li class="submenu__item">
-                                <a href="#" class="submenu__link"> Llaveros</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
-                    <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
-                    
-                  
-        </ul>
+                            icon="carbon:chevron-down"></iconify-icon></a>
+                    <ul class="submenu">
+                        <li class="submenu__item">
+                            <a href="#" class="submenu__link"> Funkos</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="#" class="submenu__link"> Remeras</a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="#" class="submenu__link"> Llaveros</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="navbar__item"> </li>
+
+                <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
+
+                <li class="navbar__item with-submenu">
+                    <iconify-icon icon="mdi:user-outline" style="color: #f33" width="40" height="40" ;">
+                    </iconify-icon>
+                    <ul class="submenu">
+                        <li class="submenu__item">
+                            <a href="#" class="submenu__link">
+                            </a>
+                        </li>
+                        <li class="submenu__item">
+                            <a href="/admin/profile" class="submenu__link"> PERFIL</a>
+                        </li>
+                        <li class="submenu__item">
+                            <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
+                        </li>
+                    </ul>
+                </ul>
+            </ul>
     </nav>
 </header>
 <% } %>
@@ -71,6 +88,9 @@
                         <option value="4">Campeones del mundo</option>
                     </select>
                 </div>
+                <% licences.forEach(licence=>{  %>
+                    <p><% licence.licence_name %></p>
+                    <% }) %>
             </div>
             <div class="form__box--flex">
                 <label class="form__label" for="name">Nombre del producto:</label>
