@@ -166,7 +166,11 @@
                                     <p class="card-item__licencia"><%= item.licence_name %></p>
                                     <h4 class="card-item__nombre"><%= item.product_name %></h4>
                                     <p class="card-item__precio">$<%= item.price %></p>
-                                    <p class="card-item__promo"><%= item.dues %> CUOTAS SIN INTERES</p>
+                                    <p class="card-item__promo"> <% if (item.dues === 0) { %>
+                                        EN 1 PAGO
+                                    <% } else { %>
+                                        <%= item.dues %> CUOTAS SIN INTERES
+                                    <% } %></p>
                                 </div>
     
     

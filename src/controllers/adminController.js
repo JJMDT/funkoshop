@@ -2,25 +2,43 @@
 
 // const { getAllLicences } = require("../service/licencesServices");
 // const {getAll} = require('../models/productModels')
-const ItemsService = require("../service/ItemsService");
+//const ItemsService = require("../service/ItemsService");
 
 const {
-  getLicences,
   getAll,
   getOne,
   create,
   editProduct,
   deleteProduct,
-  createLicence
+  
+  createLicence,
+  createCategory,
+  getOneLicence,
+  getLicences,
+  editLicence,
+  getCategory,
+  editCategory,
+  getOneCategory,
+
+  getCategoryxLicence
+
 } = require("../models/productModels");
 
 module.exports = {
   admin: async (req, res) => {
     try {
       const items = await getAll();
-      return res.render("admin/admin", {
+      const licences= await getLicences();
+      const category= await getCategory();
+
+      let viewType = req.query.viewType || "product"; // Obtén el valor de viewType desde la consulta (query)
+
+      return res.render("admin/admin", { 
         products: items,
-        loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
+        licences,
+        category,
+        viewType,
+        loggedin: req.session.loggedin || false,
         name: req.session.name || "usser",
       });
     } catch (error) {
@@ -37,8 +55,9 @@ module.exports = {
   createViews: async (req, res) => {
     const products = await getAll();
     const licences= await getLicences();
+    const category = await getCategory();
     res.render("admin/create", {
-      products,licences,
+      products,licences,category,
       loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
       name: req.session.name || "usser",
     });
@@ -46,35 +65,37 @@ module.exports = {
   // post
   createItem: async (req, res) => {
     try {
-      const item = req.body;
-      const files = req.files;
+      const image_front = req.files['image_front'] ? req.files['image_front'][0] : null;
+      const image_back = req.files['image_back'] ? req.files['image_back'][0] : null;
 
-      const product_schema = {
-        product_name: req.body.name,
-        product_description: req.body.description,
-        price: Number(req.body.price),
-        stock: Number(req.body.stock),
-        discount: Number(req.body.discount),
-        sku: req.body.sku,
-        dues: Number(req.body.dues),
-        image_front: "/products/" + req.files[0].filename,
-        image_back: "/products/" + req.files[1].filename,
-        category_id: Number(req.body.category),
-        licence_id: Number(req.body.licence),
-      };
-      await ItemsService.createItem(item, files);
+        let product_schema = {
+            product_name: req.body.name,
+            product_description: req.body.description,
+            price: Number(req.body.price),
+            stock: Number(req.body.stock),
+            discount: Number(req.body.discount),
+            sku: req.body.sku,
+            dues: Number(req.body.dues),
+            image_front: image_front ? "/products/" + image_front.filename : "/default/no_image_front.jpg",
+            image_back: image_back ? "/products/" + image_back.filename : "/default/no_image_back.jpg",
+            category_id: Number(req.body.category),
+            licence_id: Number(req.body.licence),
+          };
+          if (image_front === null || image_back === null) {
+            throw new Error("No se proporcionaron imágenes válidas");
+        }
 
-      const result = await create([Object.values(product_schema)]);
+        const result = await create([Object.values(product_schema)]);
 
-      console.log("Resultado de la creación:", result);
+        console.log("Resultado de la creación:", result);
 
-      res.redirect("/admin");
+        res.redirect("/admin");
     } catch (error) {
-      console.log("Error en createItem:", error);
-      // Aquí puedes manejar el error, enviar una respuesta al cliente, etc.
-      res.status(500).send("Se produjo un error al crear el producto.");
+        console.log("Error en createItem:", error);
+        res.status(500).send("Se produjo un error al crear el producto.");
     }
-  },
+},
+
 
   editView: async (req, res) => {
     const { id } = req.params;
@@ -124,7 +145,7 @@ module.exports = {
             licence_id: Number(req.body.licence),
           };
 
-      // Asumiendo que tienes una función editProduct definida en product.models
+      //  función editProduct definida en product.models
       await editProduct(item_schema, id);
 
       res.redirect("/admin");
@@ -152,6 +173,7 @@ module.exports = {
   },
   createLicencePost: async (req, res) => {
     try {
+      console.log(req.body)
       const newLicence = {
         licence_name: req.body.licence_name,
         licence_description: req.body.licence_description
@@ -159,7 +181,7 @@ module.exports = {
       
        const result = await createLicence([Object.values(newLicence)]);
        console.log("Resultado de la creación de la licencia:", result);
-      res.redirect('/admin');
+       res.redirect('/admin')
     } catch (error) {
       console.log('Se produjo un error:', error);
       res.status(500).send("Se produjo un error al crear la licencia.");
@@ -176,4 +198,81 @@ module.exports = {
       console.log("se produjo un error" + error);
     }
   },
-};
+  createCategoryPost: async(req,res)=>{
+    try {
+      const newCategory = {
+        category_name: req.body.category_name,
+        category_description: req.body.category_description
+      }
+      const result = await createCategory([Object.values(newCategory)])
+      console.log('el resultado de la nueva categoria ' , result )
+      res.redirect("/admin/?viewType=category");
+      } catch (error) {
+      console.log(error)
+    }
+  },
+  editCategoryView: async (req, res) => {
+    const { id } = req.params;
+
+    const [category] = await getOneCategory(id);
+    
+
+    res.render("admin/editCategory", {
+      category,
+      loggedin: req.session.loggedin, // Asegúrate de que loggedin esté definida, incluso si es falsa
+      name: req.session.name,
+    });
+  },
+  editCategory: async(req,res)=>{
+  try {
+ 
+    const { id } = req.params;
+
+    const editCateg =  {
+         category_name: req.body.name,
+          category_description: req.body.category_description,
+        }
+    //  función editProduct definida en product.models
+    await editCategory(editCateg, id);
+
+    res.redirect("/admin/?viewType=category");
+  } catch (error) {
+    console.log("Error en editProduct:", error);
+    res.status(500).send("Se produjo un error al editar el producto.");
+  }
+  },
+
+  editLicenceView:async(req,res)=>{
+    
+    const { id } = req.params;
+
+    const [licence] = await getOneLicence(id);
+    
+    console.log("Licence details:", licence);
+
+    res.render("admin/editLicence", {
+      licence,
+      loggedin: req.session.loggedin, // Asegúrate de que loggedin esté definida, incluso si es falsa
+      name: req.session.name,
+    });
+
+  },
+  editLicence: async(req,res)=>{
+    try {
+    console.log(req.body);
+      const { id } = req.params;
+  
+      const editLic =  {
+           licence_name: req.body.name,
+            licence_description: req.body.licence_description,
+          }
+      //  función editProduct definida en product.models
+      await editLicence(editLic, id);
+  
+      res.redirect("/admin/?viewType=licence");
+    } catch (error) {
+      console.log("Error en editLicence:", error);
+      res.status(500).send("Se produjo un error al editar la licencia.");
+    }
+    },
+}

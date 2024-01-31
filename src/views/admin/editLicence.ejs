@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" href="/public/css/index.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+        <title>FUNKOSHOP</title>
+    </head>
+    <body class="grid-fixed">
+        <header>
+            <nav class="navbar container">
+                <div class="navbar__logo">
+                    <a href="/home">
+                        <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
+                    </a>
+                </div>
+                <ul class="navbar__menu">
+                    <li class="navbar__item with-submenu">
+                        <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                                icon="carbon:chevron-down"></iconify-icon></a>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Funkos</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Remeras</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Llaveros</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="navbar__item"> </li>
+
+                    <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
+
+                    <li class="navbar__item with-submenu">
+                        <iconify-icon icon="mdi:user-outline" style="color: #f33" width="40" height="40" ;">
+                        </iconify-icon>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link">
+                                </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="/admin/profile" class="submenu__link"> PERFIL</a>
+                            </li>
+                            <li class="submenu__item">
+                                <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
+                            </li>
+                        </ul>
+                    </ul>
+                </ul>
+        </nav>
+    </header>
+    <main id="edit" class="container">
+        <% licence.forEach(licence => { %>
+        
+           
+      
+        <h2 class="edit__title">EDITAR LICENCIA</h2>
+        <form class="edit__form" action="/admin/editLicence/<%= licence.licence_id %>?_method=PUT" method="POST">
+            <div class="form__flex">
+               
+                
+            </div>
+            <div class="form__box--flex">
+                <label class="form__label" for="name">Nombre de la categoria:</label>
+                <input class="form__input" type="text" name="name" id="name" value="<%= licence.licence_name %>"
+                    required>
+            </div>
+            <div>
+                <label class="form__label" for="name">Descripcion:</label>
+                <textarea class="textArea" name="licence_description" id="licence_description" cols="100" rows="10"
+                 required> <%= licence.licence_description %></textarea>
+            </div>
+           
+            
+            
+            <div>
+                <input class="form__btn" type="submit" value="Modificar Producto">
+                <input class="form__btn" type="reset" value="Limpiar">
+            </div>
+        </form>
+        <% }); %>
+    </main>
+    <footer class="footer">
+        <nav class="navbar container">
+            <ul class="navbar__item">
+                <li class="navbar__item">
+                    <a class="navbar__link" href="/shop">SHOP</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="/auth/register">REGISTRARSE</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="/auth/login">LOGIN</a>
+                </li>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="/contact">CONTACTO</a>
+                </li>
+            </ul>
+            <picture>
+                <img src="../../../public/img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop">
+            </picture>
+        </nav>
+        <p class="footer__parrafo">All rights reserved 2023 - Funkoshop &copy;</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+</body>
+</html>

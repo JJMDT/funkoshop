@@ -72,20 +72,24 @@
                 <div class="form__box--flex">
                     <label class="form__label" for="collection">Categoría:</label>
                     <select class="form__select" name="category" id="category" required>
-                        <option value="" disabled selected hidden>Seleccionar</option>
-                        <option value="1">Figuras Coleccionables</option>
-                        <option value="2">Remeras</option>
-                        <option value="3">Llaveros</option>
+                            console.log("category:", <%= JSON.stringify(category) %>);
+                            <% category.forEach(row => { %>
+                                console.log("Row:", <%= JSON.stringify(row) %>);
+                                <option value="" disabled selected hidden>Seleccionar</option>
+                                <option value="<%= row.category_id %>"><%= row.category_name %></option>
+                                
+                                <% }); %>
                     </select>
                 </div>
                 <div class="form__box--flex">
                     <label class="form__label" for="collection">Licencia:</label>
                     <select class="form__select" name="licence" id="licence" required>
+                        <% licences.forEach(licence =>{ %>
                         <option value="" disabled selected hidden>Seleccionar</option>
-                        <option value="1">Pokemon</option>
-                        <option value="2">Star Wars</option>
-                        <option value="3">Harry Potter</option>
-                        <option value="4">Campeones del mundo</option>
+                            <option value="<%= licence.licence_id %>"><%= licence.licence_name %></option>
+
+                            <% }) %>
+                      
                     </select>
                 </div>
                 <% licences.forEach(licence=>{  %>
@@ -141,10 +145,18 @@
                     </select>
                 </div>
             </div>
-            <div class="form__box--flex">
-                <label class="form__label" for="images">Imagenes:</label>
-                <input type="file" name="images" id="img" multiple>
-            </div>
+                <div class="form__box--flex">
+
+                    <label class="form__label" for="image_front">Imagen Frontal:</label>
+                    <input type="file" name="image_front" id="image_front" accept="image/*" >
+                </div>
+                
+                
+                <div class="form__box--flex">
+                    <label class="form__label" for="image_back">Imagen Posterior:</label>
+                    <input type="file" name="image_back" id="image_back" accept="image/*" >
+                </div>
+            
             <div class="form__flex">
                 <input class="form__btn " type="submit" value="Agregar Producto">
                 <input class=" form__btn" type="reset" value="Limpiar">

@@ -149,8 +149,11 @@
 
                             </form>
 
-                            <p class="item__promo"><a href="">Ver métodos de pago</a> - <%= product.dues %> CUOTAS SIN
-                                    INTERÉS</p>
+                            <p class="item__promo"><a href="">Ver métodos de pago</a> -<% if (product.dues === 0) { %>
+                                EN 1 PAGO
+                            <% } else { %>
+                                <%= product.dues %> CUOTAS SIN INTERES
+                            <% } %></p>
                         </article>
                     </section>
                     <!-- slider -->
@@ -186,7 +189,11 @@
                                                         <p class="card-item__precio">$<%= prod.price %>
                                                         </p>
                                                         <p class="card-item__promo">
-                                                            <%= prod.dues %> cuotas sin interés
+                                                            <% if (prod.dues === 0) { %>
+                                                                EN 1 PAGO
+                                                            <% } else { %>
+                                                                <%= prod.dues %> CUOTAS SIN INTERES
+                                                            <% } %>
                                                         </p>
                                                     </div>
 

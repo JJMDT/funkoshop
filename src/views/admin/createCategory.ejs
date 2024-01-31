@@ -12,12 +12,12 @@
     <title>FUNKOSHOP</title>
 </head>
 
-<body class="grid-fixed  ">
+<body class="grid-fixed">
     <% if(loggedin) { %>
 
         <!-- Si el usuario está logueado muestra este header -->
 
-        <header >
+        <header>
             <nav class="navbar container">
                 <div class="navbar__logo">
                     <a href="/home">
@@ -66,19 +66,19 @@
         </header>
         <% } %>
             <main id="create" class="container">
-                <h2 class="create__title">CREAR NUEVA CATEGORIA </h2>
-                <form class="create__form" action="/admin/createLicence" method="POST" enctype="multipart/form-data">
+                <h2 class="create__title">CREAR NUEVA CATEGORIA</h2>
+                <form class="create__form" action="/admin/createCategory" method="POST" >
 
 
 
                     <div class="form__box--flex">
-                        <label class="form__label" for="name">Nombre de la categoria:</label>
-                        <input class="form__input" type="text" name="name" id="name" placeholder="Pokemon" required>
+                        <label class="form__label" for="category_name">Nombre de la categoria:</label>
+                        <input class="form__input" type="text" name="category_name" id="category_name" placeholder="Pokemon" required>
                     </div>
                     <div class="form__box--flex">
 
-                        <label class="form__label" for="description">Descripcion:</label>
-                        <input class="form__input" type="text" name="description" id="description" placeholder="Advanced Generation. "
+                        <label class="form__label" for="category_description">Descripcion:</label>
+                        <input class="form__input" type="text" name="category_description" id="category_description" placeholder="Advanced Generation. "
                             required>
 
                     </div>

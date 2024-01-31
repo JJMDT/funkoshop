@@ -12,124 +12,221 @@
 </head>
 
 <body>
-    
+
     <% if(loggedin) { %>
-        
+
         <!-- Si el usuario está logueado muestra este header -->
-        
-    <header>
-        <nav class="navbar container">
-            <div class="navbar__logo">
-                <a href="/home">
-                    <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
-                </a>
-            </div>
-            <ul class="navbar__menu">
-                <li class="navbar__item with-submenu">
-                    <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
-                            icon="carbon:chevron-down"></iconify-icon></a>
-                    <ul class="submenu">
-                        <li class="submenu__item">
-                            <a href="#" class="submenu__link"> Funkos</a>
-                        </li>
-                        <li class="submenu__item">
-                            <a href="#" class="submenu__link"> Remeras</a>
-                        </li>
-                        <li class="submenu__item">
-                            <a href="#" class="submenu__link"> Llaveros</a>
-                        </li>
-                    </ul>
-                </li>
 
-                <li class="navbar__item"> </li>
+        <header>
+            <nav class="navbar container">
+                <div class="navbar__logo">
+                    <a href="/home">
+                        <img src="../../../public/img/branding/logo_light_horizontal.svg" alt="Logotipo de la marca">
+                    </a>
+                </div>
+                <ul class="navbar__menu">
+                    <li class="navbar__item with-submenu">
+                        <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
+                                icon="carbon:chevron-down"></iconify-icon></a>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Funkos</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Remeras</a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link"> Llaveros</a>
+                            </li>
+                        </ul>
+                    </li>
 
-                <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
+                    <li class="navbar__item"> </li>
 
-                <li class="navbar__item with-submenu">
-                    <iconify-icon icon="mdi:user-outline" style="color: #f33" width="40" height="40" ;">
-                    </iconify-icon>
-                    <ul class="submenu">
-                        <li class="submenu__item">
-                            <a href="#" class="submenu__link">
-                            </a>
-                        </li>
-                        <li class="submenu__item">
-                            <a href="/admin/profile" class="submenu__link"> PERFIL</a>
-                        </li>
-                        <li class="submenu__item">
+                    <li class="navbar__item"><a class="navbar__link" href="/admin">ADMIN</a></li>
+
+                    <li class="navbar__item with-submenu">
+                        <iconify-icon icon="mdi:user-outline" style="color: #f33" width="40" height="40" ;">
+                        </iconify-icon>
+                        <ul class="submenu">
+                            <li class="submenu__item">
+                                <a href="#" class="submenu__link">
+                                </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="/admin/profile" class="submenu__link"> PERFIL</a>
+                            </li>
+                            <li class="submenu__item">
                             <li class="navbar__item"><a class="navbar__link" href="/auth/logout">SALIR</a></li>
-                        </li>
-                    </ul>
+                    </li>
                 </ul>
-            </ul>
-    </nav>
-</header>
+                </ul>
+                </ul>
+            </nav>
+        </header>
 
-    <main id="admin" class="container">
-        <section class="admin__search">
-            <iconify-icon class="admin__icon" icon="charm:search"></iconify-icon>
-            <input class="admin__search-bar" type="text" name="search" id="search" placeholder="código, nombre o categoria">
-        </section>
-        <section class="admin__list">
-            <div class="admin__header">
-                <h2>LISTADO DE PRODUCTOS</h2>
-        
-                <span>AGREGAR<a href="/admin/create"><iconify-icon icon="bxs:plus-square" style="color: #f33;"></iconify-icon></a></span>
-            </div>
-            <div class="admin-table">
-                <header class="admin-table__header">
-                    <h3>ID</h3>
-                    <h3>Código</h3>
-                    <h3>Nombre del Producto</h3>
-                    <h3>Categoría</h3>
-                    <h3>Licencia</h3>
-                    <h3>Acciones</h3>
-                </header>
-                
-                <% products.forEach( item => { %>
-                    <article class="admin-table__row">
-                        <p><%= item.product_id %></p>
-                        <p><%= item.sku %></p>
-                        <p><%= item.product_name %></p>
-                        <p><%= item.category_name %></p>
-                        <p><%= item.licence_name %></p>
-                        <a href="/shop/item/<%= item.product_id %>"><iconify-icon icon="carbon:view-filled" style="color: #811ca0;"></iconify-icon></a>
-                        <a href="/admin/edit/<%= item.product_id %>"><iconify-icon icon="mdi:pencil" style="color: #1d84b5;"></iconify-icon></a>
-                        <form action="/admin/delete/<%= item.product_id %>?_method=DELETE" method="POST">
-                            <button type="submit">
-                                <iconify-icon icon="heroicons-solid:trash" style="color: #f33;"></iconify-icon>
-                            </button>
-                        </form>
-                    </article>
-                    <% }) %>
+        <main id="admin" class="container">
+            <section class="admin__search">
+                <iconify-icon class="admin__icon" icon="charm:search"></iconify-icon>
+                <input class="admin__search-bar" type="text" name="search" id="search"
+                    placeholder="código, nombre o categoria">
+            </section>
+            <section class="admin__list">
+                <div class="admin__header">
+                    <h2>LISTADO DE PRODUCTOS</h2>
+                    <form method="GET" action="">
+                        <label class="form__label" for="collection">Ver:</label>
+                        <select class="form__select" name="viewType" id="viewType" onchange="this.form.submit()">
+                            <option value="product" <%= viewType === 'product' ? 'selected' : '' %>>PRODUCTOS</option>
+                            <option value="licence" <%= viewType === 'licence' ? 'selected' : '' %>>LICENCIAS</option>
+                            <option value="category" <%= viewType === 'category' ? 'selected' : '' %>>CATEGORIAS</option>
+                        </select>
+                    </form>                    
+                    <% if (viewType==='product' ) { %>
+                    <span>AGREGAR<a href="/admin/create"><iconify-icon icon="bxs:plus-square"
+                                style="color: #f33;"></iconify-icon></a></span>
+                </div>
+                <div class="admin-table">
+                    <header class="admin-table__header">
+                            <!-- Renderiza la tabla de productos -->
+                            <h3>ID</h3>
+                            <h3>Código</h3>
+                            <h3>Nombre del Producto</h3>
+                            <h3>Categoría</h3>
+                            <h3>Licencia</h3>
+                            <h3>Acciones</h3>
+                            <% } else if (viewType==='licence' ) { %>
+                                <span>AGREGAR<a href="/admin/createLicence"><iconify-icon icon="bxs:plus-square"
+                                    style="color: #f33;"></iconify-icon></a></span>
+                    </div>
+                               
+                                <header class="admin-table__header__licence">
+                                <h3>ID</h3>
+                                <h3>Nombre</h3>
+                                <h3>Descripcion</h3>
+                                <h3>Acciones</h3>
+                                <% } else if (viewType==='category' ) { %>
+                                    <span>AGREGAR<a href="/admin/createCategory"><iconify-icon icon="bxs:plus-square"
+                                        style="color: #f33;"></iconify-icon></a></span>
+                        </div>
+                                    <header class="admin-table__header__licence">
+                                    <h3>ID</h3>
+                                    <h3>Nombre</h3>
+                                    <h3>Descripcion</h3>
+                                    <h3>Acciones</h3>
+                                    <% } %>
+                    </header>
+                    <% if (viewType==='product' ) { %>
+                        
+                        <% products.forEach( item=> { %>
+                            <article class="admin-table__row">
+                                <p>
+                                    <%= item.product_id %>
+                                </p>
+                                <p>
+                                    <%= item.sku %>
+                                </p>
+                                <p>
+                                    <%= item.product_name %>
+                                </p>
+                                <p>
+                                    <%= item.category_name %>
+                                </p>
+                                <p>
+                                    <%= item.licence_name %>
+                                </p>
+                                <a href="/shop/item/<%= item.product_id %>"><iconify-icon icon="carbon:view-filled"
+                                        style="color: #811ca0;"></iconify-icon></a>
+                                <a href="/admin/edit/<%= item.product_id %>"><iconify-icon icon="mdi:pencil"
+                                        style="color: #1d84b5;"></iconify-icon></a>
+                                <form action="/admin/delete/<%= item.product_id %>?_method=DELETE" method="POST">
+                                    <button type="submit">
+                                        <iconify-icon icon="heroicons-solid:trash" style="color: #f33;"></iconify-icon>
+                                    </button>
+                                </form>
+                            </article>
+                            <% }) %>
+                                <% } else if (viewType==='licence' ) { %>
 
-            </div>
-        </section>
-    </main>
-    <footer class="footer">
-        <nav class="navbar container">
-            <ul class="navbar__item">
-                <li class="navbar__item">
-                    <a class="navbar__link" href="/shop">SHOP</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="/auth/register">REGISTRARSE</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="/auth/login">LOGIN</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="contact">CONTACTO</a>
-                </li>
-            </ul>
-            <picture>
-                <img src="../../../public/img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop">
-            </picture>
-        </nav>
-        <p class="footer__parrafo">All rights reserved 2023 - Funkoshop &copy;</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
-    <% } %>
-    <a href="/auth/login"> debes iniciar sesion</a>
+                                    <% licences.forEach( licence=> { %>
+                                        <article class="admin-table__row__licence">
+                                            <p>
+                                                <%= licence.licence_id %>
+                                            </p>
+                                            <p>
+                                                <%= licence.licence_name %>
+                                            </p>
+                                            <p>
+                                                <%= licence.licence_description %>
+                                            </p>
+                                            <a href="/admin/editLicence/<%= licence.licence_id %>"><iconify-icon icon="mdi:pencil"
+                                                style="color: #1d84b5;"></iconify-icon></a>
+                                        
+                                        <form action="/admin/delete/<%= licence.product_id %>?_method=DELETE" method="POST">
+                                            <button type="submit">
+                                                <iconify-icon icon="heroicons-solid:trash" style="color: #f33;"></iconify-icon>
+                                            </button>
+                                        </form>
+                                        </form>
+                                        </article>
+                                        <% }) %>
+                                            <% } else if (viewType==='category' ) { %>
+                                                <% category.forEach(cat=> { %>
+
+                                                    <article class="admin-table__row__licence">
+                                                        <p>
+                                                            <%= cat.category_id %>
+                                                        </p>
+                                                        <p>
+                                                            <%= cat.category_name %>
+                                                        </p>
+                                                        <p>
+                                                            <%= cat.category_description %>
+                                                        </p>
+                                                        <a href="/admin/editCategory/<%= cat.category_id %>"><iconify-icon icon="mdi:pencil"
+                                                            style="color: #1d84b5;"></iconify-icon></a>
+                                                    
+                                                    <form action="/admin/delete/<%= cat.category_id %>?_method=DELETE" method="POST">
+                                                    
+                                                        <button type="submit">
+                                                            <iconify-icon icon="heroicons-solid:trash" style="color: #f33;"></iconify-icon>
+                                                        </button>
+                                                    </form>
+                                                    </form>
+                                                    </article>
+                                                    <% }) %>
+                                                        <% } %>
+
+
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <nav class="navbar container">
+                <ul class="navbar__item">
+                    <li class="navbar__item">
+                        <a class="navbar__link" href="/shop">SHOP</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a class="navbar__link" href="/auth/register">REGISTRARSE</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a class="navbar__link" href="/auth/login">LOGIN</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a class="navbar__link" href="contact">CONTACTO</a>
+                    </li>
+                </ul>
+                <picture>
+                    <img src="../../../public/img/branding/isotype.svg" alt="Isotipo de la marca Funkoshop">
+                </picture>
+            </nav>
+            <p class="footer__parrafo">All rights reserved 2023 - Funkoshop &copy;</p>
+        </footer>
+        <% } %>
+        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+            <a href="/auth/login"> debes iniciar sesion</a>
+            <script src="/public/js/filtro.js"></script>
 </body>
+
 </html>

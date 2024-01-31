@@ -1,8 +1,8 @@
 const bcryp = require("bcrypt");
 const  {conn} = require("../config/conn");
 //const conexion = require('../src/config/conn')
-const session = require("express-session");
-const { fields } = require("../middlewares/uploadFiles");
+//const session = require("express-session");
+//const { fields } = require("../middlewares/uploadFiles");
 
 const authControllers = {
   login: async (req, res) => {

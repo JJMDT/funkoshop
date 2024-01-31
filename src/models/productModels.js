@@ -1,15 +1,34 @@
 const { conn } = require("../config/conn");
 
 module.exports = {
+  //categorias
+  getCategory:async() =>{
+    try {
+      const [rows] = await conn.query(' select * from category');
+      return rows
+    } catch (error) {
+      console.log('se produjo un error al obtener las categorias', error)
+    }
+  },
   //licencias
   getLicences:async() =>{
     try {
-      const [rows] = await conn.query(' select licence_name from licence');
+      const [rows] = await conn.query(' select * from licence');
       return rows
     } catch (error) {
       console.log('se produjo un error al obtener las licencias', error)
     }
   },
+  //categoryxlicence
+
+  getCategoryxLicence:async(params) => {
+    //const categoryId = 1; // Reemplaza 123 con el valor real de category_id
+    const res = await conn.query('SELECT c.category_id, c.category_name, l.licence_name FROM category_licence AS cl INNER JOIN category AS c ON c.category_id = cl.category_id INNER JOIN licence AS l ON l.licence_id = cl.licence_id');
+    
+    console.log(res)
+    return res
+  },
+  
   //muestra todos los productos
   getAll: async () => {
     try {
@@ -40,14 +59,36 @@ module.exports = {
       conn.releaseConnection();
     }
   },
-
+  getOneCategory: async(params) =>{
+    
+      try {
+        const [rows] = await conn.query(
+          `select * from category where category_id = ?`,
+          params
+        );
+        return rows;
+      } catch (error) {
+        console.log("Error al consultar los datos " + error);
+      } finally {
+        conn.releaseConnection();
+      }
+ 
+  },
+  getOneLicence: async(params) =>{
+    try {
+      const oneLicence = await conn.query('SELECT * FROM licence where licence_id = ?', params)
+      return oneLicence
+    } catch (error) {
+      console.log("Error al consultar los datos " + error);
+    }
+  },
   //crear un nuevo producto
   create: async (params) => {
     try {
       console.log("Descripción del producto:", params[0].product_description);
 
       const [product] = await conn.query(
-        "INSERT INTO product ( product_name, product_description, price, stock,discount, sku, dues, image_front, image_back, category_id, licence_id) values ?;",
+       "INSERT INTO product ( product_name, product_description, price, stock,discount, sku, dues, image_front, image_back, category_id, licence_id) values ?",
         [params]
       );
 
@@ -103,6 +144,33 @@ module.exports = {
     } catch (error) {
       console.log('se produjo un error: ' + error)
     }
+  },
+  editLicence: async(params, id) => {
+    try {
+      const licence = await conn.query('UPDATE licence SET  ? where ?', [params, {licence_id : id}])
+    return licence
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  ,
+  createCategory: async(params) =>{
+   try {
+    const [category] = await conn.query('INSERT INTO category (category_name,category_description) VALUES ?', [params])
+    return category
+   } catch (error) {
+    console.log('error:', error)
+   }
+  },
+
+  //editar categoria
+  editCategory:async(params,id)=>{
+ try {
+  const  category = await conn.query('UPDATE category SET ? where ?',[params, {category_id : id}])
+  return category
+ } catch (error) {
+  console.log("error",error)
+ }
   }
 };
 
