@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const addToCartButton = document.getElementById("addToCart");
     const quantityInput = document.getElementById("quantity");
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     console.log("productId:", productId);
+
     fetch(`/shop/item/${productId}/add`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -41,15 +43,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const subtract = document.querySelector("#subtract");
 
   add.addEventListener("click", () => {
-    if (quantityInput.value < 10) {
-      quantityInput.value = Number(quantityInput.value) + 1;
+    // Obtén el valor actual del input y el stock máximo permitido
+    const currentQuantity = Number(quantityInput.value);
+    const maxStock = parseInt(quantityInput.getAttribute("data-stock") || "0", 10);
+
+  
+    // Verifica si el valor actual es menor que el stock máximo antes de incrementarlo
+    if (currentQuantity < maxStock) {
+      quantityInput.value = currentQuantity + 1;
     }
+    document.getElementById('cantidadCarrito').innerHTML = `${totalProductos}`;
+
+
   });
+  
 
   subtract.addEventListener("click", () => {
     if (quantityInput.value > 0) {
       quantityInput.value = Number(quantityInput.value) - 1;
     }
+    
   });
 
   function actualizarListaCarrito(listaCarrito) {
@@ -64,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const carritoItem = document.createElement("div");
           carritoItem.innerHTML = `<p>${item.product_name} - Cantidad: ${item.cantidad}</p>`;
           carritoListaElement.appendChild(carritoItem);
+
         } else {
           console.error("Elemento de listaCarrito inválido:", item);
         }
@@ -98,3 +112,48 @@ vaciar.addEventListener('click', async () => {
         console.error('Error al vaciar el carrito:', error);
     }
 });
+
+document.addEventListener("click", async (event) => {
+  if (event.target.classList.contains("eliminar-producto")) {
+      event.preventDefault();
+      const productId = event.target.getAttribute("data-product-id");
+      
+      // Realiza una solicitud al servidor para eliminar el producto del carrito
+      try {
+          const response = await fetch(`/ruta/para/eliminar/producto/${productId}`, {
+              method: 'DELETE',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+          });
+
+          if (!response.ok) {
+              throw new Error(`Error en la respuesta del servidor: ${response.status}`);
+          }
+
+          const data = await response.json();
+          console.log(data);  // Puedes realizar acciones adicionales si es necesario
+          // Actualiza la lista del carrito después de eliminar el producto
+          actualizarListaCarrito(data);
+      } catch (error) {
+          console.error('Error al eliminar el producto del carrito:', error);
+      }
+  }
+});
+
+
+/*** nueva prueba  */
+const removeProductFromCart = (req, res) => {
+  try {
+    const productId = req.params.productId;
+    // Resto de la lógica para eliminar el producto del carrito
+    // ...
+  } catch (error) {
+    console.error("Error al eliminar producto del carrito:", error);
+    res.status(500).json({
+      success: false,
+      message: "Error al eliminar producto del carrito.",
+      error: error.message,
+    });
+  }
+};

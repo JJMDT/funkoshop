@@ -13,10 +13,11 @@ module.exports = {
       const licences = await getAllLicences();
       const itemsRandom = [...items].sort(() => Math.random() - 0.5); // ordena de forma aleatoria el array
       const mostRecent = [...items].sort((a,b)=> b.product_id - a.product_id ); // ordena por id, de mayor a menor 
-
+      const carrito = req.session.carrito || []
+      const sumaQuantity = carrito.reduce((total, item) => total + item.cantidad, 0);
 
       res.render("home", { items,itemsRandom,mostRecent,licences,loggedin: req.session.loggedin , // Asegúrate de que loggedin esté definida, incluso si es falsa
-      name: req.session.name }); // Pasando los datos a la vista 'index'
+      name: req.session.name,sumaQuantity,carrito }); // Pasando los datos a la vista 'index'
       
     } catch (error) {
         if(items.isError  ){

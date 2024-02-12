@@ -13,7 +13,7 @@
 
 <body>
 
-    <% if(loggedin) { %>
+    <% if(loggedin) {  %>
 
         <!-- Si el usuario está logueado muestra este header -->
 
@@ -94,7 +94,7 @@
                         <li class="navbar__item"><a class="navbar__link" href="/contact">CONTACTO</a></li>
                         <li class="navbar__item"><a class="navbar__link" href="/auth/login">LOGIN</a></li>
                         <li class="navbar__item" id="carrito">
-                            <span id="cantidadCarrito">0</span>
+                            <span id="cantidadCarrito"><%= sumaQuantity %></span>
                             <a href="/shop/cart" class="navbar__carrito"><img
                                     src="../../../public/img/icons/cart-icon.svg" alt="Icono de carrito"></a>
                         </li>
@@ -107,9 +107,9 @@
                     <section class="item">
                         <div class="item__img card-item__img" id="img_item">
                             <img class="card-item__img--front" src="/public/img/<%= product.image_front %>"
-                                alt="Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga">
+                            alt="imagen front de <%= product.product_name %>">
                             <img class="card-item__img--back" src="/public/img/<%= product.image_back %>"
-                                alt="Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga">
+                            alt="imagen back de <%= product.product_name %>">
                         </div>
                         <article class="item__info">
                             <p class="item__licence">
@@ -130,8 +130,10 @@
                                 enctype="application/x-www-form-urlencoded">
                                 <input type="hidden" name="_method" value="post">
                                 <!-- Este campo indica que es una solicitud POST -->
+                               
+
                                 <button id="subtract" class="item__quantity" type="button">-</button>
-                                <input id="quantity" class="item__input" type="text" name="quantity" placeholder="0">
+                                <input id="quantity" class="item__input" type="text" name="quantity" value="1" min="1" max="<%= product.stock %>" data-stock="<%= product.stock %>">
                                 <button id="add" class="item__quantity" type="button">+</button>
 
 
@@ -142,7 +144,7 @@
                                             type="button" data-id="<%= product.product_id %>"> Editar </button></a>
                                     <% } else { %>
                                         <button class="item__submit btn btn--primary btn--medium" id="addToCart"
-                                            type="button" data-id="<%= product.product_id %>">Agregar al
+                                            type="button" data-id="<%= product.product_id %>" onclick="addToCart()">Agregar al
                                             carrito</button>
                                         <% } %>
 
@@ -220,4 +222,5 @@
                 <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
                 <script src="../../../public/js/glide.js"></script>
+                <script src="../../../public/js/carrito.js"></script>
                 <%- include('../partials/footer') %>

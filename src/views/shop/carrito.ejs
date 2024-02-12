@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/index.css">
     <link rel="stylesheet" href="/public/css/index.css">
 
     <title>Document</title>
@@ -29,7 +28,7 @@
                     <a href="/auth/login" class="navbar__link">Login</a>
                 </li>
                 <li class="navbar__item" id="carrito">
-                    <span id="cantidadCarrito">0</span>
+                    <span id="cantidadCarrito"><%= sumaQuantity%></span>
                     <a href="/shop/cart" class="navbar__carrito"><img src="../../../public/img/icons/cart-icon.svg"
                             alt="Icono de carrito"></a>
                 </li>
@@ -41,79 +40,92 @@
             <div class="table__titulo">
                 <h2 class="table__titulo--">CARRITO DE COMPRAS</h2>
             </div>
-            
+
             <div class="table__group">
                 <div class="table__header">DETALLE DE PRODUCTO</div>
                 <div class="table__header">CANTIDAD</div>
                 <div class="table__header">TOTAL</div>
-                <div class="table__header"></div>
-                <% carrito.forEach(item => { %>
+                <div class="table__header">ACCION</div>
+                <% carrito.forEach(item=> { %>
                     <div class="table__item">
-                      <!-- Detalle de producto -->
-                      <div class="item_card">
-                        <img src="/public/img/<%=item.image_front%>" alt="<%= item.name %>">
-                        <div class="item_card_info">
-                          <!-- Acceder a las propiedades del producto -->
-                          <h4 class="item_card_nombre"><%= item.name %></h4>
-                          <p class="item_card_precio"><%= item.description %></p>
-                          <br>
-                          <p class="item_card_licencia"><%= item.price %></p>
+                        <!-- Detalle de producto -->
+                        <div class="item_card">
+                            <img src="/public/img/<%=item.image%>" alt="<%= item.name %>">
+                            <div class="item_card_info">
+                                <!-- Acceder a las propiedades del producto -->
+                                <h4 class="item_card_nombre">
+                                    <%= item.name %>
+                                </h4>
+
+                                <p class="item_card_precio">
+                                    <%= item.category %>
+                                </p>
+                                <br>
+                                <p class="item_card_licencia"> Precio unitario: <%= item.price %>
+                                </p>
+                            </div>
                         </div>
-                      </div>
                     </div>
                     <div class="table__item">
                         <form class="item__cart" action="#" method="POST" enctype="application/x-www-form-urlencoded">
-                            <input id="quantity" class="item__input" type="text" name="quantity" placeholder="<%= item.cantidad %>" disabled>
+                            <input id="quantity" class="item__input" type="text" name="quantity"
+                                placeholder="<%= item.cantidad %>" disabled>
                             <div>
-                                
-                                <button id="add" class="item__quantity_tabla" type="button">+</button>
-                                <button id="subtract" class="item__quantity_tabla" type="button">-</button>
-                            </div>
-                            
-                        </form>
-                        
-                    </div>
-                    <div class="table__item">
-                        <p id="total" class="item_precio">$ 0,00</p>
-                    </div>
-                    <div class="table__item">
-                        <a href="" class="item_compra"><iconify-icon
-                            icon="material-symbols:cancel-outline-rounded"></iconify-icon></a>
-                        </div>
-                        
-                        <% }) %>
-                    </form>
-                </div>
-                
-            </div>
-            <button id="vaciarCarrito">Vaciar Carrito</button>
-           
 
-        
+                                <button id="addQ" class="item__quantity_tabla" type="button">+</button>
+                                <button id="subtractQ" class="item__quantity_tabla" type="button">-</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                    <div class="table__item">
+                        <p id="total" class="item_precio">
+                            <%= (item.cantidad*item.price).toFixed(2) %>
+                        </p>
+                    </div>
+                    <form class="table__item" action="/cart/remove/<%= item.id %>" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="eliminar-producto" data-product-id="<%= item.id %>">
+                          <iconify-icon icon="material-symbols:delete"></iconify-icon> 
+                        </button>
+                      </form>
+
+                <% }) %>
+
+            </div>
+
+        </div>
+        <button id="vaciarCarrito">Vaciar Carrito</button>
+
+
+
     </section>
+    
     <section class="container resumen">
         <h2 class="resumen__titulo">RESUMEN</h2>
         <article class="resumen__container">
             <div class="resumen__cantidad">
-                <p>cantidad de elementos </p>
-                <p id="cantProd"> </p>
+                <p>cantidad de productos </p>
+                <p id="cantProd"><%= sumaQuantity%> </p>
             </div>
             <div class="resumen__subtotal">
                 <p>subtotal</p>
-                <p id="subTotal"></p>
+                <p id="subTotal">$<%= precioTotal%></p>
             </div>
             <div class="resumen__envio">
                 <p>envio</p>
-                <p>$0</p>
+                <p><strong>BONIFICADO</strong></p>
             </div>
             <div class="resumen__total">
                 <p class="resumen__total__titulo">total</p>
-                <p id="totalAPagar"></p>
+                <p id="totalAPagar">$<%= precioTotal%></p>
             </div>
         </article>
         <div class="pagar">
             <button id="btnPagar">ir a pagar</button>
         </div>
     </section>
-   
+                <script src="../../../public/js/carrito.js"></script>
+
     <%- include('../partials/footer') %>
