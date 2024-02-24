@@ -30,6 +30,7 @@ module.exports = {
       const items = await getAll();
       const licences= await getLicences();
       const category= await getCategory();
+      
 
       let viewType = req.query.viewType || "product"; // Obtén el valor de viewType desde la consulta (query)
 
@@ -47,9 +48,10 @@ module.exports = {
     }
   },
   profile: async (req, res) => {
+    const categorias = await getCategory();
     res.render("admin/profile", {
       loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
-      name: req.session.name || "usser",
+      name: req.session.name || "usser",categorias
     });
   },
   createViews: async (req, res) => {

@@ -29,15 +29,12 @@
                         <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
                                 icon="carbon:chevron-down"></iconify-icon></a>
                         <ul class="submenu">
-                            <li class="submenu__item">
-                                <a href="#" class="submenu__link"> Funkos</a>
-                            </li>
-                            <li class="submenu__item">
-                                <a href="#" class="submenu__link"> Remeras</a>
-                            </li>
-                            <li class="submenu__item">
-                                <a href="#" class="submenu__link"> Llaveros</a>
-                            </li>
+                            <% categorias.forEach(cat => {  %>
+                                <li class="submenu__item">
+                                    <a href="#" class="submenu__link"> <%= cat.category_name %></a>
+                                </li>
+                                <% }) %>
+                            
                         </ul>
                     </li>
 
@@ -80,15 +77,11 @@
                             <a class="navbar__link with-icon" href="/shop">SHOP <iconify-icon
                                     icon="carbon:chevron-down"></iconify-icon></a>
                             <ul class="submenu">
-                                <li class="submenu__item">
-                                    <a href="#" class="submenu__link"> Funkos</a>
-                                </li>
-                                <li class="submenu__item">
-                                    <a href="#" class="submenu__link"> Remeras</a>
-                                </li>
-                                <li class="submenu__item">
-                                    <a href="#" class="submenu__link"> Llaveros</a>
-                                </li>
+                                <% categorias.forEach(cat => {  %>
+                                    <li class="submenu__item">
+                                        <a href="#" class="submenu__link"> <%= cat.category_name %></a>
+                                    </li>
+                                    <% }) %>
                             </ul>
                         </li>
                         <li class="navbar__item"><a class="navbar__link" href="/contact">CONTACTO</a></li>

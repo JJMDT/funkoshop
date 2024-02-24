@@ -1,14 +1,16 @@
 const path = require("path");
 //const { getAllItems,getOne } = require("../service/productsServices");
 const { getAll, getOne } = require("../models/productModels");
+const {getCategory} = require('../models/productModels')
 
 const shopControllers = {
   shop: async (req, res) => {
     const data = await getAll();
     const carrito = req.session.carrito || []
+    const categorias = await getCategory();
     const sumaQuantity = carrito.reduce((total, item) => total + item.cantidad, 0);
 
-    res.render("shop/shop", { data,sumaQuantity,carrito,
+    res.render("shop/shop", { data,sumaQuantity,carrito,categorias,
       loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
       name: req.session.name || 'usser' // Asegúrate de que name esté definida, incluso si es una cadena vacía
     });
@@ -24,8 +26,9 @@ const shopControllers = {
       // renderizamos la pagina de shop/item y pasamos product y allproduct para poder usarlos en las vista de item
       const carrito = req.session.carrito || []
       const sumaQuantity = carrito.reduce((total, item) => total + item.cantidad, 0);
+      const categorias = await getCategory();
       res.render("shop/item", { product, allProducts, loggedin: req.session.loggedin || false, // Asegúrate de que loggedin esté definida, incluso si es falsa
-      name: req.session.name || 'usser',sumaQuantity,carrito });
+      name: req.session.name || 'usser',sumaQuantity,carrito,categorias });
     } catch (error) {
       console.error("Error en la función item:", error);
       res.status(500).send("Error al obtener el producto.");
@@ -123,6 +126,7 @@ const shopControllers = {
   cart: async(req, res) => {
     const data = await getAll();
     const carrito = req.session.carrito || []
+    const categorias = await getCategory();
     const sumaQuantity = carrito.reduce((total, item) => total + item.cantidad, 0);
     const sumaPrecios = carrito.reduce((total, item) => {
       const precio = parseFloat(item.price);
@@ -134,7 +138,7 @@ const shopControllers = {
 
 
     console.log("lo que hay en el Carrito de compras:", carrito);
-    res.render("shop/carrito",{carrito,sumaQuantity,precioTotal });
+    res.render("shop/carrito",{carrito,categorias,sumaQuantity,precioTotal });
   },
   clearCart: (req, res) => {
     try {
