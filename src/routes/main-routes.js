@@ -9,6 +9,10 @@ router.get('/home', mainControllers.home)
 router.get('/contact',mainControllers.contact)
 router.get('/about',mainControllers.about)
 router.get('/faqs',mainControllers.faqs)
+router.get("/", (req, res) => {
+    res.send("Hola, esta es la página principal");
+  });
+  
 
 
 module.exports = router
