@@ -23,7 +23,8 @@ app.use(bodyParser.json());
 
 // template engine (configuramos la vista y la ubicacion de la carpeta views)
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "./src/views"));
+//app.set("views", path.join(__dirname, "./src/views"));
+app.set('views', path.resolve(__dirname, './src/views')); // agregamos path para Vercel
 
 // inicializamos la sesion y configuramos variables locales
 app.use(initSession());
