@@ -51,6 +51,14 @@ const shopControllers = {
       }
 
       // Lógica para agregar el producto al carrito
+    const carrito = req.session.carrito || [];
+    const existingProductIndex = carrito.findIndex(item => item.id === productId);
+
+    if (existingProductIndex !== -1) {
+      // Si el producto ya está en el carrito, actualiza la cantidad
+      carrito[existingProductIndex].cantidad += cantidadSeleccionada;
+    } else {
+
       const productoActual = {
         id: productId,
         cantidad: cantidadSeleccionada,
@@ -62,12 +70,14 @@ const shopControllers = {
         image: productDetails.image_front,  // Agrega la propiedad de la imagen si está disponible
 
       };
+      carrito.push(productoActual);
 
+    }
       // Obtener el carrito de la sesión actual o crear uno si no existe
-      req.session.carrito = req.session.carrito || [];
-      req.session.carrito.push(productoActual);
+   
+      req.session.carrito = carrito;
 
-      console.log("producto enviado al carrito", productoActual);
+    console.log("producto enviado al carrito", carrito);
 
       // Respuesta al cliente
       res
@@ -106,6 +116,7 @@ const shopControllers = {
         res.status(200).json({
           success: true,
           message: "Producto eliminado del carrito con éxito",
+          carrito: req.session.carrito, // Agrega el carrito actualizado
         });
       } else {
         // Si no se encuentra, devolver un mensaje indicando que el producto no está en el carrito
@@ -140,6 +151,47 @@ const shopControllers = {
     console.log("lo que hay en el Carrito de compras:", carrito);
     res.render("shop/carrito",{carrito,categorias,sumaQuantity,precioTotal });
   },
+  updateCartItemQuantityAndPrice: (req, res) => {
+    const productId = req.params.id;
+    const newQuantity = req.body.newQuantity;
+
+    try {
+        // Obtener el carrito de la sesión actual o crear uno si no existe
+        req.session.carrito = req.session.carrito || [];
+
+        // Encontrar el índice del producto en el carrito
+        const index = req.session.carrito.findIndex(producto => producto.id === productId);
+
+        if (index !== -1) {
+            // Si se encuentra, actualizar la cantidad del producto en el carrito
+            req.session.carrito[index].cantidad = newQuantity;
+
+            // Recalcular el precio total del producto
+            req.session.carrito[index].precioTotal = newQuantity * req.session.carrito[index].precioUnitario;
+
+            // Respuesta al cliente con la información actualizada
+            res.status(200).json({
+                success: true,
+                message: "Cantidad y precio del producto actualizados con éxito",
+                updatedCartItem: req.session.carrito[index], // Devuelve el producto actualizado
+            });
+        } else {
+            // Si no se encuentra, devolver un mensaje indicando que el producto no está en el carrito
+            res.status(404).json({
+                success: false,
+                message: "El producto no está en el carrito",
+            });
+        }
+    } catch (error) {
+        console.error("Error al actualizar cantidad y precio del producto en el carrito:", error);
+        res.status(500).json({
+            success: false,
+            message: "Error al actualizar cantidad y precio del producto en el carrito.",
+            error: error.message,
+        });
+    }
+},
+
   clearCart: (req, res) => {
     try {
       // Lógica para vaciar el carrito

@@ -65,95 +65,30 @@ document.addEventListener("DOMContentLoaded", () => {
     
   });
 
-  function actualizarListaCarrito(listaCarrito) {
+  function actualizarListaCarrito(data) {
     const carritoListaElement = document.getElementById("carrito-lista");
-    // Verificar si el elemento existe antes de intentar modificar su contenido
-    if (carritoListaElement) {
+    const cantidadCarritoElement = document.getElementById("cantidadCarrito");
+  
+    if (carritoListaElement && cantidadCarritoElement) {
       // Limpiar el carrito
       carritoListaElement.innerHTML = "";
+  
       // Renderizar la nueva lista del carrito
-      listaCarrito.forEach((item) => {
+      data.carrito.forEach((item) => {
         if (item.product_name && item.cantidad) {
           const carritoItem = document.createElement("div");
           carritoItem.innerHTML = `<p>${item.product_name} - Cantidad: ${item.cantidad}</p>`;
           carritoListaElement.appendChild(carritoItem);
-
         } else {
           console.error("Elemento de listaCarrito inválido:", item);
         }
       });
-    }
-  }
   
-    // Tu código actual aquí...
-    
-});
-// carrito.js
-const vaciar = document.getElementById('vaciarCarrito');
-
-vaciar.addEventListener('click', async () => {
-    try {
-        const response = await fetch('/shop/cart/clear', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-        });
-
-        if (!response.ok) {
-            throw new Error(`Error en la respuesta del servidor: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log(data);
- // Recargar la página para reflejar los cambios
-        location.reload();
-        // Puedes realizar acciones adicionales después de vaciar el carrito si es necesario
-
-    } catch (error) {
-        console.error('Error al vaciar el carrito:', error);
+      // Actualizar la cantidad total en el carrito
+      cantidadCarritoElement.innerHTML = data.carrito.length;
     }
-});
-
-document.addEventListener("click", async (event) => {
-  if (event.target.classList.contains("eliminar-producto")) {
-      event.preventDefault();
-      const productId = event.target.getAttribute("data-product-id");
-      
-      // Realiza una solicitud al servidor para eliminar el producto del carrito
-      try {
-          const response = await fetch(`/ruta/para/eliminar/producto/${productId}`, {
-              method: 'DELETE',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-          });
-
-          if (!response.ok) {
-              throw new Error(`Error en la respuesta del servidor: ${response.status}`);
-          }
-
-          const data = await response.json();
-          console.log(data);  // Puedes realizar acciones adicionales si es necesario
-          // Actualiza la lista del carrito después de eliminar el producto
-          actualizarListaCarrito(data);
-      } catch (error) {
-          console.error('Error al eliminar el producto del carrito:', error);
-      }
   }
-});
-
-
-/*** nueva prueba  */
-const removeProductFromCart = (req, res) => {
-  try {
-    const productId = req.params.productId;
-    // Resto de la lógica para eliminar el producto del carrito
-    // ...
-  } catch (error) {
-    console.error("Error al eliminar producto del carrito:", error);
-    res.status(500).json({
-      success: false,
-      message: "Error al eliminar producto del carrito.",
-      error: error.message,
-    });
-  }
-};
+})
+  
+//     // Tu código actual aquí...
+//    
