@@ -5,11 +5,11 @@ const mainControllers = require('../controllers/mainController')
 
 // Main Routes
 //router.get('/', mainControllers.home)
-router.get('/home', mainControllers.home)
+router.get('/', mainControllers.home)
 router.get('/contact',mainControllers.contact)
 router.get('/about',mainControllers.about)
 router.get('/faqs',mainControllers.faqs)
-router.get("/", (req, res) => {
+router.get("/home", (req, res) => {
     res.send("Hola, esta es la página principal");
   });
   

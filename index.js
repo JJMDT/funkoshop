@@ -50,5 +50,5 @@ app.use("/auth", authRoutes);
 
 // iniciamos el servidor
 app.listen(PORT, () =>
-  console.log(`servidor corriendo  http://localhost:${PORT}/home`)
+  console.log(`servidor corriendo  http://localhost:${PORT}`)
 );
