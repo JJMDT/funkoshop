@@ -38,7 +38,9 @@ app.use((req, res, next) => {
 //app.use(express.json()); // nos ahorra de usar JSON.parse() al recibir datos y JSON.stringiy() para enviarlos, nos permite usar req.body
 //app.use(express.urlencoded()); // nos permite capturar los datos de un formulario con req.body
 app.use(methodOverride("_method")); // middleware para usar verbos HTTP como PUT o DELETE
-app.use("/public", express.static("public")); // archivos estaticos desde la carpeta public
+//app.use("/public", express.static("public")); // archivos estaticos desde la carpeta public
+app.use("/public", express.static(path.join(__dirname, "public")));
+
 app.use(cors()); //configuracion de cors
 
 // configuracion de las rutas
