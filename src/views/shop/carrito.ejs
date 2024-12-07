@@ -41,14 +41,14 @@
             <div class="table__titulo">
                 <h2 class="table__titulo--">CARRITO DE COMPRAS</h2>
             </div>
-
+           
             <div class="table__group">
                 <div class="table__header">DETALLE DE PRODUCTO</div>
                 <div class="table__header">CANTIDAD</div>
                 <div class="table__header">TOTAL</div>
                 <div class="table__header">ACCION</div>
                 <% carrito.forEach(item=> { %>
-                    <div class="table__item">
+                <div class="table__item">
                         <!-- Detalle de producto -->
                         <div class="item_card">
                             <img src="/public/img/<%=item.image%>" alt="<%= item.name %>">
@@ -95,9 +95,18 @@
                 <% }) %>
 
             </div>
+            <!-- hacer condicion para mostrar el boton  -->
+            <% if (carrito.length > 0) { %>
 
-        </div>
-        <button id="vaciarCarrito">Vaciar Carrito</button>
+                <div class="vaciar">
+                  <button id="vaciarCarrito">Vaciar Carrito</button>
+                </div>
+                <% } %>
+            </div>
+            <% if (carrito.length <= 0) { %>
+
+            <p class="txt_estado_carrito">Todavia no tiene productos en el carrito</p>
+            <% } %>
 
 
 
@@ -105,6 +114,8 @@
     
     <section class="container resumen">
         <h2 class="resumen__titulo">RESUMEN</h2>
+        
+        <% if (carrito.length > 0) { %>
         <article class="resumen__container">
             <div class="resumen__cantidad">
                 <p>cantidad de productos </p>
@@ -126,6 +137,10 @@
         <div class="pagar">
             <button id="btnPagar">ir a pagar</button>
         </div>
+        <% } %>
+        <% if (carrito.length <= 0) { %>
+        <img class="img_resumen" src="../../../public/img/carritoVacio.png" alt="carrito vacio">
+        <% } %>
     </section>
                 <script src="../../../public/js/carrito.js"></script>
                 <script src="../../../public/js/cart.js"></script>

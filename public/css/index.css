@@ -184,6 +184,25 @@ header{
 }
 .hero::before{
     content: '';
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(2px) brightness(.9);
+}
+.heroProfile{
+    background-image: url(/public/img/banner2.png);
+    padding: 150px;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+
+}
+.heroProfile::before{
+    content: '';
     background-position: top;
     background-color: rgba(0, 0, 0, 0);
     height: 100%;
@@ -816,6 +835,24 @@ display: none;
     line-height: 39px;
 
 }
+.vaciar > button {
+    
+    padding: 3px 10px;
+    background-color:var( --primary-900);
+    color: var(--light-font-solid);
+    font-family: var(--base-font);
+    font-size: var(--font-small);
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    line-height: 39px;
+
+}
+button:hover{
+    background-color:var(--primary-500);
+
+}
 
 #cantidadCarrito{
     /* position: absolute;
@@ -1242,4 +1279,14 @@ span {
     color: var(--primary-solid);
     font-size: var(--font-display);
     
+}
+.img_resumen{
+    width: 250px;
+}
+.txt_estado_carrito{
+    display: block;
+    text-align: center;
+    font-size: var(--font-medium);
+    border: 1px solid black;
+    padding: 20px;
 }

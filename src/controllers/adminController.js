@@ -101,18 +101,21 @@ module.exports = {
 
   editView: async (req, res) => {
     const { id } = req.params;
+    const licences = await getLicences()
 
     const [product] = await getOne(id);
     
 
     res.render("admin/edit", {
-      product,
+      product,licences,
       loggedin: req.session.loggedin, // Asegúrate de que loggedin esté definida, incluso si es falsa
       name: req.session.name,
     });
   }, //res.send(`Route for edit id ${req.params.id} from controllers `),
   editProduct: async (req, res) => {
+
     try {
+      
       console.log(req.params);
       console.log(req.body);
 
