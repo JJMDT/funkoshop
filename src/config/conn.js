@@ -9,7 +9,7 @@ const pool = mysql.createPool({
     password: process.env.DBPASS,
     database: process.env.DBSCHEMA,
     waitForConnections: true,
-    connectionLimit: 10,
+    connectionLimit: 0,
     queueLimit: 0,
    // Promise: require('bluebird') // Esto es para usar bluebird como la biblioteca de promesas
 });
